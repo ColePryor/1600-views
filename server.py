@@ -9,6 +9,7 @@ Endpoints:
   GET  /api/data    accounts + latest stats + daily history
   POST /api/accounts {"handle": "...", "name": "..."}   add a TikTok account (name optional)
   POST /api/owner    {"handle": "...", "name": "..."}   name the person who runs an account ("" clears)
+  POST /api/accounts/remove {"handle": "..."}   drop an account (list, cached data, owner; history kept)
   POST /api/refresh  re-scrape all accounts (runs fetch.py, ~10-60s/account)
 """
 import json
@@ -171,6 +172,21 @@ class Handler(SimpleHTTPRequestHandler):
                 set_owner(h, name)
             self.send_json({"ok": True, "accounts": accounts,
                             "owners": load_json(DATA / "owners.json", {})})
+            return
+
+        if self.path == "/api/accounts/remove":
+            h = (body.get("handle") or "").strip().lstrip("@")
+            if not h:
+                self.send_json({"error": "no handle"}, 400)
+                return
+            accounts = [a for a in load_json(DATA / "accounts.json", []) if a != h]
+            (DATA / "accounts.json").write_text(json.dumps(accounts))
+            data = load_json(DATA / "data.json", {"accounts": {}})
+            if h in data.get("accounts", {}):
+                del data["accounts"][h]
+                (DATA / "data.json").write_text(json.dumps(data, indent=1))
+            owners = set_owner(h, "")
+            self.send_json({"ok": True, "accounts": accounts, "owners": owners})
             return
 
         if self.path == "/api/owner":

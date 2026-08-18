@@ -72,6 +72,19 @@
   }
   .pill:hover { color: var(--ink); border-color: var(--faint); }
   .pill.pending { opacity: .55; }
+  .pill .x {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 14px; height: 14px; border-radius: 999px; margin: 0 -3px 0 2px;
+    font-size: 12px; line-height: 1; color: var(--faint);
+  }
+  .pill .x:hover { color: #fff; background: var(--views); }
+  .addrow { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
+  .addrow input {
+    font: inherit; font-size: 13px; color: var(--ink); background: var(--panel2);
+    border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; min-width: 190px;
+  }
+  .addrow input::placeholder { color: var(--faint); }
+  .addrow .hint { font-size: 11.5px; color: var(--faint); }
   .edit {
     font: inherit; font-size: 11px; font-weight: 700; color: var(--faint);
     background: none; border: 1px dashed var(--line); border-radius: 999px;
@@ -309,6 +322,12 @@
         <tbody id="whoRows"></tbody>
       </table>
     </div>
+    <form class="addrow" id="addRow" autocomplete="off">
+      <input id="addHandle" placeholder="@tiktok handle" required spellcheck="false">
+      <input id="addName" placeholder="who runs it (optional)">
+      <button class="refresh" type="submit" id="addBtn">Add account</button>
+      <span class="hint">Pulls the account's videos right away (10–60s).</span>
+    </form>
   </div>
 
   <div class="panel" style="margin-top:18px">
@@ -375,6 +394,29 @@
   const LOCAL_KEY = 'hq.owners.local';
   let publishedOwners = {};
   const localOwners = () => { try { return JSON.parse(localStorage.getItem(LOCAL_KEY) || '{}'); } catch (e) { return {}; } };
+  const HIDDEN_KEY = 'hq.hidden';
+  const hiddenAccts = () => { try { return JSON.parse(localStorage.getItem(HIDDEN_KEY) || '[]'); } catch (e) { return []; } };
+  function applyHidden() {
+    const hid = hiddenAccts();
+    hid.forEach(h => { delete payload.data.accounts[h]; });
+    payload.accounts = (payload.accounts || []).filter(h => !hid.includes(h));
+  }
+  async function removeAccount(handle) {
+    const label = ownerOf(handle) ? ownerOf(handle) + "'s @" + handle : '@' + handle;
+    if (!confirm(STATIC ? 'Hide ' + label + ' from this browser?' : 'Remove ' + label + '? Its cached data is dropped; you can add it back any time.')) return;
+    if (STATIC) {
+      const hid = hiddenAccts(); if (!hid.includes(handle)) hid.push(handle);
+      localStorage.setItem(HIDDEN_KEY, JSON.stringify(hid));
+      applyHidden();
+    } else {
+      const j = await (await fetch('/api/accounts/remove', { method: 'POST', body: JSON.stringify({ handle }) })).json();
+      if (j.error) { alert(j.error); return; }
+      delete payload.data.accounts[handle];
+      payload.accounts = j.accounts; payload.owners = j.owners;
+    }
+    if (filter === handle || (filter.startsWith('name:') && !groups().has(filter.slice(5)))) filter = 'ALL';
+    render();
+  }
   function mergedOwners() {
     const o = { ...publishedOwners };
     Object.entries(localOwners()).forEach(([h, n]) => { if (n) o[h] = n; else delete o[h]; });
@@ -442,9 +484,8 @@
   }
   function resetLocalOwners() {
     localStorage.removeItem(LOCAL_KEY);
-    payload.owners = mergedOwners();
-    if (filter.startsWith('name:') && !groups().has(filter.slice(5))) filter = 'ALL';
-    render();
+    localStorage.removeItem(HIDDEN_KEY);
+    loadData();
   }
   // Race entities: each named person (in the order names were first assigned,
   // so colors stick to people), then each unclaimed account on its own.
@@ -657,10 +698,10 @@
 
     // Views by creator: one row per person, unclaimed accounts each get their own row.
     if (STATIC) {
-      const nLocal = Object.keys(localOwners()).length;
+      const nLocal = Object.keys(localOwners()).length + hiddenAccts().length;
       $('whoSub').innerHTML = 'Every account rolls up to the person who runs it. Click a handle to name its owner (saved in this browser only'
         + (nLocal ? '; <a class="lnk" style="color:var(--muted);text-decoration:underline;cursor:pointer">reset ' + nLocal + ' local change' + (nLocal > 1 ? 's' : '') + '</a>' : '')
-        + '); click a row to filter the dashboard.';
+        + '); × hides an account here; click a row to filter the dashboard.';
       const lnk = $('whoSub').querySelector('.lnk'); if (lnk) lnk.onclick = resetLocalOwners;
     }
     const whoRows = $('whoRows'); whoRows.innerHTML = '';
@@ -702,6 +743,10 @@
         const pl = document.createElement('span'); pl.className = 'pill' + (payload.data.accounts[h] ? '' : ' pending');
         pl.textContent = '@' + h; pl.title = 'Set who runs @' + h;
         pl.onclick = ev => { ev.stopPropagation(); assignOwner(h); };
+        const x = document.createElement('span'); x.className = 'x'; x.textContent = '×';
+        x.title = (STATIC ? 'Hide' : 'Remove') + ' @' + h; x.setAttribute('role', 'button');
+        x.onclick = ev => { ev.stopPropagation(); removeAccount(h); };
+        pl.appendChild(x);
         tdA.appendChild(pl);
       });
       tr.appendChild(tdA);
@@ -877,21 +922,32 @@
     try {
       payload = await (await fetch('/api/data')).json();
       publishedOwners = payload.owners || {};
-      if (STATIC) payload.owners = mergedOwners();
+      if (STATIC) { payload.owners = mergedOwners(); applyHidden(); }
       render();
     } catch (e) {
       $('errBox').textContent = 'Cannot reach the local server. Run: cd ~/1600-views && ./venv/bin/python server.py';
     }
   }
 
-  $('addAcct').addEventListener('click', async () => {
-    let h = prompt('TikTok handle (without @):');
+  $('addAcct').addEventListener('click', () => {
+    $('addRow').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    $('addHandle').focus();
+  });
+  $('addRow').addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const h = $('addHandle').value.trim().replace(/^@/, '').replace(/^https?:\/\/(www\.)?tiktok\.com\/@?/i, '').split(/[/?#]/)[0];
     if (!h) return;
-    h = h.trim().replace(/^@/, '');
-    const name = prompt('Who runs @' + h + '? (name, optional)') || '';
-    await fetch('/api/accounts', { method: 'POST', body: JSON.stringify({ handle: h, name: name.trim() }) });
-    await fetch('/api/refresh', { method: 'POST' });
-    poll();
+    const name = $('addName').value.trim();
+    $('addBtn').disabled = true;
+    try {
+      const j = await (await fetch('/api/accounts', { method: 'POST', body: JSON.stringify({ handle: h, name }) })).json();
+      if (j.error) { alert(j.error); return; }
+      payload.accounts = j.accounts; payload.owners = j.owners || payload.owners;
+      $('addHandle').value = ''; $('addName').value = '';
+      render();
+      await fetch('/api/refresh', { method: 'POST' });
+      poll();
+    } finally { $('addBtn').disabled = false; }
   });
   $('refreshBtn').addEventListener('click', async () => {
     await fetch('/api/refresh', { method: 'POST' });
