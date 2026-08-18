@@ -59,6 +59,34 @@
     padding: 8px 16px; cursor: pointer; box-shadow: 0 2px 0 rgba(0,0,0,.4);
   }
   .refresh[disabled] { opacity: .55; cursor: wait; }
+  .chip .n { color: var(--faint); font-weight: 600; margin-left: 5px; }
+  .chip.on .n { color: var(--muted); }
+  .subchips { display: flex; gap: 8px; flex-wrap: wrap; margin: -12px 0 18px; }
+  .subchips .chip { font-size: 12px; padding: 5px 12px; }
+  .subchips .who { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); align-self: center; margin-right: 4px; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 11.5px; font-weight: 600; color: var(--muted);
+    background: var(--panel2); border: 1px solid var(--line); border-radius: 999px;
+    padding: 3px 9px; margin: 2px 4px 2px 0; cursor: pointer; white-space: nowrap;
+  }
+  .pill:hover { color: var(--ink); border-color: var(--faint); }
+  .pill.pending { opacity: .55; }
+  .edit {
+    font: inherit; font-size: 11px; font-weight: 700; color: var(--faint);
+    background: none; border: 1px dashed var(--line); border-radius: 999px;
+    padding: 3px 9px; cursor: pointer; margin-left: 6px; vertical-align: middle;
+  }
+  .edit:hover { color: var(--ink); border-color: var(--faint); }
+  tr.who-row { cursor: pointer; }
+  tr.who-row:hover td { background: rgba(255,255,255,.02); }
+  tr.who-row.on td { background: rgba(239,68,68,.08); }
+  td .name { font-weight: 700; font-size: 14px; }
+  #whoRows td:first-child { white-space: nowrap; }
+  td .name.none { color: var(--faint); font-weight: 600; }
+  td .rank { display: inline-block; width: 22px; color: var(--faint); font-size: 12px; font-weight: 700; }
+  .viewbar-wrap { display: flex; align-items: center; gap: 8px; justify-content: flex-end; }
+  .viewbar { height: 6px; border-radius: 3px; background: var(--views); }
 
   .hero {
     background: linear-gradient(180deg, var(--panel2), var(--panel));
@@ -162,6 +190,7 @@
     <button class="ghost" id="addAcct">+ TikTok account</button>
     <button class="refresh" id="refreshBtn">Refresh</button>
   </div>
+  <div class="subchips" id="subChips" style="display:none"></div>
 
   <section class="hero">
     <div class="hero-top">
@@ -232,6 +261,19 @@
   </div>
 
   <div class="panel" style="margin-top:18px">
+    <h2>Views by creator</h2>
+    <div class="sub">Every account rolls up to the person who runs it. Click a handle to name or rename its owner; click a row to filter the dashboard.</div>
+    <div style="overflow-x:auto">
+      <table id="whoTable">
+        <thead>
+          <tr><th>Creator</th><th>Accounts</th><th class="r">Views</th><th class="r">Views today</th><th class="r">Likes</th><th class="r">Followers</th><th class="r">Videos</th><th class="r">Avg views / video</th></tr>
+        </thead>
+        <tbody id="whoRows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:18px">
     <h2>Videos</h2>
     <div class="sub">Pulled straight from TikTok on every refresh</div>
     <div style="overflow-x:auto">
@@ -262,16 +304,51 @@
     { name: 'GOD',      at: 10000000, c: '' },
   ];
 
-  let payload = { accounts: [], data: { accounts: {} }, history: {}, refreshing: false, lastError: '' };
+  let payload = { accounts: [], owners: {}, data: { accounts: {} }, history: {}, refreshing: false, lastError: '' };
+  // filter: 'ALL' | 'name:<person>' | '<handle>'
   let filter = localStorage.getItem('hq.filter') || 'ALL';
+  const UNNAMED = '';
 
   const $ = id => document.getElementById(id);
   const fmt = n => n.toLocaleString('en-US');
   const short = n => n >= 1e6 ? (n / 1e6).toFixed(n % 1e6 ? 1 : 0) + 'M' : n >= 1e3 ? Math.round(n / 1e3) + 'k' : String(n);
 
+  const ownerOf = h => (payload.owners || {})[h] || UNNAMED;
+  // person name -> [handles], over fetched + pending accounts, in first-seen order
+  function groups() {
+    const g = new Map();
+    Object.keys(payload.data.accounts).concat(payload.accounts).forEach(h => {
+      const n = ownerOf(h);
+      if (!g.has(n)) g.set(n, []);
+      if (!g.get(n).includes(h)) g.get(n).push(h);
+    });
+    return g;
+  }
   function selAccts() {
     const all = Object.keys(payload.data.accounts);
-    return filter === 'ALL' ? all : all.filter(a => a === filter);
+    if (filter === 'ALL') return all;
+    if (filter.startsWith('name:')) { const n = filter.slice(5); return all.filter(a => ownerOf(a) === n); }
+    return all.filter(a => a === filter);
+  }
+  function setFilter(f) { filter = f; localStorage.setItem('hq.filter', f); render(); }
+  async function assignOwner(handle) {
+    const cur = ownerOf(handle);
+    const name = prompt('Who runs @' + handle + '? (name; leave empty to clear)', cur);
+    if (name === null) return;
+    const r = await fetch('/api/owner', { method: 'POST', body: JSON.stringify({ handle, name }) });
+    const j = await r.json();
+    if (j.owners) { payload.owners = j.owners; if (filter.startsWith('name:') && !groups().has(filter.slice(5))) filter = 'ALL'; render(); }
+  }
+  async function renameOwner(oldName) {
+    const name = prompt('Rename ' + oldName + ' to:', oldName);
+    if (name === null || name.trim() === '' || name.trim() === oldName) return;
+    const handles = groups().get(oldName) || [];
+    for (const h of handles) {
+      const r = await fetch('/api/owner', { method: 'POST', body: JSON.stringify({ handle: h, name: name.trim() }) });
+      const j = await r.json(); if (j.owners) payload.owners = j.owners;
+    }
+    if (filter === 'name:' + oldName) filter = 'name:' + name.trim();
+    render();
   }
   function lastDays(n) {
     const out = [];
@@ -282,10 +359,10 @@
     }
     return out;
   }
-  function totalAt(dateStr, kind) {
+  function totalAt(dateStr, kind, accts) {
     let sum = 0;
     const dates = Object.keys(payload.history).sort();
-    selAccts().forEach(a => {
+    (accts || selAccts()).forEach(a => {
       let best = null;
       dates.forEach(d => { if (d <= dateStr && payload.history[d][a]) best = payload.history[d][a]; });
       if (best) sum += best[kind] || 0;
@@ -331,21 +408,38 @@
     const accts = Object.keys(payload.data.accounts);
     const known = payload.accounts.filter(a => !accts.includes(a));
 
+    // Top row: All, one chip per person, then any account nobody has claimed.
+    // Second row (only when a person is selected): that person's accounts.
+    const g = groups();
     const chips = $('acctChips'); chips.innerHTML = '';
-    if (accts.length > 1) {
-      const all = document.createElement('button');
-      all.className = 'chip' + (filter === 'ALL' ? ' on' : '');
-      all.textContent = 'All accounts';
-      all.onclick = () => { filter = 'ALL'; localStorage.setItem('hq.filter', filter); render(); };
-      chips.appendChild(all);
-    }
-    accts.concat(known).forEach(a => {
+    const mkChip = (label, on, sub, click) => {
       const c = document.createElement('button');
-      c.className = 'chip' + (filter === a ? ' on' : '');
-      c.textContent = '@' + a + (known.includes(a) ? ' (pending)' : '');
-      c.onclick = () => { filter = a; localStorage.setItem('hq.filter', filter); render(); };
-      chips.appendChild(c);
+      c.className = 'chip' + (on ? ' on' : '');
+      c.textContent = label;
+      if (sub) { const n = document.createElement('span'); n.className = 'n num'; n.textContent = sub; c.appendChild(n); }
+      c.onclick = click;
+      return c;
+    };
+    const curName = filter.startsWith('name:') ? filter.slice(5)
+                  : (filter !== 'ALL' && ownerOf(filter)) ? ownerOf(filter) : null;
+    if (accts.length + known.length > 1) chips.appendChild(mkChip('All accounts', filter === 'ALL', '', () => setFilter('ALL')));
+    [...g.keys()].filter(n => n !== UNNAMED).sort((a, b) => a.localeCompare(b)).forEach(n => {
+      const hs = g.get(n);
+      chips.appendChild(mkChip(n, curName === n, hs.length > 1 ? String(hs.length) : '', () => setFilter('name:' + n)));
     });
+    (g.get(UNNAMED) || []).forEach(a => {
+      chips.appendChild(mkChip('@' + a + (known.includes(a) ? ' (pending)' : ''), filter === a, '', () => setFilter(a)));
+    });
+    const sub = $('subChips'); sub.innerHTML = '';
+    if (curName !== null && g.has(curName)) {
+      const hs = g.get(curName);
+      const who = document.createElement('span'); who.className = 'who'; who.textContent = curName; sub.appendChild(who);
+      if (hs.length > 1) sub.appendChild(mkChip('All ' + hs.length + ' accounts', filter === 'name:' + curName, '', () => setFilter('name:' + curName)));
+      hs.forEach(a => sub.appendChild(mkChip('@' + a + (known.includes(a) ? ' (pending)' : ''), filter === a, '', () => setFilter(a))));
+      sub.style.display = 'flex';
+    } else {
+      sub.style.display = 'none';
+    }
 
     const sel = selAccts().map(a => payload.data.accounts[a]);
     const vids = sel.flatMap(a => (a.videos || []).map(v => ({ ...v, acct: a.handle })));
@@ -381,7 +475,8 @@
       return dt.getFullYear() + '-' + String(dt.getMonth() + 1).padStart(2, '0') + '-' + String(dt.getDate()).padStart(2, '0');
     };
     const snapDates = Object.keys(payload.history).sort();
-    function deltaSeries(kind) {
+    function deltaSeries(kind, accts, vs) {
+      accts = accts || selAccts(); vs = vs || vids;
       // Days at or before the first snapshot have no earlier snapshot to
       // diff against, so they are estimated from upload days. Those bars
       // must sum to the FIRST snapshot's total, not to current lifetime
@@ -391,20 +486,20 @@
       let scale = 1;
       if (firstSnap) {
         let weightSum = 0;
-        vids.forEach(x => { if (dayOf(x.createTime) <= firstSnap) weightSum += x[kind] || 0; });
-        scale = weightSum ? totalAt(firstSnap, kind) / weightSum : 0;
+        vs.forEach(x => { if (dayOf(x.createTime) <= firstSnap) weightSum += x[kind] || 0; });
+        scale = weightSum ? totalAt(firstSnap, kind, accts) / weightSum : 0;
       }
       return days.map(d => {
         const hasPrior = snapDates.some(sd => sd < d);
         if (!hasPrior) {
-          const raw = vids.filter(x => dayOf(x.createTime) === d)
-                          .reduce((s, x) => s + (x[kind] || 0), 0);
+          const raw = vs.filter(x => dayOf(x.createTime) === d)
+                        .reduce((s, x) => s + (x[kind] || 0), 0);
           const v = Math.round(raw * scale);
           return { d, v, est: v > 0 };
         }
         const prev = new Date(d + 'T12:00:00'); prev.setDate(prev.getDate() - 1);
         const ps = prev.getFullYear() + '-' + String(prev.getMonth() + 1).padStart(2, '0') + '-' + String(prev.getDate()).padStart(2, '0');
-        return { d, v: Math.max(0, totalAt(d, kind) - totalAt(ps, kind)) };
+        return { d, v: Math.max(0, totalAt(d, kind, accts) - totalAt(ps, kind, accts)) };
       });
     }
     const vSeries = deltaSeries('views');
@@ -444,6 +539,60 @@
     $('allVideos').textContent = fmt(vids.length);
     $('avgViews').textContent = vids.length ? fmt(Math.round(totalViews / vids.length)) : '0';
 
+    // Views by creator: one row per person, unclaimed accounts each get their own row.
+    const whoRows = $('whoRows'); whoRows.innerHTML = '';
+    const entries = [];
+    g.forEach((hs, n) => {
+      if (n === UNNAMED) hs.forEach(h => entries.push({ name: UNNAMED, handles: [h] }));
+      else entries.push({ name: n, handles: hs });
+    });
+    entries.forEach(e => {
+      const live = e.handles.filter(h => payload.data.accounts[h]);
+      const as = live.map(h => payload.data.accounts[h]);
+      const vs = as.flatMap(a => (a.videos || []).map(v => ({ ...v, acct: a.handle })));
+      e.views = as.reduce((s, a) => s + (a.totalViews || 0), 0);
+      e.likes = as.reduce((s, a) => s + (a.likesFromVideos || a.totalLikes || 0), 0);
+      e.followers = as.reduce((s, a) => s + (a.followers || 0), 0);
+      e.videos = vs.length;
+      e.today = live.length ? deltaSeries('views', live, vs)[13].v : 0;
+    });
+    entries.sort((a, b) => b.views - a.views);
+    const maxV = Math.max(1, ...entries.map(e => e.views));
+    entries.forEach((e, i) => {
+      const tr = document.createElement('tr');
+      const on = e.name ? (filter === 'name:' + e.name || (filter !== 'ALL' && e.handles.includes(filter))) : filter === e.handles[0];
+      tr.className = 'who-row' + (on ? ' on' : '');
+      tr.onclick = () => setFilter(e.name ? 'name:' + e.name : e.handles[0]);
+
+      const tdN = document.createElement('td');
+      const rank = document.createElement('span'); rank.className = 'rank num'; rank.textContent = (i + 1) + '.'; tdN.appendChild(rank);
+      const nm = document.createElement('span'); nm.className = 'name' + (e.name ? '' : ' none');
+      nm.textContent = e.name || 'Unassigned'; tdN.appendChild(nm);
+      const ed = document.createElement('button'); ed.className = 'edit';
+      ed.textContent = e.name ? 'rename' : '+ name';
+      ed.onclick = ev => { ev.stopPropagation(); e.name ? renameOwner(e.name) : assignOwner(e.handles[0]); };
+      tdN.appendChild(ed);
+      tr.appendChild(tdN);
+
+      const tdA = document.createElement('td');
+      e.handles.forEach(h => {
+        const pl = document.createElement('span'); pl.className = 'pill' + (payload.data.accounts[h] ? '' : ' pending');
+        pl.textContent = '@' + h; pl.title = 'Set who runs @' + h;
+        pl.onclick = ev => { ev.stopPropagation(); assignOwner(h); };
+        tdA.appendChild(pl);
+      });
+      tr.appendChild(tdA);
+
+      tr.insertAdjacentHTML('beforeend',
+        '<td class="r"><div class="viewbar-wrap"><div class="viewbar" style="width:' + Math.max(4, e.views / maxV * 90) + 'px"></div><span class="num">' + fmt(e.views) + '</span></div></td>' +
+        '<td class="r num">+' + fmt(e.today) + '</td>' +
+        '<td class="r num">' + fmt(e.likes) + '</td>' +
+        '<td class="r num">' + fmt(e.followers) + '</td>' +
+        '<td class="r num">' + fmt(e.videos) + '</td>' +
+        '<td class="r num">' + (e.videos ? fmt(Math.round(e.views / e.videos)) : '-') + '</td>');
+      whoRows.appendChild(tr);
+    });
+
     const rows = $('vidRows'); rows.innerHTML = '';
     const maxLikes = Math.max(1, ...vids.map(v => v.likes));
     vids.sort((a, b) => b.createTime - a.createTime).forEach(v => {
@@ -455,7 +604,8 @@
       const a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener';
       a.textContent = v.desc || '(no caption)';
       t.appendChild(a);
-      const sub = document.createElement('div'); sub.className = 'a'; sub.textContent = '@' + v.acct;
+      const sub = document.createElement('div'); sub.className = 'a';
+      sub.textContent = (ownerOf(v.acct) ? ownerOf(v.acct) + ' · ' : '') + '@' + v.acct;
       td.appendChild(t); td.appendChild(sub);
       tr.appendChild(td);
       tr.insertAdjacentHTML('beforeend',
@@ -491,7 +641,9 @@
   $('addAcct').addEventListener('click', async () => {
     let h = prompt('TikTok handle (without @):');
     if (!h) return;
-    await fetch('/api/accounts', { method: 'POST', body: JSON.stringify({ handle: h }) });
+    h = h.trim().replace(/^@/, '');
+    const name = prompt('Who runs @' + h + '? (name, optional)') || '';
+    await fetch('/api/accounts', { method: 'POST', body: JSON.stringify({ handle: h, name: name.trim() }) });
     await fetch('/api/refresh', { method: 'POST' });
     poll();
   });

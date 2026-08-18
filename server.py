@@ -7,7 +7,8 @@
 Endpoints:
   GET  /            dashboard
   GET  /api/data    accounts + latest stats + daily history
-  POST /api/accounts {"handle": "..."}   add a TikTok account
+  POST /api/accounts {"handle": "...", "name": "..."}   add a TikTok account (name optional)
+  POST /api/owner    {"handle": "...", "name": "..."}   name the person who runs an account ("" clears)
   POST /api/refresh  re-scrape all accounts (runs fetch.py, ~10-60s/account)
 """
 import json
@@ -96,6 +97,17 @@ def load_json(path, fallback):
         return fallback
 
 
+def set_owner(handle, name):
+    """Map a TikTok handle to the person who runs it. Empty name clears it."""
+    owners = load_json(DATA / "owners.json", {})
+    if name:
+        owners[handle] = name
+    else:
+        owners.pop(handle, None)
+    (DATA / "owners.json").write_text(json.dumps(owners, indent=1))
+    return owners
+
+
 def run_fetch():
     refresh_state["running"] = True
     refresh_state["lastError"] = ""
@@ -126,6 +138,7 @@ class Handler(SimpleHTTPRequestHandler):
         if self.path.startswith("/api/data"):
             self.send_json({
                 "accounts": load_json(DATA / "accounts.json", []),
+                "owners": load_json(DATA / "owners.json", {}),
                 "data": load_json(DATA / "data.json", {"accounts": {}}),
                 "history": load_json(DATA / "history.json", {}),
                 "users": site_users(),
@@ -153,7 +166,20 @@ class Handler(SimpleHTTPRequestHandler):
             if h not in accounts:
                 accounts.append(h)
                 (DATA / "accounts.json").write_text(json.dumps(accounts))
-            self.send_json({"ok": True, "accounts": accounts})
+            name = (body.get("name") or "").strip()
+            if name:
+                set_owner(h, name)
+            self.send_json({"ok": True, "accounts": accounts,
+                            "owners": load_json(DATA / "owners.json", {})})
+            return
+
+        if self.path == "/api/owner":
+            h = (body.get("handle") or "").strip().lstrip("@")
+            if not h:
+                self.send_json({"error": "no handle"}, 400)
+                return
+            owners = set_owner(h, (body.get("name") or "").strip()[:40])
+            self.send_json({"ok": True, "owners": owners})
             return
 
         if self.path == "/api/refresh":

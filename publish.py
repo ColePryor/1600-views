@@ -17,6 +17,7 @@ SITE.mkdir(exist_ok=True)
 
 snapshot = {
     "accounts": server.load_json(server.DATA / "accounts.json", []),
+    "owners": server.load_json(server.DATA / "owners.json", {}),
     "data": server.load_json(server.DATA / "data.json", {"accounts": {}}),
     "history": server.load_json(server.DATA / "history.json", {}),
     "users": server.site_users(),
@@ -29,7 +30,7 @@ if snapshot["users"].get("error"):
 
 html = (ROOT / "index.html").read_text()
 html = html.replace("fetch('/api/data')", "fetch('snapshot.json')")
-html = html.replace("</style>", "  #addAcct, #refreshBtn { display: none; }\n</style>")
+html = html.replace("</style>", "  #addAcct, #refreshBtn, .edit { display: none; }\n</style>")
 (SITE / "index.html").write_text(html)
 
 n = len(snapshot["data"].get("accounts", {}))
