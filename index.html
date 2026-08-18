@@ -92,6 +92,11 @@
   }
   .addrow input::placeholder { color: var(--faint); }
   .addrow .hint { font-size: 11.5px; color: var(--faint); }
+  .addrow.top-add { margin: 0; padding: 0; border: 0; gap: 6px; }
+  .addrow.top-add input { min-width: 0; width: 150px; padding: 6px 12px; font-size: 12.5px; }
+  .addrow.top-add #addName { width: 140px; }
+  .addrow.top-add .ghost:hover { color: var(--ink); border-color: var(--views); }
+  .addrow.top-add .ghost[disabled] { opacity: .5; cursor: wait; }
   .edit {
     font: inherit; font-size: 11px; font-weight: 700; color: var(--faint);
     background: none; border: 1px dashed var(--line); border-radius: 999px;
@@ -245,7 +250,11 @@
     <div class="spacer"></div>
     <span class="stamp" id="stamp"></span>
     <div id="acctChips" style="display:flex;gap:8px;flex-wrap:wrap"></div>
-    <button class="ghost" id="addAcct">+ TikTok account</button>
+    <form class="addrow top-add" id="addRow" autocomplete="off" title="Add a TikTok account; it is pulled right away (10–60s)">
+      <input id="addHandle" placeholder="@tiktok handle" required spellcheck="false">
+      <input id="addName" placeholder="who runs it">
+      <button class="ghost" type="submit" id="addBtn">+ Add account</button>
+    </form>
     <button class="refresh" id="refreshBtn">Refresh</button>
   </div>
   <div class="subchips" id="subChips" style="display:none"></div>
@@ -329,12 +338,6 @@
         <tbody id="whoRows"></tbody>
       </table>
     </div>
-    <form class="addrow" id="addRow" autocomplete="off">
-      <input id="addHandle" placeholder="@tiktok handle" required spellcheck="false">
-      <input id="addName" placeholder="who runs it (optional)">
-      <button class="refresh" type="submit" id="addBtn">Add account</button>
-      <span class="hint">Pulls the account's videos right away (10–60s).</span>
-    </form>
   </div>
 
   <div class="panel" style="margin-top:18px">
@@ -942,10 +945,6 @@
     }
   }
 
-  $('addAcct').addEventListener('click', () => {
-    $('addRow').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    $('addHandle').focus();
-  });
   $('addRow').addEventListener('submit', async ev => {
     ev.preventDefault();
     const h = $('addHandle').value.trim().replace(/^@/, '').replace(/^https?:\/\/(www\.)?tiktok\.com\/@?/i, '').split(/[/?#]/)[0];
