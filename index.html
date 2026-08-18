@@ -60,6 +60,13 @@
   }
   .refresh[disabled] { opacity: .55; cursor: wait; }
   .chip .n { color: var(--faint); font-weight: 600; margin-left: 5px; }
+  .chip { display: inline-flex; align-items: center; }
+  .chip .x {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 15px; height: 15px; border-radius: 999px; margin: 0 -6px 0 6px;
+    font-size: 12px; line-height: 1; color: var(--faint);
+  }
+  .chip .x:hover { color: #fff; background: var(--views); }
   .chip.on .n { color: var(--muted); }
   .subchips { display: flex; gap: 8px; flex-wrap: wrap; margin: -12px 0 18px; }
   .subchips .chip { font-size: 12px; padding: 5px 12px; }
@@ -559,11 +566,17 @@
     // Second row (only when a person is selected): that person's accounts.
     const g = groups();
     const chips = $('acctChips'); chips.innerHTML = '';
-    const mkChip = (label, on, sub, click) => {
+    const mkChip = (label, on, sub, click, handle) => {
       const c = document.createElement('button');
       c.className = 'chip' + (on ? ' on' : '');
       c.textContent = label;
       if (sub) { const n = document.createElement('span'); n.className = 'n num'; n.textContent = sub; c.appendChild(n); }
+      if (handle) {
+        const x = document.createElement('span'); x.className = 'x'; x.textContent = '×';
+        x.title = (STATIC ? 'Hide' : 'Remove') + ' @' + handle; x.setAttribute('role', 'button');
+        x.onclick = ev => { ev.stopPropagation(); removeAccount(handle); };
+        c.appendChild(x);
+      }
       c.onclick = click;
       return c;
     };
@@ -575,14 +588,14 @@
       chips.appendChild(mkChip(n, curName === n, hs.length > 1 ? String(hs.length) : '', () => setFilter('name:' + n)));
     });
     (g.get(UNNAMED) || []).forEach(a => {
-      chips.appendChild(mkChip('@' + a + (known.includes(a) ? ' (pending)' : ''), filter === a, '', () => setFilter(a)));
+      chips.appendChild(mkChip('@' + a + (known.includes(a) ? ' (pending)' : ''), filter === a, '', () => setFilter(a), a));
     });
     const sub = $('subChips'); sub.innerHTML = '';
     if (curName !== null && g.has(curName)) {
       const hs = g.get(curName);
       const who = document.createElement('span'); who.className = 'who'; who.textContent = curName; sub.appendChild(who);
       if (hs.length > 1) sub.appendChild(mkChip('All ' + hs.length + ' accounts', filter === 'name:' + curName, '', () => setFilter('name:' + curName)));
-      hs.forEach(a => sub.appendChild(mkChip('@' + a + (known.includes(a) ? ' (pending)' : ''), filter === a, '', () => setFilter(a))));
+      hs.forEach(a => sub.appendChild(mkChip('@' + a + (known.includes(a) ? ' (pending)' : ''), filter === a, '', () => setFilter(a), a)));
       sub.style.display = 'flex';
     } else {
       sub.style.display = 'none';
