@@ -92,7 +92,10 @@
   }
   .addrow input::placeholder { color: var(--faint); }
   .addrow .hint { font-size: 11.5px; color: var(--faint); }
-  .addrow.top-add { margin: 0; padding: 0; border: 0; gap: 6px; }
+  .addrow.top-add { margin: 0; padding: 0; border: 0; gap: 6px; display: none; }
+  .addrow.top-add.open { display: flex; }
+  .chip.plus { font-size: 15px; font-weight: 700; padding: 3px 12px; line-height: 1.3; color: var(--muted); }
+  .chip.plus:hover, .chip.plus.on { color: var(--ink); border-color: var(--views); }
   .addrow.top-add input { min-width: 0; width: 150px; padding: 6px 12px; font-size: 12.5px; }
   .addrow.top-add #addName { width: 140px; }
   .addrow.top-add .ghost:hover { color: var(--ink); border-color: var(--views); }
@@ -438,6 +441,7 @@
   let raceMode = localStorage.getItem('hq.raceMode') || 'day';
   let raceWin = parseInt(localStorage.getItem('hq.raceWin') || '14', 10);
   const raceHidden = new Set();
+  let addOpen = false;
   let payload = { accounts: [], owners: {}, data: { accounts: {} }, history: {}, refreshing: false, lastError: '' };
   // filter: 'ALL' | 'name:<person>' | '<handle>'
   let filter = localStorage.getItem('hq.filter') || 'ALL';
@@ -594,6 +598,12 @@
     (g.get(UNNAMED) || []).forEach(a => {
       chips.appendChild(mkChip('@' + a + (known.includes(a) ? ' (pending)' : ''), filter === a, '', () => setFilter(a), a));
     });
+    if (!STATIC) {
+      const plus = mkChip('+', addOpen, '', () => { addOpen = !addOpen; render(); if (addOpen) $('addHandle').focus(); });
+      plus.classList.add('plus'); plus.title = 'Add a TikTok account';
+      chips.appendChild(plus);
+    }
+    $('addRow').classList.toggle('open', addOpen);
     const sub = $('subChips'); sub.innerHTML = '';
     if (curName !== null && g.has(curName)) {
       const hs = g.get(curName);
@@ -957,6 +967,7 @@
       if (j.error) { alert(j.error); return; }
       payload.accounts = j.accounts; payload.owners = j.owners || payload.owners;
       $('addHandle').value = ''; $('addName').value = '';
+      addOpen = false;
       render();
       await fetch('/api/refresh', { method: 'POST' });
       poll();
