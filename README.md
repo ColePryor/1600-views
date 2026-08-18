@@ -1,0 +1,22 @@
+# 1600 Creator HQ: TikTok views tracker
+
+Tracks per-video views and likes across the 1600.tech creator accounts and renders a dashboard. Live snapshot: https://1600-views.vercel.app
+
+## How it works
+
+- `fetch.py`: opens each handle in `data/accounts.json` in a real Chrome window (Playwright, persistent profile in `data/chrome-profile/`, gitignored) and intercepts TikTok's `item_list` responses, so counts are exact with no login. Writes `data/data.json` and appends daily totals to `data/history.json`.
+- `server.py`: local dashboard server for `index.html`.
+- `publish.py`: copies a snapshot into `site/` for the public Vercel deploy (`npx vercel` from `site/`).
+
+## Setup
+
+```bash
+python3 -m venv venv
+./venv/bin/pip install playwright
+./venv/bin/playwright install chromium
+./venv/bin/python fetch.py            # all accounts
+./venv/bin/python fetch.py handle     # one account, no @
+./venv/bin/python server.py           # local dashboard
+```
+
+Add or remove creators by editing `data/accounts.json`.

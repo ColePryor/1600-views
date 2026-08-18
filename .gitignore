@@ -1,0 +1,6 @@
+.vercel
+.env*
+venv/
+__pycache__/
+data/chrome-profile/
+.DS_Store

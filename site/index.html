@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1600 Creator HQ</title>
+<style>
+  :root {
+    --bg: #0d0a12;
+    --panel: #16111d;
+    --panel2: #1d1626;
+    --line: #2b2136;
+    --ink: #f4f0f8;
+    --muted: #a99cb8;
+    --faint: #6f6480;
+    --views: #ef4444;
+    --likes: #f5b83d;
+    --uploads: #9d7bf5;
+    --good: #34d399;
+    --god1: #f59e0b;
+    --god2: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background:
+      radial-gradient(1100px 500px at 50% -10%, rgba(239,68,68,.10), transparent 60%),
+      var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 80px;
+  }
+  .num { font-variant-numeric: tabular-nums; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  .top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 20px 0 26px; }
+  .logo { font-size: 15px; font-weight: 800; letter-spacing: -.01em; }
+  .logo span { color: var(--views); }
+  .logo em { font-style: normal; color: var(--faint); font-weight: 600; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; margin-left: 10px; }
+  .top .spacer { flex: 1; }
+  .stamp { font-size: 11.5px; color: var(--faint); }
+  .chip {
+    font-size: 12.5px; font-weight: 600; color: var(--muted);
+    background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
+    padding: 7px 14px; cursor: pointer;
+  }
+  .chip.on { color: var(--ink); border-color: var(--views); background: rgba(239,68,68,.12); }
+  .chip:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--likes); outline-offset: 2px; }
+  .ghost {
+    font-size: 12.5px; font-weight: 600; color: var(--faint);
+    background: none; border: 1px dashed var(--line); border-radius: 999px;
+    padding: 7px 14px; cursor: pointer;
+  }
+  .ghost:hover { color: var(--muted); }
+  .refresh {
+    font-size: 12.5px; font-weight: 700; color: #fff;
+    background: var(--views); border: 0; border-radius: 999px;
+    padding: 8px 16px; cursor: pointer; box-shadow: 0 2px 0 rgba(0,0,0,.4);
+  }
+  .refresh[disabled] { opacity: .55; cursor: wait; }
+
+  .hero {
+    background: linear-gradient(180deg, var(--panel2), var(--panel));
+    border: 1px solid var(--line); border-radius: 20px;
+    padding: 30px clamp(20px, 4vw, 44px) 34px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px);
+    background-size: 100% 3px;
+  }
+  .hero-top { display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap; }
+  .hero .label { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; }
+  .total { font-size: clamp(44px, 7vw, 76px); font-weight: 800; letter-spacing: -.04em; line-height: 1; }
+  .hero-top .right { margin-left: auto; text-align: right; }
+  .tier {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+    padding: 8px 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel2);
+  }
+  .tier .dot { width: 9px; height: 9px; border-radius: 999px; background: var(--tierc, #a8763e); }
+  .tier.god { background: linear-gradient(100deg, var(--god1), var(--god2)); color: #fff; border: 0; }
+  .to-next { font-size: 12.5px; color: var(--faint); margin-top: 8px; }
+
+  .xp { margin-top: 26px; position: relative; }
+  .xp .track { height: 22px; border-radius: 999px; background: #0a0710; border: 1px solid var(--line); overflow: hidden; }
+  .xp .fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, #b91c1c, var(--views) 60%, var(--god1));
+    border-radius: 999px;
+    box-shadow: 0 0 18px rgba(239,68,68,.55);
+    transition: width .9s cubic-bezier(.22,1,.36,1);
+    position: relative;
+  }
+  .xp .fill::after {
+    content: ""; position: absolute; inset: 0; border-radius: 999px;
+    background: linear-gradient(180deg, rgba(255,255,255,.28), transparent 45%);
+  }
+  .ticks { position: relative; height: 34px; margin-top: 6px; }
+  .tick { position: absolute; transform: translateX(-50%); text-align: center; }
+  .tick i { display: block; width: 1px; height: 8px; background: var(--line); margin: 0 auto 4px; }
+  .tick b { font-size: 10.5px; font-weight: 700; letter-spacing: .08em; color: var(--faint); text-transform: uppercase; display: block; }
+  .tick small { font-size: 10px; color: var(--faint); }
+  .tick.hit b { color: var(--likes); }
+
+  .tiles { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 18px; }
+  @media (max-width: 980px) { .tiles { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 560px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
+  .tile { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  .tile .k { font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+  .tile .v { font-size: 24px; font-weight: 800; letter-spacing: -.02em; margin-top: 8px; }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 18px; }
+  .row.two { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 900px) { .row, .row.two { grid-template-columns: 1fr; } }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+  .panel h2 { font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .panel h2 .sw { width: 10px; height: 10px; border-radius: 3px; flex: 0 0 auto; }
+  .panel .sub { font-size: 11px; color: var(--faint); margin-top: 3px; }
+  .chart { display: flex; align-items: flex-end; gap: 3px; height: 120px; margin-top: 16px; }
+  .bar {
+    flex: 1; min-width: 4px; border-radius: 4px 4px 0 0; background: var(--c);
+    cursor: default; transition: opacity .15s; min-height: 2px;
+  }
+  .bar.zero { background: var(--line); }
+  .chart:hover .bar:not(:hover) { opacity: .45; }
+  .axis { display: flex; justify-content: space-between; font-size: 10px; color: var(--faint); margin-top: 8px; }
+
+  #tip {
+    position: fixed; z-index: 50; pointer-events: none; display: none;
+    background: #0a0710; border: 1px solid var(--line); border-radius: 8px;
+    padding: 7px 10px; font-size: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.5);
+  }
+  #tip b { display: block; font-size: 11px; color: var(--faint); font-weight: 600; margin-bottom: 2px; }
+
+  table { width: 100%; border-collapse: collapse; }
+  th { font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); text-align: left; padding: 12px 10px 8px; border-bottom: 1px solid var(--line); }
+  th.r, td.r { text-align: right; }
+  td { padding: 10px; border-bottom: 1px solid var(--line); font-size: 13.5px; vertical-align: middle; }
+  td .t { font-weight: 600; max-width: 420px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  td .a { font-size: 11px; color: var(--faint); }
+  td a { color: var(--ink); text-decoration: none; }
+  td a:hover { color: var(--views); }
+  .likebar-wrap { display: flex; align-items: center; gap: 8px; justify-content: flex-end; }
+  .likebar { height: 6px; border-radius: 3px; background: var(--likes); }
+  .empty { text-align: center; color: var(--faint); font-size: 13.5px; padding: 40px 0; line-height: 1.8; }
+  .err { color: #fda4af; font-size: 12px; margin-top: 10px; white-space: pre-wrap; }
+
+  @media (prefers-reduced-motion: reduce) { .xp .fill { transition: none; } }
+  #addAcct, #refreshBtn { display: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="logo">1600<span>.tech</span><em>Creator HQ</em></div>
+    <div class="spacer"></div>
+    <span class="stamp" id="stamp"></span>
+    <div id="acctChips" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+    <button class="ghost" id="addAcct">+ TikTok account</button>
+    <button class="refresh" id="refreshBtn">Refresh</button>
+  </div>
+
+  <section class="hero">
+    <div class="hero-top">
+      <div>
+        <div class="label">Total views</div>
+        <div class="total num" id="totalViews">0</div>
+      </div>
+      <div class="right">
+        <div class="tier" id="tierChip"><span class="dot"></span><span id="tierName">Bronze</span></div>
+        <div class="to-next num" id="toNext"></div>
+      </div>
+    </div>
+    <div class="xp">
+      <div class="track"><div class="fill" id="xpFill"></div></div>
+      <div class="ticks" id="ticks"></div>
+    </div>
+  </section>
+
+  <div class="tiles">
+    <div class="tile"><div class="k">Views today</div><div class="v num" id="tViews">0</div></div>
+    <div class="tile"><div class="k">Likes today</div><div class="v num" id="tLikes">0</div></div>
+    <div class="tile"><div class="k">Uploads today</div><div class="v num" id="tUploads">0</div></div>
+    <div class="tile"><div class="k">Followers</div><div class="v num" id="tFollowers">0</div></div>
+    <div class="tile"><div class="k">Videos</div><div class="v num" id="allVideos">0</div></div>
+    <div class="tile"><div class="k">Avg views / video</div><div class="v num" id="avgViews">0</div></div>
+  </div>
+
+  <div class="row">
+    <div class="panel">
+      <h2><span class="sw" style="background:var(--views)"></span>Views per day</h2>
+      <div class="sub">Day-over-day change; until day 2, each bar is that day's uploads</div>
+      <div class="chart" id="chViews"></div>
+      <div class="axis"><span id="axV0"></span><span id="axV1"></span></div>
+    </div>
+    <div class="panel">
+      <h2><span class="sw" style="background:var(--likes)"></span>Likes per day</h2>
+      <div class="sub">Day-over-day change; until day 2, each bar is that day's uploads</div>
+      <div class="chart" id="chLikes"></div>
+      <div class="axis"><span id="axL0"></span><span id="axL1"></span></div>
+    </div>
+    <div class="panel">
+      <h2><span class="sw" style="background:var(--uploads)"></span>Uploads per day</h2>
+      <div class="sub">Last 14 days, by upload date</div>
+      <div class="chart" id="chUploads"></div>
+      <div class="axis"><span id="axU0"></span><span id="axU1"></span></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="panel">
+      <h2><span class="sw" style="background:#9d7bf5"></span>Avg views / video</h2>
+      <div class="sub">Total views over total videos as of each day's snapshot</div>
+      <div class="chart" id="chAvg"></div>
+      <div class="axis"><span id="axG0"></span><span id="axG1"></span></div>
+    </div>
+    <div class="panel">
+      <h2><span class="sw" style="background:var(--good)"></span>New users per day</h2>
+      <div class="sub" id="uSub">1600.tech signups, live from the site database · <span class="num" id="uTotal">0</span> accounts total</div>
+      <div class="chart" id="chSignups"></div>
+      <div class="axis"><span id="axS0"></span><span id="axS1"></span></div>
+    </div>
+    <div class="panel">
+      <h2><span class="sw" style="background:#7dd3fc"></span>Active users per day</h2>
+      <div class="sub">Accounts that answered at least one question that day</div>
+      <div class="chart" id="chActive"></div>
+      <div class="axis"><span id="axA0"></span><span id="axA1"></span></div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:18px">
+    <h2>Videos</h2>
+    <div class="sub">Pulled straight from TikTok on every refresh</div>
+    <div style="overflow-x:auto">
+      <table id="vidTable">
+        <thead>
+          <tr><th>Video</th><th>Posted</th><th class="r">Views</th><th class="r">Likes per video</th><th class="r">Likes per view</th><th class="r">Comments</th><th class="r">Shares</th></tr>
+        </thead>
+        <tbody id="vidRows"></tbody>
+      </table>
+    </div>
+    <div class="empty" id="emptyMsg" style="display:none">
+      No data yet.<br>Add a TikTok account (top right), then hit Refresh: it pulls every video's views and likes automatically.
+    </div>
+    <div class="err" id="errBox"></div>
+  </div>
+
+</div>
+<div id="tip"></div>
+
+<script>
+  const GOAL = 10000000;
+  const TIERS = [
+    { name: 'Bronze',   at: 0,        c: '#a8763e' },
+    { name: 'Silver',   at: 250000,   c: '#b9c0cc' },
+    { name: 'Gold',     at: 1000000,  c: '#f5b83d' },
+    { name: 'Platinum', at: 2500000,  c: '#7dd3fc' },
+    { name: 'Diamond',  at: 5000000,  c: '#9d7bf5' },
+    { name: 'GOD',      at: 10000000, c: '' },
+  ];
+
+  let payload = { accounts: [], data: { accounts: {} }, history: {}, refreshing: false, lastError: '' };
+  let filter = localStorage.getItem('hq.filter') || 'ALL';
+
+  const $ = id => document.getElementById(id);
+  const fmt = n => n.toLocaleString('en-US');
+  const short = n => n >= 1e6 ? (n / 1e6).toFixed(n % 1e6 ? 1 : 0) + 'M' : n >= 1e3 ? Math.round(n / 1e3) + 'k' : String(n);
+
+  function selAccts() {
+    const all = Object.keys(payload.data.accounts);
+    return filter === 'ALL' ? all : all.filter(a => a === filter);
+  }
+  function lastDays(n) {
+    const out = [];
+    const t = new Date();
+    for (let i = n - 1; i >= 0; i--) {
+      const d = new Date(t); d.setDate(t.getDate() - i);
+      out.push(d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'));
+    }
+    return out;
+  }
+  function totalAt(dateStr, kind) {
+    let sum = 0;
+    const dates = Object.keys(payload.history).sort();
+    selAccts().forEach(a => {
+      let best = null;
+      dates.forEach(d => { if (d <= dateStr && payload.history[d][a]) best = payload.history[d][a]; });
+      if (best) sum += best[kind] || 0;
+    });
+    return sum;
+  }
+  function earliestSnap() {
+    const ds = Object.keys(payload.history).sort();
+    return ds.length ? ds[0] : null;
+  }
+
+  const tip = $('tip');
+  function bindTip(el, label, text) {
+    el.addEventListener('mousemove', e => {
+      tip.style.display = 'block';
+      tip.innerHTML = '<b>' + label + '</b>' + text;
+      tip.style.left = Math.min(e.clientX + 14, innerWidth - 170) + 'px';
+      tip.style.top = (e.clientY - 14) + 'px';
+    });
+    el.addEventListener('mouseleave', () => tip.style.display = 'none');
+  }
+  function drawChart(elId, ax0, ax1, series, color, unit) {
+    const el = $(elId); el.innerHTML = '';
+    const max = Math.max(1, ...series.map(s => s.v));
+    series.forEach(s => {
+      const b = document.createElement('div');
+      b.className = 'bar' + (s.v === 0 ? ' zero' : '');
+      b.style.setProperty('--c', color);
+      b.style.height = s.v === 0 ? '2px' : Math.max(6, (s.v / max) * 100) + '%';
+      b.tabIndex = 0;
+      const nice = new Date(s.d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const label = fmt(s.v) + ' ' + unit + (s.est ? " (that day's uploads)" : '');
+      bindTip(b, nice, label);
+      b.setAttribute('aria-label', nice + ': ' + label);
+      el.appendChild(b);
+    });
+    const nice = d => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    $(ax0).textContent = nice(series[0].d);
+    $(ax1).textContent = nice(series[series.length - 1].d);
+  }
+
+  function render() {
+    const accts = Object.keys(payload.data.accounts);
+    const known = payload.accounts.filter(a => !accts.includes(a));
+
+    const chips = $('acctChips'); chips.innerHTML = '';
+    if (accts.length > 1) {
+      const all = document.createElement('button');
+      all.className = 'chip' + (filter === 'ALL' ? ' on' : '');
+      all.textContent = 'All accounts';
+      all.onclick = () => { filter = 'ALL'; localStorage.setItem('hq.filter', filter); render(); };
+      chips.appendChild(all);
+    }
+    accts.concat(known).forEach(a => {
+      const c = document.createElement('button');
+      c.className = 'chip' + (filter === a ? ' on' : '');
+      c.textContent = '@' + a + (known.includes(a) ? ' (pending)' : '');
+      c.onclick = () => { filter = a; localStorage.setItem('hq.filter', filter); render(); };
+      chips.appendChild(c);
+    });
+
+    const sel = selAccts().map(a => payload.data.accounts[a]);
+    const vids = sel.flatMap(a => (a.videos || []).map(v => ({ ...v, acct: a.handle })));
+    const totalViews = sel.reduce((s, a) => s + (a.totalViews || 0), 0);
+    const followers = sel.reduce((s, a) => s + (a.followers || 0), 0);
+
+    $('totalViews').textContent = fmt(totalViews);
+    const pct = Math.min(100, totalViews / GOAL * 100);
+    $('xpFill').style.width = pct + '%';
+    let tier = TIERS[0];
+    TIERS.forEach(t => { if (totalViews >= t.at) tier = t; });
+    const next = TIERS[TIERS.indexOf(tier) + 1];
+    const chipEl = $('tierChip');
+    chipEl.classList.toggle('god', tier.name === 'GOD');
+    chipEl.style.setProperty('--tierc', tier.c || '#fff');
+    $('tierName').textContent = tier.name;
+    $('toNext').textContent = next
+      ? fmt(next.at - totalViews) + ' views to ' + next.name + ' · ' + pct.toFixed(1) + '% of 10M'
+      : 'GOAL CLEARED · 10M+';
+
+    const ticks = $('ticks'); ticks.innerHTML = '';
+    TIERS.slice(1).forEach(t => {
+      const el = document.createElement('div');
+      el.className = 'tick' + (totalViews >= t.at ? ' hit' : '');
+      el.style.left = (t.at / GOAL * 100) + '%';
+      el.innerHTML = '<i></i><b>' + t.name + '</b><small class="num">' + short(t.at) + '</small>';
+      ticks.appendChild(el);
+    });
+
+    const days = lastDays(14);
+    const dayOf = ts => {
+      const dt = new Date(ts * 1000);
+      return dt.getFullYear() + '-' + String(dt.getMonth() + 1).padStart(2, '0') + '-' + String(dt.getDate()).padStart(2, '0');
+    };
+    const snapDates = Object.keys(payload.history).sort();
+    function deltaSeries(kind) {
+      return days.map(d => {
+        const hasPrior = snapDates.some(sd => sd < d);
+        if (!hasPrior) {
+          // no earlier snapshot to diff against: attribute each video's
+          // lifetime count to its upload day so day one is not blank
+          const v = vids.filter(x => dayOf(x.createTime) === d)
+                        .reduce((s, x) => s + (x[kind] || 0), 0);
+          return { d, v, est: v > 0 };
+        }
+        const prev = new Date(d + 'T12:00:00'); prev.setDate(prev.getDate() - 1);
+        const ps = prev.getFullYear() + '-' + String(prev.getMonth() + 1).padStart(2, '0') + '-' + String(prev.getDate()).padStart(2, '0');
+        return { d, v: Math.max(0, totalAt(d, kind) - totalAt(ps, kind)) };
+      });
+    }
+    const vSeries = deltaSeries('views');
+    const lSeries = deltaSeries('likes');
+    const uSeries = days.map(d => ({ d, v: vids.filter(x => dayOf(x.createTime) === d).length }));
+
+    drawChart('chViews', 'axV0', 'axV1', vSeries, 'var(--views)', 'views');
+    drawChart('chLikes', 'axL0', 'axL1', lSeries, 'var(--likes)', 'likes');
+    drawChart('chUploads', 'axU0', 'axU1', uSeries, 'var(--uploads)', 'uploads');
+
+    // Avg views per video, cumulative as of each day's snapshot. Days before
+    // the first snapshot stay empty: real history only, no backfill.
+    const gSeries = days.map(d => {
+      if (!snapDates.some(sd => sd <= d)) return { d, v: 0 };
+      const nv = totalAt(d, 'videoCount');
+      return { d, v: nv ? Math.round(totalAt(d, 'views') / nv) : 0 };
+    });
+    drawChart('chAvg', 'axG0', 'axG1', gSeries, '#9d7bf5', 'avg views/video');
+
+    const us = payload.users || {};
+    const sSeries = days.map(d => ({ d, v: (us.signups || {})[d] || 0 }));
+    const aSeries = days.map(d => ({ d, v: (us.active || {})[d] || 0 }));
+    drawChart('chSignups', 'axS0', 'axS1', sSeries, 'var(--good)', 'signups');
+    drawChart('chActive', 'axA0', 'axA1', aSeries, '#7dd3fc', 'active users');
+    if (us.error) {
+      $('uSub').textContent = 'Site database unreachable: ' + us.error;
+    } else {
+      $('uSub').innerHTML = '1600.tech signups, live from the site database · <span class="num">'
+        + fmt(us.total || 0) + '</span> accounts total · <span class="num">'
+        + fmt(sSeries[13].v) + '</span> today';
+    }
+
+    $('tViews').textContent = '+' + fmt(vSeries[13].v);
+    $('tLikes').textContent = '+' + fmt(lSeries[13].v);
+    $('tUploads').textContent = fmt(uSeries[13].v);
+    $('tFollowers').textContent = fmt(followers);
+    $('allVideos').textContent = fmt(vids.length);
+    $('avgViews').textContent = vids.length ? fmt(Math.round(totalViews / vids.length)) : '0';
+
+    const rows = $('vidRows'); rows.innerHTML = '';
+    const maxLikes = Math.max(1, ...vids.map(v => v.likes));
+    vids.sort((a, b) => b.createTime - a.createTime).forEach(v => {
+      const tr = document.createElement('tr');
+      const when = new Date(v.createTime * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const url = 'https://www.tiktok.com/@' + v.acct + '/video/' + v.id;
+      const td = document.createElement('td');
+      const t = document.createElement('div'); t.className = 't';
+      const a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = v.desc || '(no caption)';
+      t.appendChild(a);
+      const sub = document.createElement('div'); sub.className = 'a'; sub.textContent = '@' + v.acct;
+      td.appendChild(t); td.appendChild(sub);
+      tr.appendChild(td);
+      tr.insertAdjacentHTML('beforeend',
+        '<td class="num">' + when + '</td>' +
+        '<td class="r num">' + fmt(v.views) + '</td>' +
+        '<td class="r"><div class="likebar-wrap"><div class="likebar" style="width:' + Math.max(4, v.likes / maxLikes * 90) + 'px"></div><span class="num" style="font-size:12px;color:var(--muted)">' + short(v.likes) + '</span></div></td>' +
+        '<td class="r num">' + (v.views ? (v.likes / v.views * 100).toFixed(1) + '%' : '-') + '</td>' +
+        '<td class="r num">' + fmt(v.comments || 0) + '</td>' +
+        '<td class="r num">' + fmt(v.shares || 0) + '</td>');
+      rows.appendChild(tr);
+    });
+    $('emptyMsg').style.display = vids.length ? 'none' : 'block';
+    $('vidTable').style.display = vids.length ? 'table' : 'none';
+
+    const ts = payload.data.fetchedAt;
+    $('stamp').textContent = payload.refreshing
+      ? 'refreshing from TikTok…'
+      : ts ? 'updated ' + new Date(ts * 1000).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) : '';
+    $('refreshBtn').disabled = payload.refreshing;
+    $('refreshBtn').textContent = payload.refreshing ? 'Refreshing…' : 'Refresh';
+    $('errBox').textContent = payload.lastError ? 'Last refresh error: ' + payload.lastError : '';
+  }
+
+  async function loadData() {
+    try {
+      payload = await (await fetch('snapshot.json')).json();
+      render();
+    } catch (e) {
+      $('errBox').textContent = 'Cannot reach the local server. Run: cd ~/1600-views && ./venv/bin/python server.py';
+    }
+  }
+
+  $('addAcct').addEventListener('click', async () => {
+    let h = prompt('TikTok handle (without @):');
+    if (!h) return;
+    await fetch('/api/accounts', { method: 'POST', body: JSON.stringify({ handle: h }) });
+    await fetch('/api/refresh', { method: 'POST' });
+    poll();
+  });
+  $('refreshBtn').addEventListener('click', async () => {
+    await fetch('/api/refresh', { method: 'POST' });
+    poll();
+  });
+
+  let pollTimer = null;
+  function poll() {
+    clearInterval(pollTimer);
+    pollTimer = setInterval(async () => {
+      await loadData();
+      if (!payload.refreshing) clearInterval(pollTimer);
+    }, 3000);
+    loadData();
+  }
+
+  loadData().then(() => {
+    // deltas only accrue on days a scrape ran: refresh automatically when stale
+    const age = payload.data.fetchedAt ? Date.now() / 1000 - payload.data.fetchedAt : Infinity;
+    if (!payload.refreshing && payload.accounts.length && age > 12 * 3600) {
+      fetch('/api/refresh', { method: 'POST' }).then(poll);
+    }
+  });
+</script>
+</body>
+</html>
