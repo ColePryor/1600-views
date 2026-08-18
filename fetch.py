@@ -107,6 +107,7 @@ def main():
         return
 
     out = load_json(DATA / "data.json", {"accounts": {}})
+    fetched = []
     with sync_playwright() as pw:
         ctx = pw.chromium.launch_persistent_context(
             str(PROFILE), headless=False, channel="chrome",
@@ -118,7 +119,15 @@ def main():
                 print(f"fetching @{h} ...")
                 try:
                     acct = fetch_account(ctx, h)
+                    prev = out["accounts"].get(h)
+                    if not acct["videos"] and prev and prev.get("videos"):
+                        # TikTok served an empty/blocked page: keep the last good
+                        # pull rather than logging a fake drop to zero.
+                        print(f"  ! empty scrape for @{h}, keeping previous "
+                              f"({len(prev['videos'])} videos)", file=sys.stderr)
+                        continue
                     out["accounts"][h] = acct
+                    fetched.append(h)
                     print(f"  {len(acct['videos'])}/{acct['videoCount']} videos, "
                           f"{acct['totalViews']:,} views")
                 except Exception as e:
@@ -132,7 +141,10 @@ def main():
     hist = load_json(DATA / "history.json", {})
     d = date.today().isoformat()
     hist.setdefault(d, {})
-    for h, a in out["accounts"].items():
+    # Only the handles actually pulled this run: a stale copy of an account
+    # that was not re-scraped would look like a day of zero growth.
+    for h in fetched:
+        a = out["accounts"][h]
         hist[d][h] = {
             "views": a["totalViews"],
             "likes": a["likesFromVideos"] or a["totalLikes"],

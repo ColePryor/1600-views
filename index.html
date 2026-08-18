@@ -86,6 +86,44 @@
   td .name.none { color: var(--faint); font-weight: 600; }
   td .rank { display: inline-block; width: 22px; color: var(--faint); font-size: 12px; font-weight: 700; }
   .viewbar-wrap { display: flex; align-items: center; gap: 8px; justify-content: flex-end; }
+  .panel-head { display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+  .panel-head .spacer { flex: 1; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+  .seg button {
+    font: inherit; font-size: 11.5px; font-weight: 700; color: var(--faint);
+    background: none; border: 0; padding: 6px 12px; cursor: pointer;
+  }
+  .seg button.on { color: var(--ink); background: var(--panel2); }
+  .legend { display: flex; gap: 6px 14px; flex-wrap: wrap; margin-top: 14px; }
+  .legend button {
+    font: inherit; font-size: 12px; font-weight: 600; color: var(--muted);
+    background: none; border: 0; padding: 2px 0; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .legend button .sw { width: 10px; height: 10px; border-radius: 3px; background: var(--c); }
+  .legend button .num { color: var(--faint); font-weight: 600; }
+  .legend button.off { opacity: .4; }
+  .legend button.off .sw { background: var(--line); }
+  .linechart { position: relative; margin-top: 12px; }
+  .linechart svg { width: 100%; height: 220px; display: block; overflow: visible; }
+  .linechart .grid { stroke: var(--line); stroke-width: 1; }
+  .linechart .yl { fill: var(--faint); font-size: 10px; }
+  .linechart .ln { fill: none; stroke: var(--c); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  .linechart .ln.dim { opacity: .35; }
+  .linechart .pt { fill: var(--c); stroke: var(--panel); stroke-width: 2; }
+  .linechart .el { font-size: 11px; font-weight: 700; fill: var(--ink); }
+  .linechart .cross { stroke: var(--faint); stroke-width: 1; stroke-dasharray: 3 3; }
+  #tip .row { display: flex; align-items: center; gap: 7px; }
+  #tip .row .sw { width: 8px; height: 8px; border-radius: 2px; flex: 0 0 auto; }
+  #tip .row .n { color: var(--muted); flex: 1; }
+  #tip .row .v { margin-left: 12px; }
+  #raceTable td.day { position: relative; }
+  #raceTable td.day .fill { position: absolute; inset: 4px 0; background: var(--c); opacity: var(--o); border-radius: 4px; }
+  #raceTable td.day span { position: relative; }
+  #raceTable th.day, #raceTable td.day { min-width: 68px; text-align: right; }
+  #raceTable td.lead { color: var(--ink); font-weight: 700; }
+  .note { font-size: 11.5px; color: var(--faint); margin-top: 12px; line-height: 1.6; }
+  .note a { color: var(--muted); cursor: pointer; text-decoration: underline; }
   .viewbar { height: 6px; border-radius: 3px; background: var(--views); }
 
   .hero {
@@ -221,13 +259,13 @@
   <div class="row">
     <div class="panel">
       <h2><span class="sw" style="background:var(--views)"></span>Views per day</h2>
-      <div class="sub">Day-over-day change; until day 2, each bar is that day's uploads</div>
+      <div class="sub">Day-over-day change; gaps between scrapes are averaged out</div>
       <div class="chart" id="chViews"></div>
       <div class="axis"><span id="axV0"></span><span id="axV1"></span></div>
     </div>
     <div class="panel">
       <h2><span class="sw" style="background:var(--likes)"></span>Likes per day</h2>
-      <div class="sub">Day-over-day change; until day 2, each bar is that day's uploads</div>
+      <div class="sub">Day-over-day change; gaps between scrapes are averaged out</div>
       <div class="chart" id="chLikes"></div>
       <div class="axis"><span id="axL0"></span><span id="axL1"></span></div>
     </div>
@@ -262,7 +300,7 @@
 
   <div class="panel" style="margin-top:18px">
     <h2>Views by creator</h2>
-    <div class="sub">Every account rolls up to the person who runs it. Click a handle to name or rename its owner; click a row to filter the dashboard.</div>
+    <div class="sub" id="whoSub">Every account rolls up to the person who runs it. Click a handle to name or rename its owner; click a row to filter the dashboard.</div>
     <div style="overflow-x:auto">
       <table id="whoTable">
         <thead>
@@ -271,6 +309,32 @@
         <tbody id="whoRows"></tbody>
       </table>
     </div>
+  </div>
+
+  <div class="panel" style="margin-top:18px">
+    <div class="panel-head">
+      <div>
+        <h2><span class="sw" style="background:var(--views)"></span>Creator race</h2>
+        <div class="sub">Views gained per day by each person, across every account they run. Hover for the standings on any day.</div>
+      </div>
+      <div class="spacer"></div>
+      <div class="seg" id="raceMode">
+        <button data-v="day">Per day</button><button data-v="cum">Cumulative</button>
+      </div>
+      <div class="seg" id="raceWin">
+        <button data-v="7">7d</button><button data-v="14">14d</button><button data-v="30">30d</button>
+      </div>
+    </div>
+    <div class="legend" id="raceLegend"></div>
+    <div class="linechart" id="raceChart"></div>
+    <div class="axis"><span id="axR0"></span><span id="axR1"></span></div>
+    <div style="overflow-x:auto;margin-top:16px">
+      <table id="raceTable">
+        <thead id="raceHead"></thead>
+        <tbody id="raceRows"></tbody>
+      </table>
+    </div>
+    <div class="note" id="raceNote"></div>
   </div>
 
   <div class="panel" style="margin-top:18px">
@@ -304,6 +368,23 @@
     { name: 'GOD',      at: 10000000, c: '' },
   ];
 
+  // STATIC is flipped to true by publish.py for the Vercel snapshot: no server,
+  // so names assigned there live in this browser's localStorage on top of the
+  // published names.
+  const STATIC = false;
+  const LOCAL_KEY = 'hq.owners.local';
+  let publishedOwners = {};
+  const localOwners = () => { try { return JSON.parse(localStorage.getItem(LOCAL_KEY) || '{}'); } catch (e) { return {}; } };
+  function mergedOwners() {
+    const o = { ...publishedOwners };
+    Object.entries(localOwners()).forEach(([h, n]) => { if (n) o[h] = n; else delete o[h]; });
+    return o;
+  }
+  const SERIES = ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9', '#e66767'];
+  const OTHER_C = '#6f6480';
+  let raceMode = localStorage.getItem('hq.raceMode') || 'day';
+  let raceWin = parseInt(localStorage.getItem('hq.raceWin') || '14', 10);
+  const raceHidden = new Set();
   let payload = { accounts: [], owners: {}, data: { accounts: {} }, history: {}, refreshing: false, lastError: '' };
   // filter: 'ALL' | 'name:<person>' | '<handle>'
   let filter = localStorage.getItem('hq.filter') || 'ALL';
@@ -331,24 +412,49 @@
     return all.filter(a => a === filter);
   }
   function setFilter(f) { filter = f; localStorage.setItem('hq.filter', f); render(); }
+  async function saveOwner(handle, name) {
+    name = (name || '').trim().slice(0, 40);
+    if (STATIC) {
+      const loc = localOwners();
+      if ((publishedOwners[handle] || '') === name) delete loc[handle]; else loc[handle] = name;
+      localStorage.setItem(LOCAL_KEY, JSON.stringify(loc));
+      payload.owners = mergedOwners();
+      return;
+    }
+    const r = await fetch('/api/owner', { method: 'POST', body: JSON.stringify({ handle, name }) });
+    const j = await r.json();
+    if (j.owners) payload.owners = j.owners;
+  }
   async function assignOwner(handle) {
     const cur = ownerOf(handle);
     const name = prompt('Who runs @' + handle + '? (name; leave empty to clear)', cur);
     if (name === null) return;
-    const r = await fetch('/api/owner', { method: 'POST', body: JSON.stringify({ handle, name }) });
-    const j = await r.json();
-    if (j.owners) { payload.owners = j.owners; if (filter.startsWith('name:') && !groups().has(filter.slice(5))) filter = 'ALL'; render(); }
+    await saveOwner(handle, name);
+    if (filter.startsWith('name:') && !groups().has(filter.slice(5))) filter = 'ALL';
+    render();
   }
   async function renameOwner(oldName) {
     const name = prompt('Rename ' + oldName + ' to:', oldName);
     if (name === null || name.trim() === '' || name.trim() === oldName) return;
-    const handles = groups().get(oldName) || [];
-    for (const h of handles) {
-      const r = await fetch('/api/owner', { method: 'POST', body: JSON.stringify({ handle: h, name: name.trim() }) });
-      const j = await r.json(); if (j.owners) payload.owners = j.owners;
-    }
+    for (const h of (groups().get(oldName) || [])) await saveOwner(h, name);
     if (filter === 'name:' + oldName) filter = 'name:' + name.trim();
     render();
+  }
+  function resetLocalOwners() {
+    localStorage.removeItem(LOCAL_KEY);
+    payload.owners = mergedOwners();
+    if (filter.startsWith('name:') && !groups().has(filter.slice(5))) filter = 'ALL';
+    render();
+  }
+  // Race entities: each named person (in the order names were first assigned,
+  // so colors stick to people), then each unclaimed account on its own.
+  function raceEntities(g) {
+    const out = [];
+    Object.values(payload.owners || {}).forEach(n => {
+      if (g.has(n) && !out.some(e => e.key === 'name:' + n)) out.push({ key: 'name:' + n, label: n, handles: g.get(n) });
+    });
+    (g.get(UNNAMED) || []).forEach(h => out.push({ key: h, label: '@' + h, handles: [h] }));
+    return out;
   }
   function lastDays(n) {
     const out = [];
@@ -394,7 +500,7 @@
       b.style.height = s.v === 0 ? '2px' : Math.max(6, (s.v / max) * 100) + '%';
       b.tabIndex = 0;
       const nice = new Date(s.d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      const label = fmt(s.v) + ' ' + unit + (s.est ? " (that day's uploads)" : '');
+      const label = fmt(s.v) + ' ' + unit + (s.note ? ' (' + s.note + ')' : '');
       bindTip(b, nice, label);
       b.setAttribute('aria-label', nice + ': ' + label);
       el.appendChild(b);
@@ -475,8 +581,8 @@
       return dt.getFullYear() + '-' + String(dt.getMonth() + 1).padStart(2, '0') + '-' + String(dt.getDate()).padStart(2, '0');
     };
     const snapDates = Object.keys(payload.history).sort();
-    function deltaSeries(kind, accts, vs) {
-      accts = accts || selAccts(); vs = vs || vids;
+    function deltaSeries(kind, accts, vs, ds) {
+      accts = accts || selAccts(); vs = vs || vids; ds = ds || days;
       // Days at or before the first snapshot have no earlier snapshot to
       // diff against, so they are estimated from upload days. Those bars
       // must sum to the FIRST snapshot's total, not to current lifetime
@@ -489,17 +595,27 @@
         vs.forEach(x => { if (dayOf(x.createTime) <= firstSnap) weightSum += x[kind] || 0; });
         scale = weightSum ? totalAt(firstSnap, kind, accts) / weightSum : 0;
       }
-      return days.map(d => {
+      return ds.map(d => {
         const hasPrior = snapDates.some(sd => sd < d);
         if (!hasPrior) {
           const raw = vs.filter(x => dayOf(x.createTime) === d)
                         .reduce((s, x) => s + (x[kind] || 0), 0);
           const v = Math.round(raw * scale);
-          return { d, v, est: v > 0 };
+          return { d, v, note: v > 0 ? "that day's uploads" : '' };
         }
-        const prev = new Date(d + 'T12:00:00'); prev.setDate(prev.getDate() - 1);
-        const ps = prev.getFullYear() + '-' + String(prev.getMonth() + 1).padStart(2, '0') + '-' + String(prev.getDate()).padStart(2, '0');
-        return { d, v: Math.max(0, totalAt(d, kind, accts) - totalAt(ps, kind, accts)) };
+        // Per account: the gain between the two scrapes of THAT account that
+        // bracket this day, spread evenly across the days in between (a scrape
+        // every day = plain day-over-day).
+        let v = 0, maxGap = 1;
+        accts.forEach(a => {
+          const da = snapDates.filter(sd => payload.history[sd][a]);
+          const A = da.filter(sd => sd < d).pop(), B = da.find(sd => sd >= d);
+          if (!A || !B) return;
+          const gap = Math.round((new Date(B + 'T12:00:00') - new Date(A + 'T12:00:00')) / 86400000) || 1;
+          maxGap = Math.max(maxGap, gap);
+          v += Math.max(0, (payload.history[B][a][kind] || 0) - (payload.history[A][a][kind] || 0)) / gap;
+        });
+        return { d, v: Math.round(v), note: maxGap > 1 ? 'avg over ' + maxGap + '-day gap' : '' };
       });
     }
     const vSeries = deltaSeries('views');
@@ -540,6 +656,13 @@
     $('avgViews').textContent = vids.length ? fmt(Math.round(totalViews / vids.length)) : '0';
 
     // Views by creator: one row per person, unclaimed accounts each get their own row.
+    if (STATIC) {
+      const nLocal = Object.keys(localOwners()).length;
+      $('whoSub').innerHTML = 'Every account rolls up to the person who runs it. Click a handle to name its owner (saved in this browser only'
+        + (nLocal ? '; <a class="lnk" style="color:var(--muted);text-decoration:underline;cursor:pointer">reset ' + nLocal + ' local change' + (nLocal > 1 ? 's' : '') + '</a>' : '')
+        + '); click a row to filter the dashboard.';
+      const lnk = $('whoSub').querySelector('.lnk'); if (lnk) lnk.onclick = resetLocalOwners;
+    }
     const whoRows = $('whoRows'); whoRows.innerHTML = '';
     const entries = [];
     g.forEach((hs, n) => {
@@ -593,6 +716,8 @@
       whoRows.appendChild(tr);
     });
 
+    renderRace(g, deltaSeries);
+
     const rows = $('vidRows'); rows.innerHTML = '';
     const maxLikes = Math.max(1, ...vids.map(v => v.likes));
     vids.sort((a, b) => b.createTime - a.createTime).forEach(v => {
@@ -629,9 +754,130 @@
     $('errBox').textContent = payload.lastError ? 'Last refresh error: ' + payload.lastError : '';
   }
 
+  function renderRace(g, deltaSeries) {
+    const ds = lastDays(raceWin);
+    const all = raceEntities(g);
+    // Fixed slots: first 8 entities keep their own hue; the rest fold into "Other".
+    let ents = all.slice(0, SERIES.length).map((e, i) => ({ ...e, c: SERIES[i] }));
+    const rest = all.slice(SERIES.length);
+    if (rest.length) ents.push({ key: 'other', label: 'Other (' + rest.length + ')', handles: rest.flatMap(e => e.handles), c: OTHER_C });
+    ents.forEach(e => {
+      const live = e.handles.filter(h => payload.data.accounts[h]);
+      const vs = live.flatMap(h => (payload.data.accounts[h].videos || []).map(v => ({ ...v, acct: h })));
+      const daily = live.length ? deltaSeries('views', live, vs, ds).map(s => s.v) : ds.map(() => 0);
+      let run = 0;
+      e.daily = daily;
+      e.cum = daily.map(v => (run += v));
+      e.total = run;
+      e.series = raceMode === 'cum' ? e.cum : daily;
+      e.allTime = live.reduce((s, h) => s + (payload.data.accounts[h].totalViews || 0), 0);
+    });
+    const shown = ents.filter(e => !raceHidden.has(e.key));
+
+    // legend (always present for >= 2 series; toggles visibility)
+    const lg = $('raceLegend'); lg.innerHTML = '';
+    ents.forEach(e => {
+      const b = document.createElement('button');
+      b.className = raceHidden.has(e.key) ? 'off' : '';
+      b.style.setProperty('--c', e.c);
+      b.innerHTML = '<span class="sw"></span>' + escapeHtml(e.label) + ' <span class="num">' + short(e.total) + '</span>';
+      b.setAttribute('aria-pressed', String(!raceHidden.has(e.key)));
+      b.onclick = () => { raceHidden.has(e.key) ? raceHidden.delete(e.key) : raceHidden.add(e.key); render(); };
+      lg.appendChild(b);
+    });
+
+    // line chart
+    const ch = $('raceChart');
+    const W = Math.max(320, ch.clientWidth || 1000), H = 220, PL = 40, PR = 90, PT = 12, PB = 6;
+    const n = ds.length;
+    const max = Math.max(1, ...shown.flatMap(e => e.series));
+    const x = i => PL + (n === 1 ? 0 : i * (W - PL - PR) / (n - 1));
+    const y = v => PT + (H - PT - PB) * (1 - v / max);
+    const nice = d => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Views per day by creator">';
+    [0, .5, 1].forEach(f => {
+      const yy = y(max * f);
+      svg += '<line class="grid" x1="' + PL + '" x2="' + (W - PR) + '" y1="' + yy + '" y2="' + yy + '"/>'
+           + '<text class="yl" x="' + (PL - 8) + '" y="' + (yy + 3.5) + '" text-anchor="end">' + short(Math.round(max * f)) + '</text>';
+    });
+    svg += '<line class="cross" id="raceCross" x1="0" x2="0" y1="' + PT + '" y2="' + (H - PB) + '" style="display:none"/>';
+    shown.forEach(e => {
+      const pts = e.series.map((v, i) => x(i).toFixed(1) + ',' + y(v).toFixed(1)).join(' ');
+      svg += '<polyline class="ln" data-k="' + escapeHtml(e.key) + '" style="--c:' + e.c + '" points="' + pts + '"/>';
+    });
+    // direct labels on the top 4 (by last value), nudged apart vertically
+    const ends = shown.map(e => ({ e, yy: y(e.series[n - 1]) })).sort((a, b) => b.e.series[n - 1] - a.e.series[n - 1]).slice(0, 4)
+      .sort((a, b) => a.yy - b.yy);
+    for (let i = 1; i < ends.length; i++) if (ends[i].yy - ends[i - 1].yy < 13) ends[i].yy = ends[i - 1].yy + 13;
+    ends.forEach(({ e, yy }) => {
+      svg += '<text class="el" x="' + (W - PR + 10) + '" y="' + (yy + 4) + '">' + escapeHtml(e.label.length > 12 ? e.label.slice(0, 11) + '…' : e.label) + '</text>';
+    });
+    svg += '<g id="racePts"></g></svg>';
+    ch.innerHTML = svg;
+    $('axR0').textContent = nice(ds[0]); $('axR1').textContent = nice(ds[n - 1]);
+    const svgEl = ch.querySelector('svg');
+    const cross = ch.querySelector('#raceCross'), ptsG = ch.querySelector('#racePts');
+    ch.onmousemove = ev => {
+      const r = svgEl.getBoundingClientRect();
+      const px = (ev.clientX - r.left) / r.width * W;
+      const i = Math.max(0, Math.min(n - 1, Math.round((px - PL) / ((W - PL - PR) / Math.max(1, n - 1)))));
+      cross.style.display = 'block'; cross.setAttribute('x1', x(i)); cross.setAttribute('x2', x(i));
+      ptsG.innerHTML = shown.map(e => '<circle class="pt" r="4" cx="' + x(i) + '" cy="' + y(e.series[i]) + '" style="--c:' + e.c + '"/>').join('');
+      const rowsHtml = shown.slice().sort((a, b) => b.series[i] - a.series[i]).map(e =>
+        '<div class="row"><span class="sw" style="background:' + e.c + '"></span><span class="n">' + escapeHtml(e.label) + '</span><span class="v num">'
+        + (raceMode === 'cum' ? '' : '+') + fmt(e.series[i]) + '</span></div>').join('');
+      tip.style.display = 'block';
+      tip.innerHTML = '<b>' + nice(ds[i]) + (raceMode === 'cum' ? ' · cumulative' : '') + '</b>' + rowsHtml;
+      tip.style.left = Math.min(ev.clientX + 14, innerWidth - 220) + 'px';
+      tip.style.top = Math.max(8, ev.clientY - 14 - shown.length * 8) + 'px';
+    };
+    ch.onmouseleave = () => { tip.style.display = 'none'; cross.style.display = 'none'; ptsG.innerHTML = ''; };
+
+    // table: last 7 days of the window + window total + all-time, ranked by window total
+    const cols = ds.slice(-7);
+    const ci = cols.map(d => ds.indexOf(d));
+    $('raceHead').innerHTML = '<tr><th>Creator</th>' + cols.map(d => '<th class="day">' + nice(d) + '</th>').join('')
+      + '<th class="r">' + raceWin + 'd views</th><th class="r">All-time</th></tr>';
+    const ranked = ents.slice().sort((a, b) => b.total - a.total);
+    const cellMax = Math.max(1, ...ranked.flatMap(e => ci.map(i => e.daily[i])));
+    const dayLead = ci.map(i => Math.max(...ranked.map(e => e.daily[i])));
+    const rb = $('raceRows'); rb.innerHTML = '';
+    ranked.forEach((e, k) => {
+      const tr = document.createElement('tr');
+      tr.className = 'who-row' + (raceHidden.has(e.key) ? '' : '') + (e.key !== 'other' && (filter === e.key) ? ' on' : '');
+      if (e.key !== 'other') tr.onclick = () => setFilter(e.key);
+      let html = '<td><span class="rank num">' + (k + 1) + '.</span><span class="sw" style="display:inline-block;width:10px;height:10px;border-radius:3px;background:' + e.c + ';margin-right:8px;vertical-align:middle"></span><span class="name' + (e.key.startsWith('name:') ? '' : ' none') + '">' + escapeHtml(e.label) + '</span></td>';
+      ci.forEach((i, j) => {
+        const v = e.daily[i];
+        html += '<td class="day num' + (v > 0 && v === dayLead[j] ? ' lead' : '') + '" style="--c:' + e.c + ';--o:' + (v ? (0.08 + 0.32 * v / cellMax).toFixed(2) : 0) + '"><div class="fill"></div><span>' + (v ? '+' + fmt(v) : '·') + '</span></td>';
+      });
+      html += '<td class="r num" style="font-weight:700">' + fmt(e.total) + '</td><td class="r num">' + fmt(e.allTime) + '</td>';
+      tr.innerHTML = html;
+      rb.appendChild(tr);
+    });
+    $('raceTable').style.display = ents.length ? 'table' : 'none';
+
+    const firstSnap = Object.keys(payload.history).sort()[0];
+    $('raceNote').innerHTML = (ents.length ? 'Bold cell = that day\'s leader. ' : '')
+      + (firstSnap && ds[0] < firstSnap ? 'Days before the first snapshot (' + nice(firstSnap) + ') are estimated from upload dates. ' : '')
+      + (rest.length ? rest.length + ' more entr' + (rest.length > 1 ? 'ies are' : 'y is') + ' folded into Other; assign names to accounts to give people their own line. ' : '')
+      + 'Gains between two scrapes are split evenly over the days in between; days after the latest scrape stay empty until the next one.';
+
+    document.querySelectorAll('#raceMode button').forEach(b => b.classList.toggle('on', b.dataset.v === raceMode));
+    document.querySelectorAll('#raceWin button').forEach(b => b.classList.toggle('on', parseInt(b.dataset.v, 10) === raceWin));
+  }
+  const escapeHtml = s => String(s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+  document.querySelectorAll('#raceMode button').forEach(b => b.onclick = () => { raceMode = b.dataset.v; localStorage.setItem('hq.raceMode', raceMode); render(); });
+  document.querySelectorAll('#raceWin button').forEach(b => b.onclick = () => { raceWin = parseInt(b.dataset.v, 10); localStorage.setItem('hq.raceWin', String(raceWin)); render(); });
+
+  let rsz = null;
+  addEventListener('resize', () => { clearTimeout(rsz); rsz = setTimeout(render, 150); });
+
   async function loadData() {
     try {
       payload = await (await fetch('/api/data')).json();
+      publishedOwners = payload.owners || {};
+      if (STATIC) payload.owners = mergedOwners();
       render();
     } catch (e) {
       $('errBox').textContent = 'Cannot reach the local server. Run: cd ~/1600-views && ./venv/bin/python server.py';
