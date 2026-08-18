@@ -20,3 +20,5 @@ python3 -m venv venv
 ```
 
 Add or remove creators by editing `data/accounts.json`.
+
+Each handle can be assigned to the person who runs it: click a handle in the "Views by creator" table (or use `+ name` / `rename`), or edit `data/owners.json` (`{"handle": "Name"}`). Names become filter chips at the top and the table rolls views, likes, followers and videos up per person.
