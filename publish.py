@@ -31,7 +31,6 @@ if snapshot["users"].get("error"):
 html = (ROOT / "index.html").read_text()
 html = html.replace("fetch('/api/data')", "fetch('snapshot.json')")
 html = html.replace("const STATIC = false;", "const STATIC = true;")
-html = html.replace("</style>", "  #refreshBtn { display: none; }\n</style>")
 (SITE / "index.html").write_text(html)
 
 n = len(snapshot["data"].get("accounts", {}))

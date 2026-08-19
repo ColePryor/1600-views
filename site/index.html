@@ -248,7 +248,6 @@
   .err { color: #fda4af; font-size: 12px; margin-top: 10px; white-space: pre-wrap; }
 
   @media (prefers-reduced-motion: reduce) { .xp .fill { transition: none; } }
-  #refreshBtn { display: none; }
 </style>
 </head>
 <body>
@@ -834,7 +833,7 @@
 
     const ts = payload.data.fetchedAt;
     $('stamp').textContent = payload.refreshing
-      ? 'refreshing from TikTok…'
+      ? (remoteNote || 'refreshing from TikTok…')
       : ts ? 'updated ' + new Date(ts * 1000).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) : '';
     $('refreshBtn').disabled = payload.refreshing;
     $('refreshBtn').textContent = payload.refreshing ? 'Refreshing…' : 'Refresh';
@@ -996,9 +995,57 @@
     } finally { $('addBtn').disabled = false; }
   });
   $('refreshBtn').addEventListener('click', async () => {
+    if (STATIC) return remoteRefresh();
     await fetch('/api/refresh', { method: 'POST' });
     poll();
   });
+
+  // Live site: there is no scraper behind the page, so Refresh drops a request
+  // into a Vercel Blob mailbox (api/refresh.js) and refresh_worker.py on the Mac
+  // runs fetch -> publish -> deploy. Poll until the new snapshot is deployed.
+  let remoteSince = 0, remoteNote = '';
+  async function remoteStatus() {
+    try { return await (await fetch('/api/refresh', { cache: 'no-store' })).json(); } catch (e) { return null; }
+  }
+  async function remoteRefresh() {
+    remoteSince = Date.now();
+    payload.refreshing = true; payload.lastError = ''; remoteNote = 'queued for the Mac worker…';
+    render();
+    try { await fetch('/api/refresh', { method: 'POST' }); } catch (e) {}
+    remotePoll();
+  }
+  function remotePoll() {
+    clearInterval(pollTimer);
+    const tick = async () => {
+      const s = await remoteStatus();
+      if (!s || s.error && !s.state) return;
+      const fresh = !remoteSince || (s.at && s.at >= remoteSince);
+      const busy = s.pending > 0 || s.state === 'running' || !fresh;
+      if (busy && !remoteSince) remoteSince = 1;  // refresh started elsewhere: reload when it lands
+      if (busy && (remoteSince === 1 || Date.now() - remoteSince < 45 * 60 * 1000)) {
+        payload.refreshing = true; payload.lastError = '';
+        const waited = s.oldestPending ? (Date.now() - s.oldestPending) / 1000 : 0;
+        remoteNote = s.state === 'running' && fresh ? 'refreshing from TikTok…'
+          : waited > 120 ? 'queued… the Mac worker is not picking it up (is refresh_worker.py running?)'
+          : 'queued for the Mac worker…';
+        render();
+        return;
+      }
+      clearInterval(pollTimer);
+      payload.refreshing = false; remoteNote = '';
+      if (!busy && s.state === 'error') payload.lastError = s.error || 'refresh failed';
+      if (!busy && s.state === 'done' && remoteSince) {
+        try {
+          payload = await (await fetch('snapshot.json?v=' + s.at, { cache: 'no-store' })).json();
+          publishedOwners = payload.owners || {}; payload.owners = mergedOwners(); applyHidden();
+        } catch (e) {}
+      }
+      remoteSince = 0;
+      render();
+    };
+    pollTimer = setInterval(tick, 5000);
+    tick();
+  }
 
   let pollTimer = null;
   function poll() {
@@ -1013,8 +1060,9 @@
   loadData().then(() => {
     // deltas only accrue on days a scrape ran: refresh automatically when stale
     const age = payload.data.fetchedAt ? Date.now() / 1000 - payload.data.fetchedAt : Infinity;
+    if (STATIC) { remotePoll(); }  // show an in-flight refresh from another device
     if (!payload.refreshing && payload.accounts.length && age > 12 * 3600) {
-      fetch('/api/refresh', { method: 'POST' }).then(poll);
+      if (STATIC) remoteRefresh(); else fetch('/api/refresh', { method: 'POST' }).then(poll);
     }
   });
 </script>

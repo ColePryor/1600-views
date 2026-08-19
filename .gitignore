@@ -4,3 +4,4 @@ venv/
 __pycache__/
 data/chrome-profile/
 .DS_Store
+worker.log
