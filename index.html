@@ -1021,8 +1021,7 @@
       if (!s || s.error && !s.state) return;
       const fresh = !remoteSince || (s.at && s.at >= remoteSince);
       const busy = s.pending > 0 || s.state === 'running' || !fresh;
-      if (busy && !remoteSince) remoteSince = 1;  // refresh started elsewhere: reload when it lands
-      if (busy && (remoteSince === 1 || Date.now() - remoteSince < 45 * 60 * 1000)) {
+      if (busy && Date.now() - remoteSince < 45 * 60 * 1000) {
         payload.refreshing = true; payload.lastError = '';
         const waited = s.oldestPending ? (Date.now() - s.oldestPending) / 1000 : 0;
         remoteNote = s.state === 'running' && fresh ? 'refreshing from TikTok…'
@@ -1058,11 +1057,12 @@
   }
 
   loadData().then(() => {
-    // deltas only accrue on days a scrape ran: refresh automatically when stale
+    // deltas only accrue on days a scrape ran: queue a refresh silently when
+    // stale. Only the tab whose Refresh button was clicked shows progress or
+    // swaps data; every other screen keeps whatever it is looking at.
     const age = payload.data.fetchedAt ? Date.now() / 1000 - payload.data.fetchedAt : Infinity;
-    if (STATIC) { remotePoll(); }  // show an in-flight refresh from another device
     if (!payload.refreshing && payload.accounts.length && age > 12 * 3600) {
-      if (STATIC) remoteRefresh(); else fetch('/api/refresh', { method: 'POST' }).then(poll);
+      fetch('/api/refresh', { method: 'POST' }).catch(() => {});
     }
   });
 </script>
