@@ -3,7 +3,7 @@
   "whartonprep": {
    "handle": "whartonprep",
    "followers": 11,
-   "totalLikes": 919,
+   "totalLikes": 928,
    "videoCount": 46,
    "nickname": "whartonprep",
    "videos": [
@@ -11,17 +11,17 @@
      "id": "7677388184694557983",
      "desc": "hopefully this was helpful! let me know what other tips are useful in the comments #sat #satprep ",
      "createTime": 1787531248,
-     "views": 204,
-     "likes": 11,
+     "views": 337,
+     "likes": 19,
      "comments": 0,
-     "shares": 1
+     "shares": 2
     },
     {
      "id": "7676635103493131550",
      "desc": "hope this was helpful! good luck on your exam, whenever it is #sat #satprep ",
      "createTime": 1787355907,
-     "views": 1358,
-     "likes": 93,
+     "views": 1362,
+     "likes": 94,
      "comments": 0,
      "shares": 9
     },
@@ -56,7 +56,7 @@
      "id": "7675559090235526430",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787105380,
-     "views": 1205,
+     "views": 1206,
      "likes": 29,
      "comments": 0,
      "shares": 3
@@ -137,7 +137,7 @@
      "id": "7674002974980525343",
      "desc": "hope this helps. comment any questions #sat #satprep ",
      "createTime": 1786743071,
-     "views": 1092,
+     "views": 1094,
      "likes": 29,
      "comments": 0,
      "shares": 0
@@ -413,8 +413,8 @@
      "shares": 0
     }
    ],
-   "totalViews": 26995,
-   "likesFromVideos": 906
+   "totalViews": 27135,
+   "likesFromVideos": 915
   },
   "jacksaccount137": {
    "handle": "jacksaccount137",
@@ -3330,5 +3330,5 @@
    "likesFromVideos": 313
   }
  },
- "fetchedAt": 1787534724
+ "fetchedAt": 1787537787
 }
