@@ -833,8 +833,9 @@
 
     const ts = payload.data.fetchedAt;
     $('stamp').textContent = payload.refreshing
-      ? (remoteNote || 'refreshing from TikTok…')
-      : ts ? 'updated ' + new Date(ts * 1000).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) : '';
+      ? 'refreshing from TikTok…'
+      : ts ? 'updated ' + new Date(ts * 1000).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + (STATIC ? ' · auto-updates hourly' : '') : '';
+    $('refreshBtn').style.display = STATIC ? 'none' : '';
     $('refreshBtn').disabled = payload.refreshing;
     $('refreshBtn').textContent = payload.refreshing ? 'Refreshing…' : 'Refresh';
     $('errBox').textContent = payload.lastError ? 'Last refresh error: ' + payload.lastError : '';
@@ -994,57 +995,13 @@
       poll();
     } finally { $('addBtn').disabled = false; }
   });
+  // On the published snapshot (STATIC) the button is hidden: the tracker Mac
+  // refreshes and redeploys on a schedule (refresh.sh via launchd).
   $('refreshBtn').addEventListener('click', async () => {
-    if (STATIC) return remoteRefresh();
+    if (STATIC) return;
     await fetch('/api/refresh', { method: 'POST' });
     poll();
   });
-
-  // Live site: there is no scraper behind the page, so Refresh drops a request
-  // into a Vercel Blob mailbox (api/refresh.js) and refresh_worker.py on the Mac
-  // runs fetch -> publish -> deploy. Poll until the new snapshot is deployed.
-  let remoteSince = 0, remoteNote = '';
-  async function remoteStatus() {
-    try { return await (await fetch('/api/refresh', { cache: 'no-store' })).json(); } catch (e) { return null; }
-  }
-  async function remoteRefresh() {
-    remoteSince = Date.now();
-    payload.refreshing = true; payload.lastError = ''; remoteNote = 'queued for the Mac worker…';
-    render();
-    try { await fetch('/api/refresh', { method: 'POST' }); } catch (e) {}
-    remotePoll();
-  }
-  function remotePoll() {
-    clearInterval(pollTimer);
-    const tick = async () => {
-      const s = await remoteStatus();
-      if (!s || s.error && !s.state) return;
-      const fresh = !remoteSince || (s.at && s.at >= remoteSince);
-      const busy = s.pending > 0 || s.state === 'running' || !fresh;
-      if (busy && Date.now() - remoteSince < 45 * 60 * 1000) {
-        payload.refreshing = true; payload.lastError = '';
-        const waited = s.oldestPending ? (Date.now() - s.oldestPending) / 1000 : 0;
-        remoteNote = s.state === 'running' && fresh ? 'refreshing from TikTok…'
-          : waited > 120 ? 'queued… the Mac worker is not picking it up (is refresh_worker.py running?)'
-          : 'queued for the Mac worker…';
-        render();
-        return;
-      }
-      clearInterval(pollTimer);
-      payload.refreshing = false; remoteNote = '';
-      if (!busy && s.state === 'error') payload.lastError = s.error || 'refresh failed';
-      if (!busy && s.state === 'done' && remoteSince) {
-        try {
-          payload = await (await fetch('snapshot.json?v=' + s.at, { cache: 'no-store' })).json();
-          publishedOwners = payload.owners || {}; payload.owners = mergedOwners(); applyHidden();
-        } catch (e) {}
-      }
-      remoteSince = 0;
-      render();
-    };
-    pollTimer = setInterval(tick, 5000);
-    tick();
-  }
 
   let pollTimer = null;
   function poll() {
@@ -1056,15 +1013,7 @@
     loadData();
   }
 
-  loadData().then(() => {
-    // deltas only accrue on days a scrape ran: queue a refresh silently when
-    // stale. Only the tab whose Refresh button was clicked shows progress or
-    // swaps data; every other screen keeps whatever it is looking at.
-    const age = payload.data.fetchedAt ? Date.now() / 1000 - payload.data.fetchedAt : Infinity;
-    if (!payload.refreshing && payload.accounts.length && age > 12 * 3600) {
-      fetch('/api/refresh', { method: 'POST' }).catch(() => {});
-    }
-  });
+  loadData();
 </script>
 </body>
 </html>
