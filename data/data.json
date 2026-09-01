@@ -2,16 +2,25 @@
  "accounts": {
   "whartonprep": {
    "handle": "whartonprep",
-   "followers": 14,
-   "totalLikes": 1123,
-   "videoCount": 50,
+   "followers": 13,
+   "totalLikes": 1132,
+   "videoCount": 51,
    "nickname": "whartonprep",
    "videos": [
+    {
+     "id": "7680361076403359006",
+     "desc": "let me know what other tips you think should be included in the comments #sat #satprep ",
+     "createTime": 1788223431,
+     "views": 250,
+     "likes": 9,
+     "comments": 0,
+     "shares": 1
+    },
     {
      "id": "7679281791521393951",
      "desc": "can\u2019t believe it\u2019s that time again. time to lock in #sat #satprep ",
      "createTime": 1787972141,
-     "views": 1079,
+     "views": 1084,
      "likes": 21,
      "comments": 0,
      "shares": 0
@@ -20,7 +29,7 @@
      "id": "7678841170520214814",
      "desc": "hope this helps! let me know if you have questions in the comments #sat #satprep",
      "createTime": 1787869551,
-     "views": 783,
+     "views": 785,
      "likes": 21,
      "comments": 0,
      "shares": 0
@@ -29,7 +38,7 @@
      "id": "7678516524574887198",
      "desc": "hope this helps and good luck studying #sat #satprep ",
      "createTime": 1787793957,
-     "views": 1200,
+     "views": 1201,
      "likes": 33,
      "comments": 0,
      "shares": 1
@@ -38,7 +47,7 @@
      "id": "7678126446237224222",
      "desc": "let me know what other resources i should include #sat #satprep ",
      "createTime": 1787703136,
-     "views": 927,
+     "views": 928,
      "likes": 28,
      "comments": 0,
      "shares": 0
@@ -47,7 +56,7 @@
      "id": "7677814383984069919",
      "desc": "good luck and let me know if there\u2019s other resources you\u2019d recommend too #sat #satprep ",
      "createTime": 1787630481,
-     "views": 1239,
+     "views": 1241,
      "likes": 35,
      "comments": 0,
      "shares": 1
@@ -56,7 +65,7 @@
      "id": "7677388184694557983",
      "desc": "hopefully this was helpful! let me know what other tips are useful in the comments #sat #satprep ",
      "createTime": 1787531248,
-     "views": 1383,
+     "views": 1388,
      "likes": 72,
      "comments": 0,
      "shares": 7
@@ -65,7 +74,7 @@
      "id": "7676635103493131550",
      "desc": "hope this was helpful! good luck on your exam, whenever it is #sat #satprep ",
      "createTime": 1787355907,
-     "views": 1523,
+     "views": 1529,
      "likes": 97,
      "comments": 0,
      "shares": 10
@@ -83,7 +92,7 @@
      "id": "7676247820810079501",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787265731,
-     "views": 1048,
+     "views": 1051,
      "likes": 14,
      "comments": 0,
      "shares": 0
@@ -110,7 +119,7 @@
      "id": "7675434554231983373",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787076406,
-     "views": 1159,
+     "views": 1160,
      "likes": 35,
      "comments": 0,
      "shares": 1
@@ -119,7 +128,7 @@
      "id": "7675205795172076830",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787023119,
-     "views": 738,
+     "views": 740,
      "likes": 22,
      "comments": 0,
      "shares": 3
@@ -128,7 +137,7 @@
      "id": "7675154305506233630",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787011132,
-     "views": 330,
+     "views": 331,
      "likes": 4,
      "comments": 0,
      "shares": 0
@@ -155,7 +164,7 @@
      "id": "7674451527888686349",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786847511,
-     "views": 1200,
+     "views": 1201,
      "likes": 20,
      "comments": 0,
      "shares": 0
@@ -213,258 +222,15 @@
      "likes": 22,
      "comments": 0,
      "shares": 2
-    },
-    {
-     "id": "7673243073802964238",
-     "desc": "hopefully this helps! let me know if i missed anything in the comments #sat #satprep ",
-     "createTime": 1786566153,
-     "views": 156,
-     "likes": 9,
-     "comments": 0,
-     "shares": 0
-    },
-    {
-     "id": "7673022053905091853",
-     "desc": "hope this helps! comment any questions #sat  #satprep ",
-     "createTime": 1786514676,
-     "views": 644,
-     "likes": 25,
-     "comments": 0,
-     "shares": 0
-    },
-    {
-     "id": "7672915260784823582",
-     "desc": "hope this helps! comment any questions #sat #satprep ",
-     "createTime": 1786489820,
-     "views": 641,
-     "likes": 24,
-     "comments": 0,
-     "shares": 0
-    },
-    {
-     "id": "7672505104112635150",
-     "desc": "comment any question! #sat #satprep #collegeadmissions ",
-     "createTime": 1786394328,
-     "views": 521,
-     "likes": 23,
-     "comments": 0,
-     "shares": 0
-    },
-    {
-     "id": "7672181265193389326",
-     "desc": "hope this helps! comment any questions! #sat #satprep #collegeadmissions ",
-     "createTime": 1786318924,
-     "views": 227,
-     "likes": 6,
-     "comments": 0,
-     "shares": 1
-    },
-    {
-     "id": "7671804286979869983",
-     "desc": "hopefully this helps! all are completely free to use!! #sat #satprep",
-     "createTime": 1786231150,
-     "views": 600,
-     "likes": 22,
-     "comments": 2,
-     "shares": 1
-    },
-    {
-     "id": "7671482962210213150",
-     "desc": "Hope this helps! Comment any questions and use 1600.tech today #sat #satprep #collegeadmissions ",
-     "createTime": 1786156324,
-     "views": 335,
-     "likes": 8,
-     "comments": 0,
-     "shares": 0
-    },
-    {
-     "id": "7671363140319317279",
-     "desc": "Use Khan Academy and www.1600.tech to study today #sat #satprep #dobby ",
-     "createTime": 1786128445,
-     "views": 351,
-     "likes": 7,
-     "comments": 0,
-     "shares": 0
-    },
-    {
-     "id": "7671179208105692447",
-     "desc": "Hope this helps! #sat #satprep ",
-     "createTime": 1786085622,
-     "views": 402,
-     "likes": 18,
-     "comments": 2,
-     "shares": 0
-    },
-    {
-     "id": "7671113555369856286",
-     "desc": "Use www.1600.tech today. Hope this helps! #sat #satprep",
-     "createTime": 1786070323,
-     "views": 453,
-     "likes": 14,
-     "comments": 0,
-     "shares": 0
-    },
-    {
-     "id": "7671026218099019022",
-     "desc": "You can too. Just use 1600.tech today  #sat #satprep #studying ",
-     "createTime": 1786049984,
-     "views": 336,
-     "likes": 5,
-     "comments": 0,
-     "shares": 0
-    },
-    {
-     "id": "7670791092173851935",
-     "desc": "Hope this helps! #sat #satprep #aesthetic ",
-     "createTime": 1785995239,
-     "views": 800,
-     "likes": 26,
-     "comments": 0,
-     "shares": 0
-    },
-    {
-     "id": "7670729260319100191",
-     "desc": "Hope this helps! #sat #satprep #penn ",
-     "createTime": 1785980838,
-     "views": 312,
-     "likes": 6,
-     "comments": 0,
-     "shares": 0
-    },
-    {
-     "id": "7670635175927221534",
-     "desc": "Comment what else I should include too!  #sat #ivyleague #satprep ",
-     "createTime": 1785958936,
-     "views": 332,
-     "likes": 12,
-     "comments": 0,
-     "shares": 0
-    },
-    {
-     "id": "7670425971333303582",
-     "desc": "I hope this was helpful for those studying for the SAT. Good luck! #sat #satprep #wharton ",
-     "createTime": 1785910243,
-     "views": 1152,
-     "likes": 48,
-     "comments": 0,
-     "shares": 5
-    },
-    {
-     "id": "7666163827330813215",
-     "desc": "#ComfortMemories ",
-     "createTime": 1784917868,
-     "views": 722,
-     "likes": 19,
-     "comments": 0,
-     "shares": 5
-    },
-    {
-     "id": "7665884817933733134",
-     "desc": "Find some time to explore the former and use www.1600.tech to achieve the latter #food #sanfrancisco #1600.tech",
-     "createTime": 1784852918,
-     "views": 685,
-     "likes": 20,
-     "comments": 4,
-     "shares": 0
-    },
-    {
-     "id": "7665790109962259742",
-     "desc": "You should use Khan Academy and 1600.tech so you can spend less time studying the SAT and more time touching grass  #gra",
-     "createTime": 1784830860,
-     "views": 875,
-     "likes": 62,
-     "comments": 0,
-     "shares": 1
-    },
-    {
-     "id": "7665543741482077454",
-     "desc": "That\u2019s because I got a 1580 on my SAT and got into Wharton. Use www.1600.tech and Khan Academy to achieve a high score o",
-     "createTime": 1784773512,
-     "views": 854,
-     "likes": 52,
-     "comments": 0,
-     "shares": 0
-    },
-    {
-     "id": "7665422053666721055",
-     "desc": "Using Khan Academy and 1600.tech was the real reason why I was able to get a 1580 on my SAT #reading #sat #1600.tech",
-     "createTime": 1784745163,
-     "views": 699,
-     "likes": 19,
-     "comments": 2,
-     "shares": 1
-    },
-    {
-     "id": "7665196557720931615",
-     "desc": "And you can be find the same level of success as me if you use Khan Academy and 1600.tech to study for your SAT too. #en",
-     "createTime": 1784692663,
-     "views": 524,
-     "likes": 13,
-     "comments": 2,
-     "shares": 0
-    },
-    {
-     "id": "7665100054730050846",
-     "desc": "You can get a high score on the SAT and get into an Ivy League school too by using Khan Academy and 1600.tech today. #sa",
-     "createTime": 1784670199,
-     "views": 488,
-     "likes": 19,
-     "comments": 4,
-     "shares": 1
-    },
-    {
-     "id": "7665044267416505630",
-     "desc": "You need to show that you\u2019re capable of handling their coursework, which means a good GPA, high SAT score, and ability t",
-     "createTime": 1784657214,
-     "views": 638,
-     "likes": 16,
-     "comments": 0,
-     "shares": 0
-    },
-    {
-     "id": "7664814294529248542",
-     "desc": "Plat 1 for anyone that\u2019s asking I\u2019m so glad prep sites like Khan Academy and 1600.tech exist so I can focus on what\u2019s ac",
-     "createTime": 1784603666,
-     "views": 589,
-     "likes": 18,
-     "comments": 2,
-     "shares": 0
-    },
-    {
-     "id": "7664722178474118431",
-     "desc": "The Nutella cafe was great, but getting a 1580 on my SAT was the real treat. I used Khan Academy to lay the foundation, ",
-     "createTime": 1784582220,
-     "views": 389,
-     "likes": 12,
-     "comments": 2,
-     "shares": 0
-    },
-    {
-     "id": "7664429571617426719",
-     "desc": "I used khan academy and 1600.tech. Khan academy has cool breakdowns every time you take a practice test. 1600 had a duel",
-     "createTime": 1784514090,
-     "views": 430,
-     "likes": 11,
-     "comments": 0,
-     "shares": 1
-    },
-    {
-     "id": "7664350653388508447",
-     "desc": "i got a 1580 sat and into wharton. i used khan academy and 1600.tech to reach my score. i did probably 1000+ practice pr",
-     "createTime": 1784495716,
-     "views": 398,
-     "likes": 10,
-     "comments": 0,
-     "shares": 0
     }
    ],
-   "totalViews": 33745,
-   "likesFromVideos": 1110
+   "totalViews": 19472,
+   "likesFromVideos": 595
   },
   "jacksaccount137": {
    "handle": "jacksaccount137",
    "followers": 12,
-   "totalLikes": 710,
+   "totalLikes": 711,
    "videoCount": 19,
    "nickname": "Jacksaccount",
    "videos": [
@@ -499,7 +265,7 @@
      "id": "7672995868487781646",
      "desc": "How I improved from 1080 to 1580 on my sat",
      "createTime": 1786508578,
-     "views": 619,
+     "views": 621,
      "likes": 30,
      "comments": 0,
      "shares": 1
@@ -508,7 +274,7 @@
      "id": "7671368741690658062",
      "desc": "Top 10 high schools in Texas by SAT score",
      "createTime": 1786129751,
-     "views": 510,
+     "views": 513,
      "likes": 19,
      "comments": 2,
      "shares": 20
@@ -517,8 +283,8 @@
      "id": "7671033544638057742",
      "desc": "TLDR; Khan academy, bluebook, 1600.tech are the ways to get a 1600 SAT",
      "createTime": 1786051690,
-     "views": 1310,
-     "likes": 28,
+     "views": 1327,
+     "likes": 29,
      "comments": 3,
      "shares": 0
     },
@@ -553,7 +319,7 @@
      "id": "7669678029307645197",
      "desc": "Use 1600.tech for a 1600 on ur sat",
      "createTime": 1785736104,
-     "views": 339,
+     "views": 340,
      "likes": 12,
      "comments": 2,
      "shares": 1
@@ -571,7 +337,7 @@
      "id": "7668181776023506190",
      "desc": "Use 1600.tech to get a 1590",
      "createTime": 1785387724,
-     "views": 851,
+     "views": 852,
      "likes": 25,
      "comments": 0,
      "shares": 0
@@ -640,8 +406,8 @@
      "shares": 0
     }
    ],
-   "totalViews": 39836,
-   "likesFromVideos": 650
+   "totalViews": 39860,
+   "likesFromVideos": 651
   },
   "jimmylockedin": {
    "handle": "jimmylockedin",
@@ -692,8 +458,8 @@
   },
   "calebstudies67": {
    "handle": "calebstudies67",
-   "followers": 32,
-   "totalLikes": 2556,
+   "followers": 31,
+   "totalLikes": 2577,
    "videoCount": 23,
    "nickname": "calebstudies67",
    "videos": [
@@ -701,10 +467,10 @@
      "id": "7677953829496737037",
      "desc": "Hopefully this helps! #sat #satprep ",
      "createTime": 1787662966,
-     "views": 1079,
+     "views": 1091,
      "likes": 53,
      "comments": 0,
-     "shares": 8
+     "shares": 9
     },
     {
      "id": "7676901536340937997",
@@ -719,17 +485,17 @@
      "id": "7676687434033237261",
      "desc": "Hopefully this helps!! Comment with any questions!  #sat #satprep",
      "createTime": 1787368098,
-     "views": 3067,
-     "likes": 170,
-     "comments": 4,
-     "shares": 27
+     "views": 3193,
+     "likes": 175,
+     "comments": 5,
+     "shares": 28
     },
     {
      "id": "7675366700660919566",
      "desc": "hopefully this helps!! #sat #satprep",
      "createTime": 1787060612,
-     "views": 5849,
-     "likes": 290,
+     "views": 5896,
+     "likes": 291,
      "comments": 0,
      "shares": 18
     },
@@ -737,16 +503,16 @@
      "id": "7674111708448705805",
      "desc": "hopefully this helps! comment for any questions or tips! #sat #satprep",
      "createTime": 1786768379,
-     "views": 4582,
-     "likes": 318,
+     "views": 4673,
+     "likes": 325,
      "comments": 1,
-     "shares": 42
+     "shares": 43
     },
     {
      "id": "7672929847068429582",
      "desc": "hopefully this helps! #sat #satprep",
      "createTime": 1786493205,
-     "views": 1844,
+     "views": 1851,
      "likes": 115,
      "comments": 0,
      "shares": 6
@@ -755,7 +521,7 @@
      "id": "7672631654057250061",
      "desc": "shoutout to khan academy, 1600.tech, and collegepanda for the free prep #sat #satprep ",
      "createTime": 1786423801,
-     "views": 1990,
+     "views": 1997,
      "likes": 64,
      "comments": 3,
      "shares": 1
@@ -764,7 +530,7 @@
      "id": "7672170016216829198",
      "desc": "Open to answering questions in the comments! #sat #satprep",
      "createTime": 1786316312,
-     "views": 2500,
+     "views": 2504,
      "likes": 73,
      "comments": 0,
      "shares": 4
@@ -773,7 +539,7 @@
      "id": "7671522266030591245",
      "desc": "hopefully this helps! all are completely free!! #sat #satprep #collegeadmissions ",
      "createTime": 1786165478,
-     "views": 4430,
+     "views": 4442,
      "likes": 198,
      "comments": 0,
      "shares": 30
@@ -782,19 +548,19 @@
      "id": "7671128656281898254",
      "desc": "hopefully this helps! all of these are completely free!! #sat #satprep",
      "createTime": 1786073854,
-     "views": 2412,
-     "likes": 107,
+     "views": 2530,
+     "likes": 113,
      "comments": 0,
-     "shares": 45
+     "shares": 51
     },
     {
      "id": "7670665800709131533",
      "desc": "hopefully this helps! comment any questions! #sat #satprep ",
      "createTime": 1785966066,
-     "views": 14000,
-     "likes": 342,
+     "views": 14100,
+     "likes": 343,
      "comments": 1,
-     "shares": 427
+     "shares": 431
     },
     {
      "id": "7669671215400865037",
@@ -836,10 +602,10 @@
      "id": "7666184334918814989",
      "desc": "hopefully this helps!! #sat #satprep #collegeadmissions",
      "createTime": 1784922645,
-     "views": 4200,
+     "views": 4214,
      "likes": 165,
      "comments": 1,
-     "shares": 122
+     "shares": 123
     },
     {
      "id": "7665914814228679949",
@@ -863,10 +629,10 @@
      "id": "7665348539446283533",
      "desc": "hopefully this helps! #sat #testprep #collegeadmissions ",
      "createTime": 1784728085,
-     "views": 6761,
-     "likes": 373,
+     "views": 6834,
+     "likes": 374,
      "comments": 5,
-     "shares": 159
+     "shares": 161
     },
     {
      "id": "7665197129601715470",
@@ -905,21 +671,30 @@
      "shares": 0
     }
    ],
-   "totalViews": 59825,
-   "likesFromVideos": 2546
+   "totalViews": 60436,
+   "likesFromVideos": 2567
   },
   "whartongirlie": {
    "handle": "whartongirlie",
-   "followers": 11,
-   "totalLikes": 1286,
-   "videoCount": 47,
+   "followers": 13,
+   "totalLikes": 1318,
+   "videoCount": 48,
    "nickname": "alejandrostudying",
    "videos": [
+    {
+     "id": "7680370367348641038",
+     "desc": "hope this helps! let me know any questions in the comments #sat #satprep ",
+     "createTime": 1788225591,
+     "views": 326,
+     "likes": 12,
+     "comments": 0,
+     "shares": 0
+    },
     {
      "id": "7679517099584146718",
      "desc": "If you use sixteenhundred.org, you won\u2019t have to worry about problems like this anymore #sat #satprep ",
      "createTime": 1788026921,
-     "views": 117,
+     "views": 121,
      "likes": 7,
      "comments": 0,
      "shares": 0
@@ -928,7 +703,7 @@
      "id": "7678564609774652702",
      "desc": "hope this was helpful! share any additional tips in the comments #sat #satprep ",
      "createTime": 1787805165,
-     "views": 897,
+     "views": 905,
      "likes": 34,
      "comments": 0,
      "shares": 1
@@ -937,8 +712,8 @@
      "id": "7678136248577445150",
      "desc": "let me know if there\u2019s any other habits or tips i should include in the comments #sat #satprep ",
      "createTime": 1787705424,
-     "views": 1966,
-     "likes": 107,
+     "views": 2002,
+     "likes": 109,
      "comments": 0,
      "shares": 7
     },
@@ -946,10 +721,10 @@
      "id": "7677814441907621151",
      "desc": "hope this was helpful! comment any questions #sat #satprep ",
      "createTime": 1787630501,
-     "views": 2436,
-     "likes": 213,
+     "views": 2662,
+     "likes": 230,
      "comments": 0,
-     "shares": 20
+     "shares": 21
     },
     {
      "id": "7677355001085185310",
@@ -964,7 +739,7 @@
      "id": "7677048522411216142",
      "desc": "Lock in and use sixteenhundred.org to study instead #sat #satprep ",
      "createTime": 1787452179,
-     "views": 534,
+     "views": 535,
      "likes": 27,
      "comments": 1,
      "shares": 0
@@ -973,7 +748,7 @@
      "id": "7676886518765522189",
      "desc": "If you want a good score on the SAT, use sixteenhundred.org #sat #satprep ",
      "createTime": 1787414454,
-     "views": 134,
+     "views": 135,
      "likes": 3,
      "comments": 0,
      "shares": 0
@@ -1009,7 +784,7 @@
      "id": "7675782256044166431",
      "desc": "hope this was helpful! comment any questions #sat #satprep",
      "createTime": 1787157336,
-     "views": 659,
+     "views": 660,
      "likes": 14,
      "comments": 0,
      "shares": 1
@@ -1036,7 +811,7 @@
      "id": "7675205561524227358",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787023069,
-     "views": 1533,
+     "views": 1539,
      "likes": 73,
      "comments": 0,
      "shares": 3
@@ -1063,7 +838,7 @@
      "id": "7674774652509490463",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786922734,
-     "views": 397,
+     "views": 398,
      "likes": 21,
      "comments": 0,
      "shares": 2
@@ -1072,7 +847,7 @@
      "id": "7674416147084709150",
      "desc": "hope this helps! comment any questions #sat #satprep ",
      "createTime": 1786839264,
-     "views": 974,
+     "views": 977,
      "likes": 27,
      "comments": 0,
      "shares": 0
@@ -1081,7 +856,7 @@
      "id": "7674379933568748830",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786830832,
-     "views": 396,
+     "views": 397,
      "likes": 12,
      "comments": 0,
      "shares": 0
@@ -1153,7 +928,7 @@
      "id": "7672923560037354783",
      "desc": "hope this helps! comment any questions #sat #satprep ",
      "createTime": 1786491745,
-     "views": 875,
+     "views": 876,
      "likes": 29,
      "comments": 0,
      "shares": 1
@@ -1180,7 +955,7 @@
      "id": "7671809726203694366",
      "desc": "hope this helps! comment any questions #sat #satprep ",
      "createTime": 1786232415,
-     "views": 814,
+     "views": 816,
      "likes": 40,
      "comments": 2,
      "shares": 1
@@ -1189,7 +964,7 @@
      "id": "7671358555567508766",
      "desc": "hope this helps! comment any questions #sat #satprep ",
      "createTime": 1786127371,
-     "views": 1302,
+     "views": 1304,
      "likes": 47,
      "comments": 0,
      "shares": 0
@@ -1288,7 +1063,7 @@
      "id": "7665156946554555678",
      "desc": "Don\u2019t be like Chad here and get rejected because he got a low SAT score. Use Khan Academy and 1600.tech to boost your sc",
      "createTime": 1784683442,
-     "views": 1231,
+     "views": 1232,
      "likes": 29,
      "comments": 1,
      "shares": 5
@@ -1297,7 +1072,7 @@
      "id": "7665042850685455629",
      "desc": "As long as he can score high on the SAT, I\u2019ll do anything to be with him. Use Khan Academy and 1600.tech to boost your S",
      "createTime": 1784656885,
-     "views": 1174,
+     "views": 1175,
      "likes": 13,
      "comments": 1,
      "shares": 7
@@ -1333,14 +1108,14 @@
      "id": "7664357230283623711",
      "desc": "winning in life!!! used khan academy and 1600.tech #sat #satprep #studying",
      "createTime": 1784497242,
-     "views": 895,
+     "views": 896,
      "likes": 8,
      "comments": 3,
      "shares": 3
     }
    ],
-   "totalViews": 31776,
-   "likesFromVideos": 1232
+   "totalViews": 32398,
+   "likesFromVideos": 1263
   },
   "emilydeng10": {
    "handle": "emilydeng10",
@@ -1581,7 +1356,7 @@
   "samstudies67": {
    "handle": "samstudies67",
    "followers": 11,
-   "totalLikes": 1548,
+   "totalLikes": 1558,
    "videoCount": 27,
    "nickname": "samstudies67",
    "videos": [
@@ -1589,7 +1364,7 @@
      "id": "7676916469896121631",
      "desc": "Genuinely what was that SAT \u270c\ufe0f\ud83d\ude2d. Thank goodness sixteen hundred.org helped me prepare tho #sat #satprep ",
      "createTime": 1787421420,
-     "views": 73,
+     "views": 74,
      "likes": 3,
      "comments": 0,
      "shares": 0
@@ -1598,7 +1373,7 @@
      "id": "7675541435701038349",
      "desc": "Let me know if you guys have any questions! #sat #satprep ",
      "createTime": 1787101272,
-     "views": 1061,
+     "views": 1064,
      "likes": 48,
      "comments": 1,
      "shares": 2
@@ -1607,7 +1382,7 @@
      "id": "7675244379304430862",
      "desc": "Let me know if you have any questions! #sat #satprep ",
      "createTime": 1787032136,
-     "views": 1065,
+     "views": 1066,
      "likes": 59,
      "comments": 0,
      "shares": 0
@@ -1634,7 +1409,7 @@
      "id": "7673348404134612254",
      "desc": "#sat #satprep ",
      "createTime": 1786590664,
-     "views": 2520,
+     "views": 2526,
      "likes": 88,
      "comments": 0,
      "shares": 8
@@ -1643,7 +1418,7 @@
      "id": "7673289395599904030",
      "desc": "#sat #satprep ",
      "createTime": 1786576925,
-     "views": 1946,
+     "views": 1952,
      "likes": 99,
      "comments": 0,
      "shares": 13
@@ -1652,7 +1427,7 @@
      "id": "7672977782825159949",
      "desc": "#sat #satprep ",
      "createTime": 1786504366,
-     "views": 1535,
+     "views": 1536,
      "likes": 51,
      "comments": 1,
      "shares": 4
@@ -1697,7 +1472,7 @@
      "id": "7671559120385805581",
      "desc": "",
      "createTime": 1786174064,
-     "views": 909,
+     "views": 911,
      "likes": 32,
      "comments": 2,
      "shares": 3
@@ -1751,7 +1526,7 @@
      "id": "7667811297404243214",
      "desc": "Hopefully this helps! #sat #satprep #studytips #fyp #viral ",
      "createTime": 1785301471,
-     "views": 1008,
+     "views": 1009,
      "likes": 47,
      "comments": 3,
      "shares": 8
@@ -1769,7 +1544,7 @@
      "id": "7666694892801871134",
      "desc": "1600.tech and khan academy are genuinely abt to carry this SAT \u270c\ufe0f\ud83e\udd79 #sat #jujutsukaisen ",
      "createTime": 1785041530,
-     "views": 546,
+     "views": 547,
      "likes": 31,
      "comments": 2,
      "shares": 15
@@ -1796,7 +1571,7 @@
      "id": "7665576147647843614",
      "desc": "Kachow Harvard \u270c\ufe0f\ud83e\udd79 #sat #satprep #fyp #lightningmcqueen #1600tech",
      "createTime": 1784781048,
-     "views": 733,
+     "views": 734,
      "likes": 49,
      "comments": 1,
      "shares": 1
@@ -1814,10 +1589,10 @@
      "id": "7665190384858893582",
      "desc": "Hello Harvard \u270c\ufe0f\ud83e\udd79#sat ",
      "createTime": 1784691224,
-     "views": 8260,
-     "likes": 325,
-     "comments": 23,
-     "shares": 34
+     "views": 8519,
+     "likes": 335,
+     "comments": 24,
+     "shares": 35
     },
     {
      "id": "7664858152063569165",
@@ -1829,8 +1604,8 @@
      "shares": 14
     }
    ],
-   "totalViews": 33631,
-   "likesFromVideos": 1549
+   "totalViews": 33913,
+   "likesFromVideos": 1559
   },
   "steveorwell16": {
    "handle": "steveorwell16",
@@ -1927,7 +1702,7 @@
      "id": "7672564862106569998",
      "desc": "Avoid this fate and use www.1600.tech instead #sat #satprep ",
      "createTime": 1786408234,
-     "views": 34,
+     "views": 35,
      "likes": 0,
      "comments": 0,
      "shares": 0
@@ -2026,7 +1801,7 @@
      "id": "7666240549942201631",
      "desc": "Don\u2019t waste your time and use 1600.tech to improve your SAT score instead",
      "createTime": 1784935731,
-     "views": 802,
+     "views": 803,
      "likes": 13,
      "comments": 0,
      "shares": 0
@@ -2059,22 +1834,31 @@
      "shares": 0
     }
    ],
-   "totalViews": 5974,
+   "totalViews": 5976,
    "likesFromVideos": 275
   },
   "anastasiyap1219": {
    "handle": "anastasiyap1219",
    "followers": 4,
-   "totalLikes": 1645,
-   "videoCount": 37,
+   "totalLikes": 1676,
+   "videoCount": 38,
    "nickname": "Anastasiya1219",
    "videos": [
+    {
+     "id": "7680350492043562253",
+     "desc": "good luck if you\u2019re taking the September SAT #satprep #sat #studytok ",
+     "createTime": 1788220960,
+     "views": 275,
+     "likes": 9,
+     "comments": 0,
+     "shares": 0
+    },
     {
      "id": "7679236986472844575",
      "desc": "hope this was helpful #sat #satprep ",
      "createTime": 1787961707,
-     "views": 748,
-     "likes": 21,
+     "views": 756,
+     "likes": 20,
      "comments": 0,
      "shares": 0
     },
@@ -2082,8 +1866,8 @@
      "id": "7678749903018806541",
      "desc": "let me know how you would solve this in the comments below #sat #satprep ",
      "createTime": 1787848295,
-     "views": 703,
-     "likes": 27,
+     "views": 741,
+     "likes": 31,
      "comments": 0,
      "shares": 2
     },
@@ -2091,8 +1875,8 @@
      "id": "7678493576732380446",
      "desc": "good luck and i hope you see this word on your SAT exam #sat #satprep ",
      "createTime": 1787788610,
-     "views": 569,
-     "likes": 28,
+     "views": 621,
+     "likes": 35,
      "comments": 0,
      "shares": 0
     },
@@ -2100,8 +1884,8 @@
      "id": "7677971294184361246",
      "desc": "good luck for your upcoming SAT exam, and i hope these tips helped #sat #satprep ",
      "createTime": 1787667033,
-     "views": 1187,
-     "likes": 48,
+     "views": 1213,
+     "likes": 49,
      "comments": 0,
      "shares": 1
     },
@@ -2109,16 +1893,16 @@
      "id": "7677762014315285791",
      "desc": "here\u2019s a comprehensive list of what i did to study for the sat, good luck! #sat #satprep ",
      "createTime": 1787618286,
-     "views": 1264,
-     "likes": 73,
+     "views": 1297,
+     "likes": 75,
      "comments": 0,
-     "shares": 0
+     "shares": 1
     },
     {
      "id": "7677359404588551454",
      "desc": "hope this helps #sat #satprep ",
      "createTime": 1787524549,
-     "views": 1520,
+     "views": 1549,
      "likes": 78,
      "comments": 4,
      "shares": 6
@@ -2127,7 +1911,7 @@
      "id": "7676528149223542046",
      "desc": "If not, might be time to sign up for the september one next :) #sat #satprep ",
      "createTime": 1787331002,
-     "views": 755,
+     "views": 758,
      "likes": 21,
      "comments": 0,
      "shares": 0
@@ -2136,7 +1920,7 @@
      "id": "7676246274089209102",
      "desc": "2 days until the August SAT, make every second count and good luck! #sat #satprep ",
      "createTime": 1787265371,
-     "views": 822,
+     "views": 841,
      "likes": 28,
      "comments": 0,
      "shares": 4
@@ -2145,8 +1929,8 @@
      "id": "7676203705900879135",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787255460,
-     "views": 906,
-     "likes": 26,
+     "views": 912,
+     "likes": 25,
      "comments": 0,
      "shares": 1
     },
@@ -2154,7 +1938,7 @@
      "id": "7675782132714835231",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787157308,
-     "views": 696,
+     "views": 709,
      "likes": 19,
      "comments": 2,
      "shares": 1
@@ -2163,7 +1947,7 @@
      "id": "7675558868503596319",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787105329,
-     "views": 1115,
+     "views": 1125,
      "likes": 46,
      "comments": 0,
      "shares": 0
@@ -2172,8 +1956,8 @@
      "id": "7675434184713850125",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787076335,
-     "views": 1218,
-     "likes": 31,
+     "views": 1222,
+     "likes": 32,
      "comments": 0,
      "shares": 0
     },
@@ -2181,7 +1965,7 @@
      "id": "7675178678694792478",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787016812,
-     "views": 500,
+     "views": 502,
      "likes": 16,
      "comments": 0,
      "shares": 1
@@ -2190,7 +1974,7 @@
      "id": "7674734896136457503",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786913483,
-     "views": 477,
+     "views": 478,
      "likes": 8,
      "comments": 0,
      "shares": 0
@@ -2199,7 +1983,7 @@
      "id": "7674427251294784799",
      "desc": "hope this was helpful! comment any questions #sat #satprep ",
      "createTime": 1786841851,
-     "views": 500,
+     "views": 502,
      "likes": 28,
      "comments": 0,
      "shares": 1
@@ -2208,7 +1992,7 @@
      "id": "7674370573736119583",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786828660,
-     "views": 454,
+     "views": 455,
      "likes": 6,
      "comments": 0,
      "shares": 0
@@ -2217,7 +2001,7 @@
      "id": "7674052618917793037",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786754620,
-     "views": 1083,
+     "views": 1084,
      "likes": 23,
      "comments": 0,
      "shares": 2
@@ -2226,7 +2010,7 @@
      "id": "7673991997702688013",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786740526,
-     "views": 1653,
+     "views": 1660,
      "likes": 85,
      "comments": 0,
      "shares": 2
@@ -2244,7 +2028,7 @@
      "id": "7673641133552979231",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786658824,
-     "views": 645,
+     "views": 646,
      "likes": 20,
      "comments": 2,
      "shares": 0
@@ -2262,8 +2046,8 @@
      "id": "7673243210629664014",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786566186,
-     "views": 834,
-     "likes": 27,
+     "views": 836,
+     "likes": 26,
      "comments": 0,
      "shares": 0
     },
@@ -2271,7 +2055,7 @@
      "id": "7673022341319871758",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786514744,
-     "views": 1178,
+     "views": 1179,
      "likes": 22,
      "comments": 0,
      "shares": 1
@@ -2289,8 +2073,8 @@
      "id": "7672498001520250126",
      "desc": "hope this helps! good luck and comment any questions #sat #satprep ",
      "createTime": 1786392684,
-     "views": 3504,
-     "likes": 184,
+     "views": 3517,
+     "likes": 185,
      "comments": 2,
      "shares": 7
     },
@@ -2307,8 +2091,8 @@
      "id": "7671769312612322591",
      "desc": "hopefully this helps! all are completely free!! #sat #satprep #collegeadmissions ",
      "createTime": 1786223001,
-     "views": 1299,
-     "likes": 33,
+     "views": 1302,
+     "likes": 34,
      "comments": 0,
      "shares": 2
     },
@@ -2316,7 +2100,7 @@
      "id": "7671458492380613919",
      "desc": "hope this helps! comment any questions #sat #satprep ",
      "createTime": 1786150627,
-     "views": 876,
+     "views": 877,
      "likes": 32,
      "comments": 0,
      "shares": 1
@@ -2334,8 +2118,8 @@
      "id": "7671050818367343903",
      "desc": "hopefully this helps! comment any questions! #sat #satprep ",
      "createTime": 1786055708,
-     "views": 7847,
-     "likes": 426,
+     "views": 7920,
+     "likes": 432,
      "comments": 6,
      "shares": 28
     },
@@ -2352,7 +2136,7 @@
      "id": "7670737648834661663",
      "desc": "Hope this helps! #sat #study #satprep ",
      "createTime": 1785982793,
-     "views": 412,
+     "views": 413,
      "likes": 15,
      "comments": 0,
      "shares": 0
@@ -2379,7 +2163,7 @@
      "id": "7670414821988338974",
      "desc": "Hope this helps! Let me know in the comments other resources you would recommend too! #sat #satprep #collegeadmissions ",
      "createTime": 1785907646,
-     "views": 997,
+     "views": 998,
      "likes": 34,
      "comments": 0,
      "shares": 1
@@ -2388,7 +2172,7 @@
      "id": "7670396969373748511",
      "desc": "Hope this helps! #sat #testprep #collegeadmissions ",
      "createTime": 1785903485,
-     "views": 604,
+     "views": 605,
      "likes": 22,
      "comments": 0,
      "shares": 1
@@ -2397,36 +2181,45 @@
      "id": "7670365928940424461",
      "desc": "Hopefully this helps!! #sat #satprep #collegeadmissions ",
      "createTime": 1785896258,
-     "views": 1422,
-     "likes": 72,
+     "views": 1436,
+     "likes": 73,
      "comments": 0,
      "shares": 0
     }
    ],
-   "totalViews": 40723,
-   "likesFromVideos": 1642
+   "totalViews": 41364,
+   "likesFromVideos": 1672
   },
   "ivyleaguesattutor": {
    "handle": "ivyleaguesattutor",
-   "followers": 15,
-   "totalLikes": 898,
-   "videoCount": 25,
+   "followers": 0,
+   "totalLikes": 926,
+   "videoCount": 26,
    "nickname": "IvyLeagueSatTutor",
    "videos": [
+    {
+     "id": "7680356312571563277",
+     "desc": "Hope this was helpful. Let me know if you can solve it faster in the comments #sat #satprep #studytok ",
+     "createTime": 1788222329,
+     "views": 492,
+     "likes": 10,
+     "comments": 0,
+     "shares": 1
+    },
     {
      "id": "7679985708563500318",
      "desc": "Hope this was helpful #sat #satprep ",
      "createTime": 1788136032,
-     "views": 486,
-     "likes": 10,
-     "comments": 2,
+     "views": 617,
+     "likes": 17,
+     "comments": 4,
      "shares": 1
     },
     {
      "id": "7679282008106831134",
      "desc": "let me know if you have a faster way of solving a problem like this #sat #satprep",
      "createTime": 1787972186,
-     "views": 669,
+     "views": 689,
      "likes": 24,
      "comments": 4,
      "shares": 0
@@ -2435,7 +2228,7 @@
      "id": "7678923245038374175",
      "desc": "hope this helps! let me know how else you would solve a problem like this #sat #satprep ",
      "createTime": 1787888659,
-     "views": 651,
+     "views": 661,
      "likes": 22,
      "comments": 2,
      "shares": 2
@@ -2444,16 +2237,16 @@
      "id": "7678567213640486175",
      "desc": "let me know how you would approach a problem like this, and good luck with your studying #sat #satprep",
      "createTime": 1787805771,
-     "views": 882,
-     "likes": 36,
-     "comments": 0,
+     "views": 930,
+     "likes": 42,
+     "comments": 1,
      "shares": 3
     },
     {
      "id": "7678103450479119647",
      "desc": "hope this was helpful! let me know how you would solve this problem #sat #satprep ",
      "createTime": 1787697787,
-     "views": 1155,
+     "views": 1165,
      "likes": 24,
      "comments": 5,
      "shares": 3
@@ -2462,7 +2255,7 @@
      "id": "7677634469041376543",
      "desc": "let me know if you can solve a problem like this faster (i bet typing it into desmos would be slower) #sat #satprep ",
      "createTime": 1787588610,
-     "views": 840,
+     "views": 853,
      "likes": 28,
      "comments": 2,
      "shares": 2
@@ -2471,7 +2264,7 @@
      "id": "7677252114808098062",
      "desc": "if you want more math hacks, let me know in the comments #sat #satprep ",
      "createTime": 1787499584,
-     "views": 687,
+     "views": 690,
      "likes": 17,
      "comments": 0,
      "shares": 0
@@ -2480,7 +2273,7 @@
      "id": "7676445138557717791",
      "desc": "Let me know if there\u2019s other problems that you want help with in the comments #sat #satprep ",
      "createTime": 1787311679,
-     "views": 660,
+     "views": 661,
      "likes": 23,
      "comments": 0,
      "shares": 0
@@ -2489,8 +2282,8 @@
      "id": "7676275490151271711",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787272174,
-     "views": 959,
-     "likes": 22,
+     "views": 962,
+     "likes": 23,
      "comments": 0,
      "shares": 1
     },
@@ -2498,7 +2291,7 @@
      "id": "7676203504712584479",
      "desc": "When you\u2019re cooked for August SAT\u2026 use sixteenhundred.org to study",
      "createTime": 1787255411,
-     "views": 490,
+     "views": 493,
      "likes": 10,
      "comments": 0,
      "shares": 0
@@ -2507,7 +2300,7 @@
      "id": "7675781843479711007",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787157238,
-     "views": 1216,
+     "views": 1219,
      "likes": 56,
      "comments": 0,
      "shares": 1
@@ -2516,8 +2309,8 @@
      "id": "7675432862962748702",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787075999,
-     "views": 1144,
-     "likes": 43,
+     "views": 1152,
+     "likes": 44,
      "comments": 3,
      "shares": 3
     },
@@ -2525,7 +2318,7 @@
      "id": "7675195107481570590",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787020630,
-     "views": 1287,
+     "views": 1293,
      "likes": 53,
      "comments": 0,
      "shares": 7
@@ -2534,7 +2327,7 @@
      "id": "7674775549448817951",
      "desc": "hope this was helpful! comment any questions #sat #satprep ",
      "createTime": 1786922949,
-     "views": 1456,
+     "views": 1459,
      "likes": 48,
      "comments": 4,
      "shares": 1
@@ -2543,7 +2336,7 @@
      "id": "7674451607056157965",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786847533,
-     "views": 1126,
+     "views": 1132,
      "likes": 30,
      "comments": 0,
      "shares": 2
@@ -2552,7 +2345,7 @@
      "id": "7674375445168540958",
      "desc": "hope this was helpful! comment any questions #sat #satprep ",
      "createTime": 1786829788,
-     "views": 892,
+     "views": 893,
      "likes": 22,
      "comments": 3,
      "shares": 1
@@ -2588,8 +2381,8 @@
      "id": "7673291324409384222",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786577374,
-     "views": 1273,
-     "likes": 37,
+     "views": 1280,
+     "likes": 38,
      "comments": 3,
      "shares": 3
     },
@@ -2597,7 +2390,7 @@
      "id": "7672976463343127838",
      "desc": "hope this helps! comment any questions #sat #satprep ",
      "createTime": 1786504056,
-     "views": 1936,
+     "views": 1954,
      "likes": 75,
      "comments": 2,
      "shares": 5
@@ -2606,7 +2399,7 @@
      "id": "7672851974445911327",
      "desc": "hope this helps! comment any questions! #sat #satprep ",
      "createTime": 1786475089,
-     "views": 1913,
+     "views": 1914,
      "likes": 44,
      "comments": 0,
      "shares": 1
@@ -2633,19 +2426,19 @@
      "id": "7672203435445374239",
      "desc": "hope this helps! #sat #satprep ",
      "createTime": 1786324078,
-     "views": 4614,
-     "likes": 121,
+     "views": 4641,
+     "likes": 123,
      "comments": 19,
      "shares": 8
     }
    ],
-   "totalViews": 29140,
-   "likesFromVideos": 896
+   "totalViews": 29954,
+   "likesFromVideos": 924
   },
   "harvardsattutor": {
    "handle": "harvardsattutor",
    "followers": 9,
-   "totalLikes": 478,
+   "totalLikes": 493,
    "videoCount": 19,
    "nickname": "harvardSATtutor",
    "videos": [
@@ -2653,8 +2446,8 @@
      "id": "7678738182921276686",
      "desc": "Good luck studying and hope this was helpful #sat #satprep",
      "createTime": 1787845565,
-     "views": 401,
-     "likes": 11,
+     "views": 519,
+     "likes": 25,
      "comments": 0,
      "shares": 0
     },
@@ -2662,8 +2455,8 @@
      "id": "7678368408018111774",
      "desc": "hope this was helpful, let me know what other problems you want to see solved #sat #satprep ",
      "createTime": 1787759469,
-     "views": 535,
-     "likes": 25,
+     "views": 580,
+     "likes": 26,
      "comments": 0,
      "shares": 1
     },
@@ -2671,7 +2464,7 @@
      "id": "7678100554702228767",
      "desc": "let me know how else you can solve this faster #sat #satprep ",
      "createTime": 1787697112,
-     "views": 1010,
+     "views": 1027,
      "likes": 42,
      "comments": 0,
      "shares": 4
@@ -2698,7 +2491,7 @@
      "id": "7676486693335125279",
      "desc": "To anyone who\u2019s taking the August SAT exam, good luck and have fun #sat #satprep ",
      "createTime": 1787321349,
-     "views": 768,
+     "views": 769,
      "likes": 26,
      "comments": 0,
      "shares": 0
@@ -2725,7 +2518,7 @@
      "id": "7675206244507979039",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787023230,
-     "views": 700,
+     "views": 701,
      "likes": 34,
      "comments": 2,
      "shares": 1
@@ -2734,7 +2527,7 @@
      "id": "7675154789273013534",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787011247,
-     "views": 902,
+     "views": 906,
      "likes": 24,
      "comments": 0,
      "shares": 1
@@ -2752,7 +2545,7 @@
      "id": "7674807112202980639",
      "desc": "hope this was helpful! comment any questions #sat #satprep",
      "createTime": 1786930292,
-     "views": 911,
+     "views": 915,
      "likes": 23,
      "comments": 0,
      "shares": 1
@@ -2761,7 +2554,7 @@
      "id": "7674731333431627039",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786912654,
-     "views": 1542,
+     "views": 1553,
      "likes": 55,
      "comments": 0,
      "shares": 3
@@ -2779,7 +2572,7 @@
      "id": "7674040473471765790",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786751800,
-     "views": 1144,
+     "views": 1148,
      "likes": 24,
      "comments": 0,
      "shares": 1
@@ -2797,7 +2590,7 @@
      "id": "7673672616011451678",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786666151,
-     "views": 1201,
+     "views": 1203,
      "likes": 47,
      "comments": 0,
      "shares": 3
@@ -2806,7 +2599,7 @@
      "id": "7673603484549270814",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786650051,
-     "views": 1058,
+     "views": 1059,
      "likes": 25,
      "comments": 0,
      "shares": 3
@@ -2821,30 +2614,39 @@
      "shares": 0
     }
    ],
-   "totalViews": 14474,
-   "likesFromVideos": 480
+   "totalViews": 14682,
+   "likesFromVideos": 495
   },
   "petrr039": {
    "handle": "petrr039",
    "followers": 13,
-   "totalLikes": 2020,
-   "videoCount": 39,
+   "totalLikes": 2081,
+   "videoCount": 40,
    "nickname": "Petrr",
    "videos": [
+    {
+     "id": "7680174731647044877",
+     "desc": "Khan Academy and Sixteenhundred.org are the goats \ud83d\udc10 \ud83d\ude4c #satprep #studymotivation #psat #studytok #sattips ",
+     "createTime": 1788180073,
+     "views": 605,
+     "likes": 28,
+     "comments": 0,
+     "shares": 2
+    },
     {
      "id": "7679990340002123022",
      "desc": "Bro sixteenhundred.org genuinely gave me La Peace \u270c\ufe0f #SAT #sat #fyp #studymotivation ",
      "createTime": 1788137113,
-     "views": 634,
-     "likes": 63,
+     "views": 1036,
+     "likes": 85,
      "comments": 1,
-     "shares": 0
+     "shares": 5
     },
     {
      "id": "7679881719025110286",
      "desc": "Khan Academy and Sixteenhundred.org are the goats \ud83d\udc10 \ud83d\ude4c #satprep #studymotivation #psat #studytok #sattips ",
      "createTime": 1788111820,
-     "views": 611,
+     "views": 623,
      "likes": 22,
      "comments": 1,
      "shares": 0
@@ -2853,7 +2655,7 @@
      "id": "7679689421385370894",
      "desc": "Hopefully this helps and if you have any questions or need help comment! #sat #satprep ",
      "createTime": 1788067052,
-     "views": 567,
+     "views": 575,
      "likes": 21,
      "comments": 0,
      "shares": 0
@@ -2862,7 +2664,7 @@
      "id": "7679630253551013133",
      "desc": "Hopefully this helps and if you need help or have questions comment! #sat #satprep ",
      "createTime": 1788053264,
-     "views": 965,
+     "views": 977,
      "likes": 39,
      "comments": 0,
      "shares": 1
@@ -2871,7 +2673,7 @@
      "id": "7679493037206064414",
      "desc": "Hopefully this helps and if you have questions or need help comment! #sat #satprep ",
      "createTime": 1788021322,
-     "views": 860,
+     "views": 869,
      "likes": 35,
      "comments": 0,
      "shares": 1
@@ -2880,7 +2682,7 @@
      "id": "7679260693501103390",
      "desc": "Hopefully this helps and if you have any questions or need help comment! #sat #satprep ",
      "createTime": 1787967226,
-     "views": 833,
+     "views": 835,
      "likes": 27,
      "comments": 0,
      "shares": 0
@@ -2889,7 +2691,7 @@
      "id": "7679084792343760142",
      "desc": "Hopefully this helps and if you have questions or need any help comment! #sat #satprep ",
      "createTime": 1787926294,
-     "views": 619,
+     "views": 621,
      "likes": 27,
      "comments": 3,
      "shares": 0
@@ -2898,7 +2700,7 @@
      "id": "7678945006874332429",
      "desc": "Hopefully this helps and if you have any questions or need help comment! #sat #satprep ",
      "createTime": 1787893745,
-     "views": 932,
+     "views": 937,
      "likes": 33,
      "comments": 0,
      "shares": 0
@@ -2907,8 +2709,8 @@
      "id": "7678687772873428237",
      "desc": "Hopefully this helps and if you have any questions or need help comment! #sat #satprep ",
      "createTime": 1787833831,
-     "views": 1850,
-     "likes": 60,
+     "views": 1882,
+     "likes": 61,
      "comments": 2,
      "shares": 1
     },
@@ -2916,7 +2718,7 @@
      "id": "7678343821763120398",
      "desc": "Hopefully this helps and if you need help or have questions comment! #sat #satprep #fyp ",
      "createTime": 1787753748,
-     "views": 609,
+     "views": 613,
      "likes": 24,
      "comments": 0,
      "shares": 0
@@ -2943,8 +2745,8 @@
      "id": "7677808852686884109",
      "desc": "If you wanna be locked in to get a 1500+ on the SAT use sixteenhundred.org #fyp #sat #indian #browngirl",
      "createTime": 1787629197,
-     "views": 4144,
-     "likes": 343,
+     "views": 4250,
+     "likes": 350,
      "comments": 1,
      "shares": 19
     },
@@ -2952,7 +2754,7 @@
      "id": "7677599401380007182",
      "desc": "Hopefully this helps and if you have questions or need help comment! #sat #satprep ",
      "createTime": 1787580422,
-     "views": 680,
+     "views": 687,
      "likes": 17,
      "comments": 0,
      "shares": 0
@@ -2979,7 +2781,7 @@
      "id": "7676952511768694029",
      "desc": "That reading module lowk fried me \ud83d\ude2d\ud83d\ude2d #sat #satprep ",
      "createTime": 1787429820,
-     "views": 422,
+     "views": 423,
      "likes": 29,
      "comments": 1,
      "shares": 2
@@ -2988,8 +2790,8 @@
      "id": "7676461863210650894",
      "desc": "hopefully this helps!! #sat #satprep ",
      "createTime": 1787315571,
-     "views": 871,
-     "likes": 39,
+     "views": 881,
+     "likes": 40,
      "comments": 1,
      "shares": 0
     },
@@ -2997,7 +2799,7 @@
      "id": "7676343267268578573",
      "desc": "Hopefully this helps! #sat #satprep ",
      "createTime": 1787287985,
-     "views": 1698,
+     "views": 1721,
      "likes": 63,
      "comments": 2,
      "shares": 1
@@ -3042,7 +2844,7 @@
      "id": "7674977645695683853",
      "desc": "Hopefully this helps and if you need help or have any questions comment! #sat #satprep ",
      "createTime": 1786970036,
-     "views": 1149,
+     "views": 1152,
      "likes": 62,
      "comments": 0,
      "shares": 1
@@ -3051,7 +2853,7 @@
      "id": "7674850830629031182",
      "desc": "Hopefully this helps and if you have any questions or need help comment! #sat #satprep ",
      "createTime": 1786940480,
-     "views": 1750,
+     "views": 1754,
      "likes": 103,
      "comments": 3,
      "shares": 1
@@ -3060,8 +2862,8 @@
      "id": "7674695987197185293",
      "desc": "Hopefully this helps and comment if you need help or have questions #sat #satprep ",
      "createTime": 1786904427,
-     "views": 879,
-     "likes": 24,
+     "views": 881,
+     "likes": 23,
      "comments": 2,
      "shares": 0
     },
@@ -3069,7 +2871,7 @@
      "id": "7674497333412842766",
      "desc": "Hopefully this helps and comment if you need help or have questions #sat #satprep ",
      "createTime": 1786858184,
-     "views": 1210,
+     "views": 1214,
      "likes": 38,
      "comments": 2,
      "shares": 1
@@ -3078,7 +2880,7 @@
      "id": "7674467739242712334",
      "desc": "Hopefully this helps and comment if you need help or have questions #sat #satprep ",
      "createTime": 1786851290,
-     "views": 1502,
+     "views": 1503,
      "likes": 73,
      "comments": 1,
      "shares": 2
@@ -3096,8 +2898,8 @@
      "id": "7674129899271081230",
      "desc": "Hopefully this helps! Comment for any questions or tips! #sat #satprep ",
      "createTime": 1786772618,
-     "views": 3350,
-     "likes": 249,
+     "views": 3385,
+     "likes": 252,
      "comments": 3,
      "shares": 16
     },
@@ -3105,7 +2907,7 @@
      "id": "7674075584393121037",
      "desc": "These tips really helped me and also sixteenhundred.org, which is a SAT prep tool that will prepare you to get a 1500+ o",
      "createTime": 1786759969,
-     "views": 1257,
+     "views": 1259,
      "likes": 30,
      "comments": 2,
      "shares": 0
@@ -3150,7 +2952,7 @@
      "id": "7673292188595358989",
      "desc": "#1600 #sat \u2022 \u2022 \u2022 1600.tech has genuinely become one of the most useful SAT tools I\u2019ve come across, and I need to talk ab",
      "createTime": 1786577570,
-     "views": 586,
+     "views": 587,
      "likes": 27,
      "comments": 3,
      "shares": 0
@@ -3159,7 +2961,7 @@
      "id": "7672995586051722509",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786508513,
-     "views": 947,
+     "views": 948,
      "likes": 24,
      "comments": 0,
      "shares": 1
@@ -3168,7 +2970,7 @@
      "id": "7672634909344746766",
      "desc": "These tips really helped me get a +1500 in my SAT #sat ",
      "createTime": 1786424565,
-     "views": 1015,
+     "views": 1016,
      "likes": 22,
      "comments": 2,
      "shares": 0
@@ -3183,8 +2985,8 @@
      "shares": 3
     }
    ],
-   "totalViews": 42472,
-   "likesFromVideos": 2020
+   "totalViews": 43766,
+   "likesFromVideos": 2081
   },
   "lukestudies67": {
    "handle": "lukestudies67",
@@ -3209,16 +3011,25 @@
   "satclarity0": {
    "handle": "satclarity0",
    "followers": 8,
-   "totalLikes": 4081,
-   "videoCount": 24,
+   "totalLikes": 4132,
+   "videoCount": 25,
    "nickname": "SATclarity",
    "videos": [
+    {
+     "id": "7680195658451635487",
+     "desc": "Hope this helps and sixteenhundred + khan academy are genuinely a cheat code \ud83e\udd2b #satprep #studymotivation #psat #studytok",
+     "createTime": 1788184937,
+     "views": 516,
+     "likes": 17,
+     "comments": 0,
+     "shares": 0
+    },
     {
      "id": "7679990452874906893",
      "desc": "Hope this helps and sixteenhundred + khan academy are genuinely a cheat code \ud83e\udd2b #satprep #studymotivation #psat #studytok",
      "createTime": 1788137136,
-     "views": 585,
-     "likes": 23,
+     "views": 989,
+     "likes": 43,
      "comments": 0,
      "shares": 1
     },
@@ -3226,8 +3037,8 @@
      "id": "7679869966639828254",
      "desc": "#digitalsat #sat #psat #satprep #fyp ",
      "createTime": 1788109085,
-     "views": 599,
-     "likes": 52,
+     "views": 632,
+     "likes": 54,
      "comments": 1,
      "shares": 0
     },
@@ -3235,7 +3046,7 @@
      "id": "7679691079716785421",
      "desc": "I used sixteenhundred.org to help me score a 1500+ on the SAT #sat #satprep #fyp #asiangirl ",
      "createTime": 1788067443,
-     "views": 572,
+     "views": 573,
      "likes": 27,
      "comments": 1,
      "shares": 3
@@ -3244,7 +3055,7 @@
      "id": "7679605607418055949",
      "desc": "Hopefully this helps and if you have any questions or need help comment! #sat #satprep ",
      "createTime": 1788047540,
-     "views": 732,
+     "views": 740,
      "likes": 36,
      "comments": 0,
      "shares": 1
@@ -3253,7 +3064,7 @@
      "id": "7679490585434148126",
      "desc": "Hopefully this helps and if you have any questions or need help comment! #sat #satprep ",
      "createTime": 1788020755,
-     "views": 691,
+     "views": 698,
      "likes": 21,
      "comments": 1,
      "shares": 2
@@ -3262,7 +3073,7 @@
      "id": "7679260944760884510",
      "desc": "If you wanna learn Desmos and learn how to actually solve math questions on the sat math section use sixteenhundred.org ",
      "createTime": 1787967287,
-     "views": 347,
+     "views": 349,
      "likes": 19,
      "comments": 0,
      "shares": 0
@@ -3271,7 +3082,7 @@
      "id": "7678712340484853022",
      "desc": "you just need to use sixteenhundred.org to study instead #sat #satprep ",
      "createTime": 1787839573,
-     "views": 845,
+     "views": 848,
      "likes": 89,
      "comments": 0,
      "shares": 1
@@ -3280,7 +3091,7 @@
      "id": "7678353566960078110",
      "desc": "if you want to lock in for the SAT, use sixteenhundred.org #sat #satprep ",
      "createTime": 1787756013,
-     "views": 571,
+     "views": 573,
      "likes": 12,
      "comments": 0,
      "shares": 0
@@ -3289,7 +3100,7 @@
      "id": "7678103300239133983",
      "desc": "avoid this fate by using sixteenhundred.org to study #sat #satprep ",
      "createTime": 1787697752,
-     "views": 280,
+     "views": 281,
      "likes": 13,
      "comments": 0,
      "shares": 1
@@ -3298,16 +3109,16 @@
      "id": "7676939493273865502",
      "desc": "if you want to stay in flow state use sixteenhundred.org #sat #satprep ",
      "createTime": 1787426783,
-     "views": 26100,
-     "likes": 3419,
+     "views": 26300,
+     "likes": 3430,
      "comments": 43,
-     "shares": 283
+     "shares": 284
     },
     {
      "id": "7676606712404708638",
      "desc": "To anyone taking the exam on Saturday, good luck #sat #satprep ",
      "createTime": 1787349290,
-     "views": 709,
+     "views": 715,
      "likes": 29,
      "comments": 0,
      "shares": 1
@@ -3334,7 +3145,7 @@
      "id": "7675782095507082526",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787157294,
-     "views": 210,
+     "views": 211,
      "likes": 1,
      "comments": 0,
      "shares": 0
@@ -3370,8 +3181,8 @@
      "id": "7674422544505556255",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786840754,
-     "views": 942,
-     "likes": 33,
+     "views": 955,
+     "likes": 34,
      "comments": 2,
      "shares": 1
     },
@@ -3379,7 +3190,7 @@
      "id": "7674373815903735071",
      "desc": "hope this helps! comment any questions #sat #satprep ",
      "createTime": 1786829409,
-     "views": 742,
+     "views": 743,
      "likes": 41,
      "comments": 2,
      "shares": 1
@@ -3424,14 +3235,14 @@
      "id": "7673025027838594317",
      "desc": "hope this was helpful! comment any questions or tips i should include next #sat #satprep ",
      "createTime": 1786515368,
-     "views": 873,
+     "views": 875,
      "likes": 31,
      "comments": 0,
      "shares": 0
     }
    ],
-   "totalViews": 41391,
-   "likesFromVideos": 4075
+   "totalViews": 42591,
+   "likesFromVideos": 4126
   },
   "theaiteaenthusiast1": {
    "handle": "theaiteaenthusiast1",
@@ -3647,7 +3458,7 @@
   "yalesattutor": {
    "handle": "yalesattutor",
    "followers": 5,
-   "totalLikes": 1153,
+   "totalLikes": 1159,
    "videoCount": 19,
    "nickname": "yalesattutor",
    "videos": [
@@ -3655,7 +3466,7 @@
      "id": "7679124764606172429",
      "desc": "let me know what other tips you found helpful in the comments #sat #satprep ",
      "createTime": 1787935600,
-     "views": 920,
+     "views": 921,
      "likes": 36,
      "comments": 1,
      "shares": 0
@@ -3664,7 +3475,7 @@
      "id": "7678871185215540511",
      "desc": "let me know what other tips you have for SAT studying in the comments #sat #satprep ",
      "createTime": 1787876536,
-     "views": 722,
+     "views": 724,
      "likes": 26,
      "comments": 0,
      "shares": 7
@@ -3682,7 +3493,7 @@
      "id": "7678024036995108126",
      "desc": "hope this helps! #sat #satprep ",
      "createTime": 1787679303,
-     "views": 1820,
+     "views": 1827,
      "likes": 60,
      "comments": 0,
      "shares": 0
@@ -3691,7 +3502,7 @@
      "id": "7677761614925368607",
      "desc": "hope this was helpful! let me know if i missed any really good habits for SAT studying #sat #satprep ",
      "createTime": 1787618195,
-     "views": 1001,
+     "views": 1006,
      "likes": 37,
      "comments": 0,
      "shares": 6
@@ -3700,17 +3511,17 @@
      "id": "7677370415886454047",
      "desc": "im not going to gatekeep anything, hope this helps you on your SAT studying journey #sat #satprep ",
      "createTime": 1787527110,
-     "views": 2492,
-     "likes": 104,
+     "views": 2744,
+     "likes": 108,
      "comments": 0,
-     "shares": 64
+     "shares": 88
     },
     {
      "id": "7676971535890009375",
      "desc": "hopefully this helps! comment if there\u2019s resources that i might\u2019ve missed out on #sat #satprep ",
      "createTime": 1787434239,
-     "views": 1131,
-     "likes": 43,
+     "views": 1145,
+     "likes": 44,
      "comments": 0,
      "shares": 1
     },
@@ -3727,8 +3538,8 @@
      "id": "7676274103304686879",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787271852,
-     "views": 850,
-     "likes": 16,
+     "views": 851,
+     "likes": 17,
      "comments": 0,
      "shares": 0
     },
@@ -3745,7 +3556,7 @@
      "id": "7675782008760536350",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1787157279,
-     "views": 1117,
+     "views": 1119,
      "likes": 41,
      "comments": 0,
      "shares": 2
@@ -3808,7 +3619,7 @@
      "id": "7674441869744409870",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786845262,
-     "views": 979,
+     "views": 980,
      "likes": 30,
      "comments": 0,
      "shares": 0
@@ -3823,9 +3634,9 @@
      "shares": 0
     }
    ],
-   "totalViews": 17151,
-   "likesFromVideos": 561
+   "totalViews": 17436,
+   "likesFromVideos": 567
   }
  },
- "fetchedAt": 1788149290
+ "fetchedAt": 1788233627
 }

@@ -2830,3 +2830,333 @@ Completing…
 ▲ Aliased         https://1600-views.vercel.app
 
 ✓ Ready in 30s
+=== 2026-08-31 00:08:43 refresh done
+=== 2026-08-31 11:32:34 refresh start
+  ! failed @jacksaccount137: Page.goto: net::ERR_NETWORK_CHANGED at https://www.tiktok.com/@jacksaccount137
+Call log:
+  - navigating to "https://www.tiktok.com/@jacksaccount137", waiting until "domcontentloaded"
+
+  ! no profile JSON for @alejandrostudying: 'userInfo'
+  ! failed @calebstudies67: Page.goto: net::ERR_NETWORK_CHANGED at https://www.tiktok.com/@calebstudies67
+Call log:
+  - navigating to "https://www.tiktok.com/@calebstudies67", waiting until "domcontentloaded"
+
+  ! no profile JSON for @emilydeng10: 'userInfo'
+  ! empty scrape for @emilydeng10, keeping previous (25 videos)
+  ! failed @samstudies67: Page.goto: net::ERR_NETWORK_CHANGED at https://www.tiktok.com/@samstudies67
+Call log:
+  - navigating to "https://www.tiktok.com/@samstudies67", waiting until "domcontentloaded"
+
+  ! failed @demetriusdemarcus: Page.goto: net::ERR_NETWORK_CHANGED at https://www.tiktok.com/@demetriusdemarcus
+Call log:
+  - navigating to "https://www.tiktok.com/@demetriusdemarcus", waiting until "domcontentloaded"
+
+  ! failed @anastasiyap1219: Page.goto: net::ERR_NETWORK_CHANGED at https://www.tiktok.com/@anastasiyap1219
+Call log:
+  - navigating to "https://www.tiktok.com/@anastasiyap1219", waiting until "domcontentloaded"
+
+  ! failed @lukestudies67: Page.goto: net::ERR_NETWORK_CHANGED at https://www.tiktok.com/@lukestudies67
+Call log:
+  - navigating to "https://www.tiktok.com/@lukestudies67", waiting until "domcontentloaded"
+
+  ! failed @theaiteaenthusiast1: Page.goto: net::ERR_NETWORK_CHANGED at https://www.tiktok.com/@theaiteaenthusiast1
+Call log:
+  - navigating to "https://www.tiktok.com/@theaiteaenthusiast1", waiting until "domcontentloaded"
+
+  ! failed @southstudies07: Page.goto: net::ERR_NETWORK_CHANGED at https://www.tiktok.com/@southstudies07
+Call log:
+  - navigating to "https://www.tiktok.com/@southstudies07", waiting until "domcontentloaded"
+
+  ! failed @jadenstudies08: Page.goto: net::ERR_NETWORK_CHANGED at https://www.tiktok.com/@jadenstudies08
+Call log:
+  - navigating to "https://www.tiktok.com/@jadenstudies08", waiting until "domcontentloaded"
+
+fetching @whartonprep ...
+  48/50 videos, 32,932 views
+fetching @jacksaccount137 ...
+fetching @jimmylockedin ...
+  3/3 videos, 1,389 views
+fetching @alejandrostudying ...
+  0/0 videos, 0 views
+fetching @calebstudies67 ...
+fetching @whartongirlie ...
+  47/47 videos, 31,980 views
+fetching @emilydeng10 ...
+fetching @samstudies67 ...
+fetching @steveorwell16 ...
+  7/7 videos, 2,596 views
+fetching @demetriusdemarcus ...
+fetching @demetriusdemarcus951 ...
+  15/15 videos, 5,974 views
+fetching @anastasiyap1219 ...
+fetching @ivyleaguesattutor ...
+  25/25 videos, 29,311 views
+fetching @harvardsattutor ...
+  19/19 videos, 14,602 views
+fetching @petrr039 ...
+  40/40 videos, 43,155 views
+fetching @lukestudies67 ...
+fetching @satclarity0 ...
+  25/25 videos, 42,085 views
+fetching @theaiteaenthusiast1 ...
+fetching @southstudies07 ...
+fetching @jadenstudies06 ...
+  8/8 videos, 1 views
+fetching @jadenstudies08 ...
+fetching @yalesattutor ...
+  19/19 videos, 17,291 views
+saved data/data.json + data/history.json
+site/ built: 22 account(s), snapshot 108,902 bytes
+Vercel CLI 59.5.0 (Node.js 24.15.0)
+Deploying 1600-views
+Error: Not authorized
+Contact Support: https://vercel.link/help
+=== 2026-08-31 15:36:28 refresh start
+  ! failed @whartonprep: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://www.tiktok.com/@whartonprep", waiting until "domcontentloaded"
+
+  ! failed @jacksaccount137: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@jacksaccount137
+Call log:
+  - navigating to "https://www.tiktok.com/@jacksaccount137", waiting until "domcontentloaded"
+
+  ! failed @jimmylockedin: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@jimmylockedin
+Call log:
+  - navigating to "https://www.tiktok.com/@jimmylockedin", waiting until "domcontentloaded"
+
+  ! failed @alejandrostudying: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@alejandrostudying
+Call log:
+  - navigating to "https://www.tiktok.com/@alejandrostudying", waiting until "domcontentloaded"
+
+  ! failed @calebstudies67: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@calebstudies67
+Call log:
+  - navigating to "https://www.tiktok.com/@calebstudies67", waiting until "domcontentloaded"
+
+  ! failed @whartongirlie: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@whartongirlie
+Call log:
+  - navigating to "https://www.tiktok.com/@whartongirlie", waiting until "domcontentloaded"
+
+  ! failed @emilydeng10: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@emilydeng10
+Call log:
+  - navigating to "https://www.tiktok.com/@emilydeng10", waiting until "domcontentloaded"
+
+  ! failed @samstudies67: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@samstudies67
+Call log:
+  - navigating to "https://www.tiktok.com/@samstudies67", waiting until "domcontentloaded"
+
+  ! failed @steveorwell16: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@steveorwell16
+Call log:
+  - navigating to "https://www.tiktok.com/@steveorwell16", waiting until "domcontentloaded"
+
+  ! failed @demetriusdemarcus: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@demetriusdemarcus
+Call log:
+  - navigating to "https://www.tiktok.com/@demetriusdemarcus", waiting until "domcontentloaded"
+
+  ! failed @demetriusdemarcus951: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@demetriusdemarcus951
+Call log:
+  - navigating to "https://www.tiktok.com/@demetriusdemarcus951", waiting until "domcontentloaded"
+
+  ! failed @anastasiyap1219: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@anastasiyap1219
+Call log:
+  - navigating to "https://www.tiktok.com/@anastasiyap1219", waiting until "domcontentloaded"
+
+  ! failed @ivyleaguesattutor: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@ivyleaguesattutor
+Call log:
+  - navigating to "https://www.tiktok.com/@ivyleaguesattutor", waiting until "domcontentloaded"
+
+  ! failed @harvardsattutor: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@harvardsattutor
+Call log:
+  - navigating to "https://www.tiktok.com/@harvardsattutor", waiting until "domcontentloaded"
+
+  ! failed @petrr039: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@petrr039
+Call log:
+  - navigating to "https://www.tiktok.com/@petrr039", waiting until "domcontentloaded"
+
+  ! failed @lukestudies67: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@lukestudies67
+Call log:
+  - navigating to "https://www.tiktok.com/@lukestudies67", waiting until "domcontentloaded"
+
+  ! failed @satclarity0: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@satclarity0
+Call log:
+  - navigating to "https://www.tiktok.com/@satclarity0", waiting until "domcontentloaded"
+
+  ! failed @theaiteaenthusiast1: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@theaiteaenthusiast1
+Call log:
+  - navigating to "https://www.tiktok.com/@theaiteaenthusiast1", waiting until "domcontentloaded"
+
+  ! failed @southstudies07: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@southstudies07
+Call log:
+  - navigating to "https://www.tiktok.com/@southstudies07", waiting until "domcontentloaded"
+
+  ! failed @jadenstudies06: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@jadenstudies06
+Call log:
+  - navigating to "https://www.tiktok.com/@jadenstudies06", waiting until "domcontentloaded"
+
+  ! failed @jadenstudies08: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@jadenstudies08
+Call log:
+  - navigating to "https://www.tiktok.com/@jadenstudies08", waiting until "domcontentloaded"
+
+  ! failed @yalesattutor: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@yalesattutor
+Call log:
+  - navigating to "https://www.tiktok.com/@yalesattutor", waiting until "domcontentloaded"
+
+fetching @whartonprep ...
+fetching @jacksaccount137 ...
+fetching @jimmylockedin ...
+fetching @alejandrostudying ...
+fetching @calebstudies67 ...
+fetching @whartongirlie ...
+fetching @emilydeng10 ...
+fetching @samstudies67 ...
+fetching @steveorwell16 ...
+fetching @demetriusdemarcus ...
+fetching @demetriusdemarcus951 ...
+fetching @anastasiyap1219 ...
+fetching @ivyleaguesattutor ...
+fetching @harvardsattutor ...
+fetching @petrr039 ...
+fetching @lukestudies67 ...
+fetching @satclarity0 ...
+fetching @theaiteaenthusiast1 ...
+fetching @southstudies07 ...
+fetching @jadenstudies06 ...
+fetching @jadenstudies08 ...
+fetching @yalesattutor ...
+saved data/data.json + data/history.json
+warning: user counts unavailable: Can't create a connection to host ep-delicate-mouse-aurzy5qn-pooler.c-10.us-east-1.aws.neon.tech and port 5432 (timeout is 15 and source_address is None).
+site/ built: 22 account(s), snapshot 107,918 bytes
+Vercel CLI 59.5.0 (Node.js 24.15.0)
+Deploying 1600-views
+Error: fetch failed
+=== 2026-08-31 19:31:51 refresh start
+  ! no profile JSON for @alejandrostudying: 'userInfo'
+  ! no profile JSON for @emilydeng10: 'userInfo'
+  ! empty scrape for @emilydeng10, keeping previous (25 videos)
+  ! empty scrape for @samstudies67, keeping previous (27 videos)
+  ! failed @harvardsattutor: Page.goto: net::ERR_NETWORK_CHANGED at https://www.tiktok.com/@harvardsattutor
+Call log:
+  - navigating to "https://www.tiktok.com/@harvardsattutor", waiting until "domcontentloaded"
+
+  ! failed @petrr039: Page.goto: net::ERR_NETWORK_CHANGED at https://www.tiktok.com/@petrr039
+Call log:
+  - navigating to "https://www.tiktok.com/@petrr039", waiting until "domcontentloaded"
+
+  ! failed @theaiteaenthusiast1: Page.goto: net::ERR_NETWORK_CHANGED at https://www.tiktok.com/@theaiteaenthusiast1
+Call log:
+  - navigating to "https://www.tiktok.com/@theaiteaenthusiast1", waiting until "domcontentloaded"
+
+  ! empty scrape for @southstudies07, keeping previous (11 videos)
+  ! failed @jadenstudies08: Page.goto: net::ERR_NETWORK_CHANGED at https://www.tiktok.com/@jadenstudies08
+Call log:
+  - navigating to "https://www.tiktok.com/@jadenstudies08", waiting until "domcontentloaded"
+
+fetching @whartonprep ...
+  50/50 videos, 33,768 views
+fetching @jacksaccount137 ...
+  19/19 videos, 39,849 views
+fetching @jimmylockedin ...
+  3/3 videos, 1,389 views
+fetching @alejandrostudying ...
+  0/0 videos, 0 views
+fetching @calebstudies67 ...
+  23/23 videos, 60,245 views
+fetching @whartongirlie ...
+  47/47 videos, 32,049 views
+fetching @emilydeng10 ...
+fetching @samstudies67 ...
+fetching @steveorwell16 ...
+  7/7 videos, 2,596 views
+fetching @demetriusdemarcus ...
+  0/0 videos, 0 views
+fetching @demetriusdemarcus951 ...
+  15/15 videos, 5,975 views
+fetching @anastasiyap1219 ...
+  38/38 videos, 41,076 views
+fetching @ivyleaguesattutor ...
+  25/25 videos, 29,425 views
+fetching @harvardsattutor ...
+fetching @petrr039 ...
+fetching @lukestudies67 ...
+  1/1 videos, 16 views
+fetching @satclarity0 ...
+  25/25 videos, 42,591 views
+fetching @theaiteaenthusiast1 ...
+fetching @southstudies07 ...
+fetching @jadenstudies06 ...
+  8/8 videos, 1 views
+fetching @jadenstudies08 ...
+fetching @yalesattutor ...
+  19/19 videos, 17,436 views
+saved data/data.json + data/history.json
+site/ built: 22 account(s), snapshot 109,837 bytes
+Vercel CLI 59.5.0 (Node.js 24.15.0)
+Deploying 1600-views
+Error: Not authorized
+Contact Support: https://vercel.link/help
+=== 2026-08-31 23:30:01 refresh start
+  ! no profile JSON for @alejandrostudying: 'userInfo'
+  ! no profile JSON for @emilydeng10: 'userInfo'
+  ! empty scrape for @emilydeng10, keeping previous (25 videos)
+  ! empty scrape for @satclarity0, keeping previous (25 videos)
+  ! no profile JSON for @theaiteaenthusiast1: 'userInfo'
+  ! empty scrape for @southstudies07, keeping previous (11 videos)
+  ! empty scrape for @jadenstudies06, keeping previous (8 videos)
+  ! no profile JSON for @jadenstudies08: 'userInfo'
+  ! empty scrape for @yalesattutor, keeping previous (19 videos)
+fetching @whartonprep ...
+  24/51 videos, 19,472 views
+fetching @jacksaccount137 ...
+  19/19 videos, 39,860 views
+fetching @jimmylockedin ...
+  3/3 videos, 1,389 views
+fetching @alejandrostudying ...
+  0/0 videos, 0 views
+fetching @calebstudies67 ...
+  23/23 videos, 60,436 views
+fetching @whartongirlie ...
+  48/48 videos, 32,398 views
+fetching @emilydeng10 ...
+fetching @samstudies67 ...
+  27/27 videos, 33,913 views
+fetching @steveorwell16 ...
+  7/7 videos, 2,596 views
+fetching @demetriusdemarcus ...
+  0/0 videos, 0 views
+fetching @demetriusdemarcus951 ...
+  15/15 videos, 5,976 views
+fetching @anastasiyap1219 ...
+  38/38 videos, 41,364 views
+fetching @ivyleaguesattutor ...
+  26/26 videos, 29,954 views
+fetching @harvardsattutor ...
+  19/19 videos, 14,682 views
+fetching @petrr039 ...
+  40/40 videos, 43,766 views
+fetching @lukestudies67 ...
+  1/1 videos, 16 views
+fetching @satclarity0 ...
+fetching @theaiteaenthusiast1 ...
+  0/0 videos, 0 views
+fetching @southstudies07 ...
+fetching @jadenstudies06 ...
+fetching @jadenstudies08 ...
+  0/0 videos, 0 views
+fetching @yalesattutor ...
+saved data/data.json + data/history.json
+site/ built: 22 account(s), snapshot 104,896 bytes
+Vercel CLI 59.5.0 (Node.js 24.15.0)
+Deploying 1600-views
+Uploading [--------------------] (0.0B/102.4KB)
+Uploading [======--------------] (32.0KB/102.4KB)
+Uploading [============--------] (64.0KB/102.4KB)
+Uploading [===============-----] (80.0KB/102.4KB)
+Uploading [====================] (102.4KB/102.4KB)
+  Inspect         https://vercel.com/orwell1/1600-views/DrDXhGt87huMWMHF3xCLLrb2R3e2
+  Production      https://1600-views-nby6p0l3y-orwell1.vercel.app
+https://1600-views-nby6p0l3y-orwell1.vercel.appBuilding…
+Building…
+[2K[1A[2K[G  Production      https://1600-views-nby6p0l3y-orwell1.vercel.app
+Completing…
+▲ Aliased         https://1600-views.vercel.app
+
+✓ Ready in 4s
