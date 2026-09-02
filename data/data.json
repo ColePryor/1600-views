@@ -3906,7 +3906,74 @@
    ],
    "totalViews": 17436,
    "likesFromVideos": 567
+  },
+  "yoursatunc": {
+   "handle": "yoursatunc",
+   "followers": 12,
+   "totalLikes": 200,
+   "videoCount": 4,
+   "nickname": "yourSATunc",
+   "videos": [
+    {
+     "id": "7680715125589855501",
+     "desc": "Stick to the end to watch my punishment for getting questions wrong on the SAT (worse than Asian parent punishments \ud83d\ude31) #",
+     "createTime": 1788305858,
+     "views": 176,
+     "likes": 9,
+     "comments": 0,
+     "shares": 0
+    },
+    {
+     "id": "7680350277362371854",
+     "desc": "This is what I am using to get a 1600 on the SAT khan academy sixteenhundred.org collegeboard question bank #sat #satpre",
+     "createTime": 1788220922,
+     "views": 1024,
+     "likes": 58,
+     "comments": 0,
+     "shares": 1
+    },
+    {
+     "id": "7679978210922204430",
+     "desc": "Diagnostic SAT exam for a personal benchmark. Please check out and use my website in the meanwhile :) #sat #satprep",
+     "createTime": 1788134297,
+     "views": 60,
+     "likes": 6,
+     "comments": 0,
+     "shares": 0
+    },
+    {
+     "id": "7679611810240023838",
+     "desc": "Come with me on a journey to retake the Digital SAT as a grown ahh man #sat #satprep",
+     "createTime": 1788048972,
+     "views": 5499,
+     "likes": 127,
+     "comments": 0,
+     "shares": 2
+    }
+   ],
+   "totalViews": 6759,
+   "likesFromVideos": 200
+  },
+  "crashout16000": {
+   "handle": "crashout16000",
+   "followers": 0,
+   "totalLikes": 7,
+   "videoCount": 1,
+   "nickname": "crashout1600",
+   "videos": [
+    {
+     "id": "7680365405659057422",
+     "desc": "sixteenhundred.org :) #sat #satprep ",
+     "createTime": 1788224443,
+     "views": 242,
+     "likes": 7,
+     "comments": 0,
+     "shares": 0
+    }
+   ],
+   "totalViews": 242,
+   "likesFromVideos": 7
   }
  },
- "fetchedAt": 1788305616
+ "fetchedAt": 1788307881
 }
