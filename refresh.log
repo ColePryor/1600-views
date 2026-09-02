@@ -3602,3 +3602,147 @@ Completing…
 ▲ Aliased         https://1600-views.vercel.app
 
 ✓ Ready in 10s
+=== 2026-09-02 11:34:30 refresh done
+=== 2026-09-02 15:36:59 refresh start
+  ! failed @whartonprep: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://www.tiktok.com/@whartonprep", waiting until "domcontentloaded"
+
+  ! failed @jacksaccount137: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@jacksaccount137
+Call log:
+  - navigating to "https://www.tiktok.com/@jacksaccount137", waiting until "domcontentloaded"
+
+  ! failed @jimmylockedin: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@jimmylockedin
+Call log:
+  - navigating to "https://www.tiktok.com/@jimmylockedin", waiting until "domcontentloaded"
+
+  ! failed @alejandrostudying: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@alejandrostudying
+Call log:
+  - navigating to "https://www.tiktok.com/@alejandrostudying", waiting until "domcontentloaded"
+
+  ! failed @calebstudies67: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@calebstudies67
+Call log:
+  - navigating to "https://www.tiktok.com/@calebstudies67", waiting until "domcontentloaded"
+
+  ! failed @whartongirlie: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@whartongirlie
+Call log:
+  - navigating to "https://www.tiktok.com/@whartongirlie", waiting until "domcontentloaded"
+
+  ! failed @emilydeng10: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@emilydeng10
+Call log:
+  - navigating to "https://www.tiktok.com/@emilydeng10", waiting until "domcontentloaded"
+
+  ! failed @samstudies67: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@samstudies67
+Call log:
+  - navigating to "https://www.tiktok.com/@samstudies67", waiting until "domcontentloaded"
+
+  ! failed @steveorwell16: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@steveorwell16
+Call log:
+  - navigating to "https://www.tiktok.com/@steveorwell16", waiting until "domcontentloaded"
+
+  ! failed @demetriusdemarcus: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@demetriusdemarcus
+Call log:
+  - navigating to "https://www.tiktok.com/@demetriusdemarcus", waiting until "domcontentloaded"
+
+  ! failed @demetriusdemarcus951: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@demetriusdemarcus951
+Call log:
+  - navigating to "https://www.tiktok.com/@demetriusdemarcus951", waiting until "domcontentloaded"
+
+  ! failed @anastasiyap1219: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@anastasiyap1219
+Call log:
+  - navigating to "https://www.tiktok.com/@anastasiyap1219", waiting until "domcontentloaded"
+
+  ! failed @ivyleaguesattutor: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@ivyleaguesattutor
+Call log:
+  - navigating to "https://www.tiktok.com/@ivyleaguesattutor", waiting until "domcontentloaded"
+
+  ! failed @harvardsattutor: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@harvardsattutor
+Call log:
+  - navigating to "https://www.tiktok.com/@harvardsattutor", waiting until "domcontentloaded"
+
+  ! failed @petrr039: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@petrr039
+Call log:
+  - navigating to "https://www.tiktok.com/@petrr039", waiting until "domcontentloaded"
+
+  ! failed @lukestudies67: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@lukestudies67
+Call log:
+  - navigating to "https://www.tiktok.com/@lukestudies67", waiting until "domcontentloaded"
+
+  ! failed @satclarity0: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@satclarity0
+Call log:
+  - navigating to "https://www.tiktok.com/@satclarity0", waiting until "domcontentloaded"
+
+  ! failed @theaiteaenthusiast1: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@theaiteaenthusiast1
+Call log:
+  - navigating to "https://www.tiktok.com/@theaiteaenthusiast1", waiting until "domcontentloaded"
+
+  ! failed @southstudies07: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@southstudies07
+Call log:
+  - navigating to "https://www.tiktok.com/@southstudies07", waiting until "domcontentloaded"
+
+  ! failed @jadenstudies06: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@jadenstudies06
+Call log:
+  - navigating to "https://www.tiktok.com/@jadenstudies06", waiting until "domcontentloaded"
+
+  ! failed @jadenstudies08: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@jadenstudies08
+Call log:
+  - navigating to "https://www.tiktok.com/@jadenstudies08", waiting until "domcontentloaded"
+
+  ! failed @yalesattutor: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@yalesattutor
+Call log:
+  - navigating to "https://www.tiktok.com/@yalesattutor", waiting until "domcontentloaded"
+
+  ! failed @yoursatunc: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@yoursatunc
+Call log:
+  - navigating to "https://www.tiktok.com/@yoursatunc", waiting until "domcontentloaded"
+
+  ! failed @crashout16000: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.tiktok.com/@crashout16000
+Call log:
+  - navigating to "https://www.tiktok.com/@crashout16000", waiting until "domcontentloaded"
+
+fetching @whartonprep ...
+fetching @jacksaccount137 ...
+fetching @jimmylockedin ...
+fetching @alejandrostudying ...
+fetching @calebstudies67 ...
+fetching @whartongirlie ...
+fetching @emilydeng10 ...
+fetching @samstudies67 ...
+fetching @steveorwell16 ...
+fetching @demetriusdemarcus ...
+fetching @demetriusdemarcus951 ...
+fetching @anastasiyap1219 ...
+fetching @ivyleaguesattutor ...
+fetching @harvardsattutor ...
+fetching @petrr039 ...
+fetching @lukestudies67 ...
+fetching @satclarity0 ...
+fetching @theaiteaenthusiast1 ...
+fetching @southstudies07 ...
+fetching @jadenstudies06 ...
+fetching @jadenstudies08 ...
+fetching @yalesattutor ...
+fetching @yoursatunc ...
+fetching @crashout16000 ...
+saved data/data.json + data/history.json
+site/ built: 24 account(s), snapshot 116,733 bytes
+Vercel CLI 59.5.0 (Node.js 24.15.0)
+Deploying 1600-views
+Uploading [--------------------] (0.0B/114KB)
+Uploading [=====---------------] (32.0KB/114KB)
+Uploading [===========---------] (64.0KB/114KB)
+Uploading [================----] (96.0KB/114KB)
+Uploading [====================] (114.0KB/114KB)
+  Inspect         https://vercel.com/orwell1/1600-views/89mQ2nNpdsJedm6N8rWoDtuC4QCY
+  Production      https://1600-views-93ptoom3d-orwell1.vercel.app
+https://1600-views-93ptoom3d-orwell1.vercel.appBuilding…
+Building…
+Running build in Cleveland, USA (East) – cle1
+Build machine configuration: 4 cores, 8 GB
+Retrieving list of deployment files...
+Downloading 4 deployment files...
+[2K[1A[2K[G  Production      https://1600-views-93ptoom3d-orwell1.vercel.app
+Completing…
+▲ Aliased         https://1600-views.vercel.app
+
+✓ Ready in 7s
