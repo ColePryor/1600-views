@@ -2143,13 +2143,13 @@
  },
  "2026-09-03": {
   "whartonprep": {
-   "views": 34916,
-   "likes": 1158,
+   "views": 35054,
+   "likes": 1167,
    "videoCount": 52,
    "followers": 13
   },
   "jacksaccount137": {
-   "views": 39888,
+   "views": 39894,
    "likes": 652,
    "videoCount": 19,
    "followers": 12
@@ -2161,8 +2161,8 @@
    "followers": 0
   },
   "calebstudies67": {
-   "views": 65413,
-   "likes": 2768,
+   "views": 66076,
+   "likes": 2818,
    "videoCount": 24,
    "followers": 33
   },
@@ -2231,6 +2231,18 @@
    "likes": 0,
    "videoCount": 0,
    "followers": 0
+  },
+  "alejandrostudying": {
+   "views": 0,
+   "likes": 0,
+   "videoCount": 0,
+   "followers": 0
+  },
+  "whartongirlie": {
+   "views": 32422,
+   "likes": 1338,
+   "videoCount": 50,
+   "followers": 14
   }
  }
 }
