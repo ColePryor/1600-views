@@ -3,16 +3,25 @@
   "whartonprep": {
    "handle": "whartonprep",
    "followers": 14,
-   "totalLikes": 1196,
-   "videoCount": 53,
+   "totalLikes": 1210,
+   "videoCount": 54,
    "nickname": "whartonprep",
    "videos": [
+    {
+     "id": "7681801582484213023",
+     "desc": "lock in a high sat score by using sixteenhundred.org #sat #satprep ",
+     "createTime": 1788558824,
+     "views": 129,
+     "likes": 4,
+     "comments": 0,
+     "shares": 0
+    },
     {
      "id": "7681478999821929742",
      "desc": "hope this was helpful! comment any questions and good luck on your test #sat #satprep ",
      "createTime": 1788483719,
-     "views": 397,
-     "likes": 12,
+     "views": 1139,
+     "likes": 22,
      "comments": 0,
      "shares": 1
     },
@@ -20,7 +29,7 @@
      "id": "7681104367511981342",
      "desc": "hope this helps! let me know what else i should include in the comments #sat #satprep ",
      "createTime": 1788396488,
-     "views": 915,
+     "views": 919,
      "likes": 31,
      "comments": 0,
      "shares": 0
@@ -29,7 +38,7 @@
      "id": "7680361076403359006",
      "desc": "let me know what other tips you think should be included in the comments #sat #satprep ",
      "createTime": 1788223431,
-     "views": 474,
+     "views": 475,
      "likes": 22,
      "comments": 0,
      "shares": 1
@@ -38,7 +47,7 @@
      "id": "7679281791521393951",
      "desc": "can\u2019t believe it\u2019s that time again. time to lock in #sat #satprep ",
      "createTime": 1787972141,
-     "views": 1089,
+     "views": 1090,
      "likes": 21,
      "comments": 0,
      "shares": 0
@@ -47,7 +56,7 @@
      "id": "7678841170520214814",
      "desc": "hope this helps! let me know if you have questions in the comments #sat #satprep",
      "createTime": 1787869551,
-     "views": 877,
+     "views": 878,
      "likes": 28,
      "comments": 0,
      "shares": 0
@@ -56,7 +65,7 @@
      "id": "7678516524574887198",
      "desc": "hope this helps and good luck studying #sat #satprep ",
      "createTime": 1787793957,
-     "views": 1213,
+     "views": 1214,
      "likes": 33,
      "comments": 0,
      "shares": 1
@@ -83,7 +92,7 @@
      "id": "7677388184694557983",
      "desc": "hopefully this was helpful! let me know what other tips are useful in the comments #sat #satprep ",
      "createTime": 1787531248,
-     "views": 1415,
+     "views": 1423,
      "likes": 73,
      "comments": 0,
      "shares": 7
@@ -92,7 +101,7 @@
      "id": "7676635103493131550",
      "desc": "hope this was helpful! good luck on your exam, whenever it is #sat #satprep ",
      "createTime": 1787355907,
-     "views": 1565,
+     "views": 1578,
      "likes": 97,
      "comments": 0,
      "shares": 10
@@ -182,7 +191,7 @@
      "id": "7674451527888686349",
      "desc": "hope this helps! comment any questions #sat #satprep",
      "createTime": 1786847511,
-     "views": 1203,
+     "views": 1206,
      "likes": 20,
      "comments": 0,
      "shares": 0
@@ -191,7 +200,7 @@
      "id": "7674418773704690975",
      "desc": "hope this helps! comment any questions #sat #satprep ",
      "createTime": 1786839877,
-     "views": 456,
+     "views": 458,
      "likes": 21,
      "comments": 0,
      "shares": 0
@@ -308,7 +317,7 @@
      "id": "7671363140319317279",
      "desc": "Use Khan Academy and www.1600.tech to study today #sat #satprep #dobby ",
      "createTime": 1786128445,
-     "views": 353,
+     "views": 354,
      "likes": 7,
      "comments": 0,
      "shares": 0
@@ -371,7 +380,7 @@
      "id": "7670425971333303582",
      "desc": "I hope this was helpful for those studying for the SAT. Good luck! #sat #satprep #wharton ",
      "createTime": 1785910243,
-     "views": 1154,
+     "views": 1156,
      "likes": 48,
      "comments": 0,
      "shares": 5
@@ -452,7 +461,7 @@
      "id": "7664814294529248542",
      "desc": "Plat 1 for anyone that\u2019s asking I\u2019m so glad prep sites like Khan Academy and 1600.tech exist so I can focus on what\u2019s ac",
      "createTime": 1784603666,
-     "views": 591,
+     "views": 592,
      "likes": 18,
      "comments": 2,
      "shares": 0
@@ -485,8 +494,8 @@
      "shares": 0
     }
    ],
-   "totalViews": 35873,
-   "likesFromVideos": 1188
+   "totalViews": 36782,
+   "likesFromVideos": 1202
   },
   "jacksaccount137": {
    "handle": "jacksaccount137",
@@ -4146,5 +4155,5 @@
    "likesFromVideos": 15
   }
  },
- "fetchedAt": 1788564769
+ "fetchedAt": 1788636648
 }
