@@ -22,4 +22,12 @@ python3 -m venv venv
 
 Add or remove creators by editing `data/accounts.json`.
 
-Each handle can be assigned to the person who runs it: click a handle in the "Views by creator" table (or use `+ name` / `rename`), or edit `data/owners.json` (`{"handle": "Name"}`). Names become filter chips at the top and the table rolls views, likes, followers and videos up per person.
+## Owners and splits
+
+The **Accounts** button (top right of the local dashboard) opens one sheet that does all of it: add an account, assign it, split it between people, rename a person, remove an account. Clicking a handle anywhere on the page opens the same sheet on that account.
+
+An account can be shared. Give each person a percentage and their views, likes, followers and "views today" divide that way everywhere: the creator table, the creator race, the filter chips and the hero numbers. Percentages are relative, so 3 and 1 is the same as 75 and 25; they are scaled to 100 on save. Videos stay whole (a clip is a clip), and avg views per video uses the weighted count so a 50% owner still sees the account's real average.
+
+`data/owners.json` is the store and stays hand-editable: `"handle": "Name"` for a sole owner, `"handle": {"A": 60, "B": 40}` for a split. Names become filter chips at the top of the dashboard.
+
+Removing an account takes two clicks (the button arms, then confirms). Adding one pulls just that handle and does not publish; the live site only changes when you press **Refresh & publish**.

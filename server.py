@@ -8,10 +8,13 @@ Endpoints:
   GET  /            dashboard
   GET  /api/data    accounts + latest stats + daily history
   POST /api/accounts {"handle": "...", "name": "..."}   add a TikTok account (name optional)
-  POST /api/owner    {"handle": "...", "name": "..."}   name the person who runs an account ("" clears)
+  POST /api/owner    {"handle": "...", "name": "..."}    sole owner ("" clears), or
+                     {"handle": "...", "shares": {"A": 60, "B": 40}}  split it
+  POST /api/owner/rename {"from": "...", "to": "..."}    rename a person everywhere
   POST /api/accounts/remove {"handle": "..."}   drop an account (list, cached data, owner; history kept)
   POST /api/refresh  re-scrape all accounts, rebuild site/, deploy to Vercel
                      (runs refresh.sh, ~10-60s/account plus the deploy)
+                     {"publish": false, "handle": "..."}  scrape only, one account
 """
 import json
 import ssl
@@ -99,28 +102,96 @@ def load_json(path, fallback):
         return fallback
 
 
-def set_owner(handle, name):
-    """Map a TikTok handle to the person who runs it. Empty name clears it."""
-    owners = load_json(DATA / "owners.json", {})
-    if name:
-        owners[handle] = name
-    else:
-        owners.pop(handle, None)
-    (DATA / "owners.json").write_text(json.dumps(owners, indent=1))
+def norm_shares(value):
+    """Normalize one owners.json entry to {name: percent} summing to 100.
+
+    An entry is either a plain name (that person runs the account outright) or
+    a {name: weight} split. Weights are relative, so {"A": 1, "B": 3} and
+    {"A": 25, "B": 75} mean the same thing; both come back as percents.
+    """
+    if isinstance(value, str):
+        value = {value: 1} if value.strip() else {}
+    if not isinstance(value, dict):
+        return {}
+    pairs = []
+    for name, w in value.items():
+        name = str(name).strip()[:40]
+        try:
+            w = float(w)
+        except (TypeError, ValueError):
+            w = 0.0
+        if name and w > 0:
+            pairs.append((name, w))
+    total = sum(w for _, w in pairs)
+    if not total:
+        return {}
+    # Largest-remainder rounding so the percents always add up to exactly 100.
+    exact = [(n, w / total * 100) for n, w in pairs]
+    out = {n: int(v) for n, v in exact}
+    left = 100 - sum(out.values())
+    for n, v in sorted(exact, key=lambda x: -(x[1] - int(x[1]))):
+        if left <= 0:
+            break
+        out[n] += 1
+        left -= 1
+    return {n: v for n, v in out.items() if v > 0}
+
+
+def load_owners():
+    """handle -> {person: percent}, percents summing to 100."""
+    raw = load_json(DATA / "owners.json", {})
+    return {h: sh for h, v in raw.items() if (sh := norm_shares(v))}
+
+
+def save_owners(owners):
+    """Write owners.json back, keeping the compact form for sole owners."""
+    out = {}
+    for h, shares in owners.items():
+        if not shares:
+            continue
+        out[h] = next(iter(shares)) if len(shares) == 1 else shares
+    (DATA / "owners.json").write_text(json.dumps(out, indent=1))
     return owners
 
 
-def run_fetch():
-    """Manual refresh: scrape TikTok, rebuild site/, deploy to Vercel, push.
+def set_owner(handle, value):
+    """Set who runs an account: a name, a {name: weight} split, or "" to clear."""
+    owners = load_owners()
+    shares = norm_shares(value)
+    if shares:
+        owners[handle] = shares
+    else:
+        owners.pop(handle, None)
+    return save_owners(owners)
 
-    Nothing runs on a schedule any more (the launchd job is disabled), so this
-    button is the only thing that updates the public page.
+
+def rename_owner(old, new):
+    """Rename a person everywhere, keeping each account's split intact."""
+    old, new = (old or "").strip(), (new or "").strip()[:40]
+    owners = load_owners()
+    if not old or not new or old == new:
+        return owners
+    for h, shares in owners.items():
+        if old in shares:
+            merged = dict(shares)
+            merged[new] = merged.pop(old) + merged.get(new, 0)
+            owners[h] = norm_shares(merged)
+    return save_owners(owners)
+
+
+def run_fetch(publish=True, handle=None):
+    """Manual refresh: scrape TikTok, and by default rebuild site/, deploy, push.
+
+    Nothing runs on a schedule any more (the launchd job is disabled), so the
+    dashboard's button is the only thing that updates the public page.
+    publish=False just scrapes (used when a newly added account is pulled in).
     """
+    cmd = (["/bin/zsh", str(ROOT / "refresh.sh")] if publish
+           else [str(PY), str(ROOT / "fetch.py")] + ([handle] if handle else []))
     refresh_state["running"] = True
     refresh_state["lastError"] = ""
     try:
-        r = subprocess.run(["/bin/zsh", str(ROOT / "refresh.sh")], capture_output=True,
-                           text=True, timeout=3600)
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=3600)
         if r.returncode != 0:
             refresh_state["lastError"] = (r.stderr or r.stdout)[-400:]
     except Exception as e:
@@ -145,7 +216,7 @@ class Handler(SimpleHTTPRequestHandler):
         if self.path.startswith("/api/data"):
             self.send_json({
                 "accounts": load_json(DATA / "accounts.json", []),
-                "owners": load_json(DATA / "owners.json", {}),
+                "owners": load_owners(),
                 "data": load_json(DATA / "data.json", {"accounts": {}}),
                 "history": load_json(DATA / "history.json", {}),
                 "users": site_users(),
@@ -177,7 +248,7 @@ class Handler(SimpleHTTPRequestHandler):
             if name:
                 set_owner(h, name)
             self.send_json({"ok": True, "accounts": accounts,
-                            "owners": load_json(DATA / "owners.json", {})})
+                            "owners": load_owners()})
             return
 
         if self.path == "/api/accounts/remove":
@@ -200,15 +271,28 @@ class Handler(SimpleHTTPRequestHandler):
             if not h:
                 self.send_json({"error": "no handle"}, 400)
                 return
-            owners = set_owner(h, (body.get("name") or "").strip()[:40])
+            value = body["shares"] if isinstance(body.get("shares"), dict) \
+                else (body.get("name") or "").strip()[:40]
+            owners = set_owner(h, value)
             self.send_json({"ok": True, "owners": owners})
             return
 
+        if self.path == "/api/owner/rename":
+            old_name = (body.get("from") or "").strip()
+            new_name = (body.get("to") or "").strip()[:40]
+            if not old_name or not new_name:
+                self.send_json({"error": "need from and to"}, 400)
+                return
+            self.send_json({"ok": True, "owners": rename_owner(old_name, new_name)})
+            return
+
         if self.path == "/api/refresh":
+            publish = body.get("publish", True) is not False
+            handle = (body.get("handle") or "").strip().lstrip("@") or None
             if refresh_lock.acquire(blocking=False):
                 def go():
                     try:
-                        run_fetch()
+                        run_fetch(publish, handle)
                     finally:
                         refresh_lock.release()
                 threading.Thread(target=go, daemon=True).start()

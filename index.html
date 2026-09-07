@@ -34,7 +34,8 @@
   .num { font-variant-numeric: tabular-nums; }
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 
-  .top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 20px 0 26px; }
+  .top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 20px 0 14px; }
+  .chiprow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding-bottom: 22px; }
   .logo { font-size: 15px; font-weight: 800; letter-spacing: -.01em; }
   .logo span { color: var(--views); }
   .logo em { font-style: normal; color: var(--faint); font-weight: 600; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; margin-left: 10px; }
@@ -248,6 +249,73 @@
   .err { color: #fda4af; font-size: 12px; margin-top: 10px; white-space: pre-wrap; }
 
   @media (prefers-reduced-motion: reduce) { .xp .fill { transition: none; } }
+
+  /* Accounts & owners sheet */
+  .modal {
+    position: fixed; inset: 0; z-index: 60; display: flex; justify-content: center;
+    align-items: flex-start; padding: 40px 16px; overflow: auto;
+    background: rgba(6,4,10,.74); backdrop-filter: blur(3px);
+  }
+  .modal[hidden] { display: none; }
+  .sheet {
+    width: 100%; max-width: 780px; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 18px; box-shadow: 0 30px 80px rgba(0,0,0,.65); padding: 22px 24px 16px;
+  }
+  .sheet-head { display: flex; align-items: flex-start; gap: 16px; }
+  .sheet-head h2 { font-size: 16px; letter-spacing: -.01em; }
+  .sheet .sub { font-size: 12.5px; color: var(--muted); margin-top: 6px; max-width: 66ch; line-height: 1.55; }
+  .x-btn { font: inherit; font-size: 20px; line-height: 1; color: var(--faint); background: none; border: 0; cursor: pointer; padding: 0 4px; }
+  .x-btn:hover { color: var(--ink); }
+  .mg-add { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 18px 0 14px; }
+  .mg-add input, .mg-search {
+    font: inherit; font-size: 13px; color: var(--ink); background: var(--panel2);
+    border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; min-width: 170px;
+  }
+  .mg-add input::placeholder, .mg-search::placeholder { color: var(--faint); }
+  .mg-add .hint, .mg-tools .hint { font-size: 11.5px; color: var(--faint); }
+  .mg-people { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+  .mg-people .lbl { font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin-right: 4px; }
+  .mg-tools { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  .mg-tools .spacer { flex: 1; }
+  .mg-list { border-top: 1px solid var(--line); max-height: 50vh; overflow-y: auto; }
+  .mg-row { display: grid; grid-template-columns: 178px 1fr auto; gap: 14px; align-items: start; padding: 12px 2px; border-bottom: 1px solid var(--line); }
+  .mg-row.unassigned .mg-h { color: var(--muted); }
+  .mg-h { font-size: 13px; font-weight: 700; }
+  .mg-h a { color: inherit; text-decoration: none; }
+  .mg-h a:hover { text-decoration: underline; }
+  .mg-meta { font-size: 11px; color: var(--faint); margin-top: 4px; }
+  .mg-own {
+    display: inline-flex; align-items: center; background: var(--panel2);
+    border: 1px solid var(--line); border-radius: 999px; padding: 3px 4px 3px 11px; margin: 0 6px 6px 0;
+  }
+  .mg-own:focus-within { border-color: var(--faint); }
+  .mg-own input { font: inherit; background: none; border: 0; color: var(--ink); padding: 0; }
+  .mg-own input:focus { outline: none; }
+  .mg-own .nm { width: 116px; font-size: 12.5px; font-weight: 600; }
+  .mg-own .nm::placeholder { color: var(--faint); font-weight: 500; }
+  .mg-own .pc { width: 34px; text-align: right; font-size: 12.5px; font-weight: 700; color: var(--likes); font-variant-numeric: tabular-nums; }
+  .mg-own .pc::-webkit-outer-spin-button, .mg-own .pc::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .mg-own .pc { -moz-appearance: textfield; }
+  .mg-own .sign { font-size: 11px; color: var(--faint); margin: 0 4px 0 1px; }
+  .mg-own .drop {
+    display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;
+    border-radius: 999px; font-size: 12px; line-height: 1; color: var(--faint); cursor: pointer;
+  }
+  .mg-own .drop:hover { color: #fff; background: var(--views); }
+  .mg-actions { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .mg-total { font-size: 11px; color: var(--faint); font-variant-numeric: tabular-nums; }
+  .mg-total.bad { color: var(--likes); }
+  .btn-sm {
+    font: inherit; font-size: 11.5px; font-weight: 700; color: var(--faint);
+    background: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; cursor: pointer;
+  }
+  .btn-sm:hover { color: var(--ink); border-color: var(--faint); }
+  .btn-sm.go { color: #fff; background: var(--views); border-color: var(--views); }
+  .btn-sm.go:hover { filter: brightness(1.1); }
+  .btn-sm.danger { color: #fff; background: var(--views); border-color: var(--views); }
+  .btn-sm:hover.danger { filter: brightness(1.1); }
+  .pill .share { font-size: 10px; font-weight: 800; color: var(--likes); margin-left: 4px; }
+  .mg-empty { padding: 22px 4px; font-size: 12.5px; color: var(--faint); }
 </style>
 </head>
 <body>
@@ -257,6 +325,10 @@
     <div class="logo">1600<span>.tech</span><em>Creator HQ</em></div>
     <div class="spacer"></div>
     <span class="stamp" id="stamp"></span>
+    <button class="ghost" id="manageBtn" title="Assign accounts, split them between people, or remove them">Accounts</button>
+    <button class="refresh" id="refreshBtn">Refresh &amp; publish</button>
+  </div>
+  <div class="chiprow">
     <div id="acctChips" style="display:flex;gap:8px;flex-wrap:wrap"></div>
     <form class="addrow top-add" id="addRow" autocomplete="off" title="Add a TikTok account; it is pulled right away (10–60s)">
       <input id="addHandle" placeholder="@tiktok handle" required spellcheck="false">
@@ -264,7 +336,6 @@
       <button class="ghost" type="submit" id="addBtn">+ Add account</button>
       <span class="hint" id="addHint"></span>
     </form>
-    <button class="refresh" id="refreshBtn">Refresh &amp; publish</button>
   </div>
   <div class="subchips" id="subChips" style="display:none"></div>
 
@@ -338,7 +409,7 @@
 
   <div class="panel" style="margin-top:18px">
     <h2>Views by creator</h2>
-    <div class="sub" id="whoSub">Every account rolls up to the person who runs it. Click a handle to name or rename its owner; click a row to filter the dashboard.</div>
+    <div class="sub" id="whoSub">Every account rolls up to the people who run it. Shared accounts split by the percentage set in <b>Accounts</b> (top right); click a handle to change it, or a row to filter the dashboard.</div>
     <div style="overflow-x:auto">
       <table id="whoTable">
         <thead>
@@ -393,6 +464,32 @@
   </div>
 
 </div>
+<div class="modal" id="manage" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mgTitle">
+    <div class="sheet-head">
+      <div>
+        <h2 id="mgTitle">Accounts &amp; owners</h2>
+        <div class="sub">Assign each account to whoever runs it. If two people share an account, give each a percentage: their views, likes and followers split that way everywhere on this dashboard. Percentages are relative, so 3 and 1 means the same as 75 and 25.</div>
+      </div>
+      <div style="flex:1"></div>
+      <button class="x-btn" id="mgClose" aria-label="Close">&times;</button>
+    </div>
+    <form class="mg-add" id="mgAddRow" autocomplete="off">
+      <input id="mgHandle" placeholder="@tiktok handle" required spellcheck="false">
+      <input id="mgOwner" placeholder="who runs it (optional)" list="mgPeople">
+      <button class="refresh" type="submit" id="mgAddBtn">Add account</button>
+      <span class="hint" id="mgAddHint"></span>
+    </form>
+    <datalist id="mgPeople"></datalist>
+    <div class="mg-people" id="mgPeopleRow"></div>
+    <div class="mg-tools">
+      <input class="mg-search" id="mgSearch" placeholder="Filter accounts or people" spellcheck="false">
+      <span class="spacer"></span>
+      <span class="hint" id="mgCount"></span>
+    </div>
+    <div class="mg-list" id="mgList"></div>
+  </div>
+</div>
 <div id="tip"></div>
 
 <script>
@@ -426,9 +523,17 @@
     hid.forEach(h => { delete payload.data.accounts[h]; });
     payload.accounts = (payload.accounts || []).filter(h => !hid.includes(h));
   }
+  // First click arms, second click removes: no browser dialog to dismiss.
+  let pendingRm = '', pendingRmT = null;
+  function armRemove(handle) {
+    pendingRm = handle;
+    clearTimeout(pendingRmT);
+    pendingRmT = setTimeout(() => { pendingRm = ''; render(); renderManage(); }, 5000);
+    render(); renderManage();
+  }
   async function removeAccount(handle) {
-    const label = ownerOf(handle) ? ownerOf(handle) + "'s @" + handle : '@' + handle;
-    if (!confirm(STATIC ? 'Hide ' + label + ' from this browser?' : 'Remove ' + label + '? Its cached data is dropped; you can add it back any time.')) return;
+    if (pendingRm !== handle) { armRemove(handle); return; }
+    pendingRm = ''; clearTimeout(pendingRmT);
     if (STATIC) {
       const pend = pendingAccts();
       if (handle in pend) { delete pend[handle]; localStorage.setItem(PENDING_KEY, JSON.stringify(pend)); }
@@ -441,12 +546,16 @@
       delete payload.data.accounts[handle];
       payload.accounts = j.accounts; payload.owners = j.owners;
     }
+    delete mgEdit[handle];
     if (filter === handle || (filter.startsWith('name:') && !groups().has(filter.slice(5)))) filter = 'ALL';
-    render();
+    render(); renderManage();
   }
   function mergedOwners() {
     const o = { ...publishedOwners };
-    Object.entries(localOwners()).forEach(([h, n]) => { if (n) o[h] = n; else delete o[h]; });
+    Object.entries(localOwners()).forEach(([h, v]) => {
+      const empty = !v || (typeof v === 'string' ? !v.trim() : !Object.keys(v).length);
+      if (empty) delete o[h]; else o[h] = v;
+    });
     return o;
   }
   const SERIES = ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9', '#e66767'];
@@ -464,51 +573,93 @@
   const fmt = n => n.toLocaleString('en-US');
   const short = n => n >= 1e6 ? (n / 1e6).toFixed(n % 1e6 ? 1 : 0) + 'M' : n >= 1e3 ? Math.round(n / 1e3) + 'k' : String(n);
 
-  const ownerOf = h => (payload.owners || {})[h] || UNNAMED;
-  // person name -> [handles], over fetched + pending accounts, in first-seen order
+  // owners[handle] is {person: percent}, percentages adding to 100. A sole
+  // owner is just {name: 100}; a plain string (older snapshots) means the same.
+  function sharesOf(h) {
+    const v = (payload.owners || {})[h];
+    if (typeof v === 'string') return v.trim() ? { [v.trim()]: 100 } : {};
+    if (!v || typeof v !== 'object') return {};
+    const out = {}; let tot = 0;
+    Object.entries(v).forEach(([n, pc]) => { const x = +pc; if (n && x > 0) { out[n] = x; tot += x; } });
+    if (!tot) return {};
+    if (Math.abs(tot - 100) > 0.01) Object.keys(out).forEach(n => { out[n] = out[n] / tot * 100; });
+    return out;
+  }
+  const ownersOf = h => Object.keys(sharesOf(h));
+  // 0..1: how much of this account's numbers belong to that person
+  const shareIn = (h, name) => (sharesOf(h)[name] || 0) / 100;
+  const ownerOf = h => ownersOf(h)[0] || UNNAMED;
+  const ownerLabel = h => ownersOf(h).join(' + ');
+  const splitPeople = () => {
+    const s = new Set();
+    Object.keys(payload.owners || {}).forEach(h => ownersOf(h).forEach(n => s.add(n)));
+    return [...s].sort((a, b) => a.localeCompare(b));
+  };
+  // person name -> [handles they have any share of], plus UNNAMED for the rest
   function groups() {
     const g = new Map();
     Object.keys(payload.data.accounts).concat(payload.accounts).forEach(h => {
-      const n = ownerOf(h);
-      if (!g.has(n)) g.set(n, []);
-      if (!g.get(n).includes(h)) g.get(n).push(h);
+      const os = ownersOf(h);
+      (os.length ? os : [UNNAMED]).forEach(n => {
+        if (!g.has(n)) g.set(n, []);
+        if (!g.get(n).includes(h)) g.get(n).push(h);
+      });
     });
     return g;
   }
   function selAccts() {
     const all = Object.keys(payload.data.accounts);
     if (filter === 'ALL') return all;
-    if (filter.startsWith('name:')) { const n = filter.slice(5); return all.filter(a => ownerOf(a) === n); }
+    if (filter.startsWith('name:')) { const n = filter.slice(5); return all.filter(a => shareIn(a, n) > 0); }
     return all.filter(a => a === filter);
   }
+  // Weight applied to each account's numbers in the current view: a whole
+  // account normally, that person's slice when the dashboard is filtered to
+  // a person. Split accounts are the only place this is ever below 1.
+  function curWeight() {
+    if (!filter.startsWith('name:')) return () => 1;
+    const n = filter.slice(5);
+    return h => shareIn(h, n);
+  }
   function setFilter(f) { filter = f; localStorage.setItem('hq.filter', f); render(); }
-  async function saveOwner(handle, name) {
-    name = (name || '').trim().slice(0, 40);
+  // shares: {name: weight}; weights are relative and get scaled to 100.
+  // An empty object clears the account's owners.
+  async function saveShares(handle, shares) {
+    const clean = {};
+    Object.entries(shares || {}).forEach(([n, w]) => {
+      n = String(n).trim().slice(0, 40);
+      if (n && +w > 0) clean[n] = (clean[n] || 0) + +w;
+    });
     if (STATIC) {
       const loc = localOwners();
-      if ((publishedOwners[handle] || '') === name) delete loc[handle]; else loc[handle] = name;
+      loc[handle] = clean;
       localStorage.setItem(LOCAL_KEY, JSON.stringify(loc));
       payload.owners = mergedOwners();
       return;
     }
-    const r = await fetch('/api/owner', { method: 'POST', body: JSON.stringify({ handle, name }) });
+    const r = await fetch('/api/owner', { method: 'POST', body: JSON.stringify({ handle, shares: clean }) });
     const j = await r.json();
     if (j.owners) payload.owners = j.owners;
   }
-  async function assignOwner(handle) {
-    const cur = ownerOf(handle);
-    const name = prompt('Who runs @' + handle + '? (name; leave empty to clear)', cur);
-    if (name === null) return;
-    await saveOwner(handle, name);
-    if (filter.startsWith('name:') && !groups().has(filter.slice(5))) filter = 'ALL';
-    render();
-  }
-  async function renameOwner(oldName) {
-    const name = prompt('Rename ' + oldName + ' to:', oldName);
-    if (name === null || name.trim() === '' || name.trim() === oldName) return;
-    for (const h of (groups().get(oldName) || [])) await saveOwner(h, name);
-    if (filter === 'name:' + oldName) filter = 'name:' + name.trim();
-    render();
+  const saveOwner = (handle, name) => saveShares(handle, name && name.trim() ? { [name.trim()]: 100 } : {});
+  async function renamePerson(oldName, newName) {
+    newName = (newName || '').trim().slice(0, 40);
+    if (!newName || newName === oldName) return;
+    if (STATIC) {
+      for (const h of (groups().get(oldName) || [])) {
+        const sh = sharesOf(h);
+        if (!(oldName in sh)) continue;
+        sh[newName] = (sh[newName] || 0) + sh[oldName];
+        delete sh[oldName];
+        await saveShares(h, sh);
+      }
+    } else {
+      const r = await fetch('/api/owner/rename', { method: 'POST', body: JSON.stringify({ from: oldName, to: newName }) });
+      const j = await r.json();
+      if (j.error) { alert(j.error); return; }
+      if (j.owners) payload.owners = j.owners;
+    }
+    if (filter === 'name:' + oldName) filter = 'name:' + newName;
   }
   function resetLocalOwners() {
     localStorage.removeItem(LOCAL_KEY);
@@ -520,10 +671,11 @@
   // so colors stick to people), then each unclaimed account on its own.
   function raceEntities(g) {
     const out = [];
-    Object.values(payload.owners || {}).forEach(n => {
-      if (g.has(n) && !out.some(e => e.key === 'name:' + n)) out.push({ key: 'name:' + n, label: n, handles: g.get(n) });
-    });
-    (g.get(UNNAMED) || []).forEach(h => out.push({ key: h, label: '@' + h, handles: [h] }));
+    Object.keys(payload.owners || {}).forEach(h => ownersOf(h).forEach(n => {
+      if (g.has(n) && !out.some(e => e.key === 'name:' + n))
+        out.push({ key: 'name:' + n, label: n, handles: g.get(n), w: x => shareIn(x, n) });
+    }));
+    (g.get(UNNAMED) || []).forEach(h => out.push({ key: h, label: '@' + h, handles: [h], w: () => 1 }));
     return out;
   }
   function lastDays(n) {
@@ -535,13 +687,14 @@
     }
     return out;
   }
-  function totalAt(dateStr, kind, accts) {
+  function totalAt(dateStr, kind, accts, w) {
+    w = w || curWeight();
     let sum = 0;
     const dates = Object.keys(payload.history).sort();
     (accts || selAccts()).forEach(a => {
       let best = null;
       dates.forEach(d => { if (d <= dateStr && payload.history[d][a]) best = payload.history[d][a]; });
-      if (best) sum += best[kind] || 0;
+      if (best) sum += (best[kind] || 0) * w(a);
     });
     return sum;
   }
@@ -594,8 +747,12 @@
       c.textContent = label;
       if (sub) { const n = document.createElement('span'); n.className = 'n num'; n.textContent = sub; c.appendChild(n); }
       if (handle) {
-        const x = document.createElement('span'); x.className = 'x'; x.textContent = '×';
-        x.title = (STATIC ? 'Hide' : 'Remove') + ' @' + handle; x.setAttribute('role', 'button');
+        const armed = pendingRm === handle;
+        const x = document.createElement('span'); x.className = 'x'; x.textContent = armed ? '×?' : '×';
+        x.title = armed ? 'Click again to ' + (STATIC ? 'hide' : 'remove') + ' @' + handle
+                        : (STATIC ? 'Hide' : 'Remove') + ' @' + handle;
+        if (armed) x.style.cssText = 'color:#fff;background:var(--views);width:auto;padding:0 5px';
+        x.setAttribute('role', 'button');
         x.onclick = ev => { ev.stopPropagation(); removeAccount(handle); };
         c.appendChild(x);
       }
@@ -629,10 +786,14 @@
       sub.style.display = 'none';
     }
 
+    const W = curWeight();
     const sel = selAccts().map(a => payload.data.accounts[a]);
     const vids = sel.flatMap(a => (a.videos || []).map(v => ({ ...v, acct: a.handle })));
-    const totalViews = sel.reduce((s, a) => s + (a.totalViews || 0), 0);
-    const followers = sel.reduce((s, a) => s + (a.followers || 0), 0);
+    const totalViews = Math.round(sel.reduce((s, a) => s + (a.totalViews || 0) * W(a.handle), 0));
+    const followers = Math.round(sel.reduce((s, a) => s + (a.followers || 0) * W(a.handle), 0));
+    // Videos stay whole (a clip is a clip); the per-video average uses the
+    // share-weighted count so a 50% owner still sees the account's real average.
+    const wVideos = vids.reduce((s, v) => s + W(v.acct), 0);
 
     $('totalViews').textContent = fmt(totalViews);
     const pct = Math.min(100, totalViews / GOAL * 100);
@@ -663,8 +824,8 @@
       return dt.getFullYear() + '-' + String(dt.getMonth() + 1).padStart(2, '0') + '-' + String(dt.getDate()).padStart(2, '0');
     };
     const snapDates = Object.keys(payload.history).sort();
-    function deltaSeries(kind, accts, vs, ds) {
-      accts = accts || selAccts(); vs = vs || vids; ds = ds || days;
+    function deltaSeries(kind, accts, vs, ds, w) {
+      accts = accts || selAccts(); vs = vs || vids; ds = ds || days; w = w || curWeight();
       // Days at or before the first snapshot have no earlier snapshot to
       // diff against, so they are estimated from upload days. Those bars
       // must sum to the FIRST snapshot's total, not to current lifetime
@@ -674,14 +835,14 @@
       let scale = 1;
       if (firstSnap) {
         let weightSum = 0;
-        vs.forEach(x => { if (dayOf(x.createTime) <= firstSnap) weightSum += x[kind] || 0; });
-        scale = weightSum ? totalAt(firstSnap, kind, accts) / weightSum : 0;
+        vs.forEach(x => { if (dayOf(x.createTime) <= firstSnap) weightSum += (x[kind] || 0) * w(x.acct); });
+        scale = weightSum ? totalAt(firstSnap, kind, accts, w) / weightSum : 0;
       }
       return ds.map(d => {
         const hasPrior = snapDates.some(sd => sd < d);
         if (!hasPrior) {
           const raw = vs.filter(x => dayOf(x.createTime) === d)
-                        .reduce((s, x) => s + (x[kind] || 0), 0);
+                        .reduce((s, x) => s + (x[kind] || 0) * w(x.acct), 0);
           const v = Math.round(raw * scale);
           return { d, v, note: v > 0 ? "that day's uploads" : '' };
         }
@@ -695,7 +856,7 @@
           if (!A || !B) return;
           const gap = Math.round((new Date(B + 'T12:00:00') - new Date(A + 'T12:00:00')) / 86400000) || 1;
           maxGap = Math.max(maxGap, gap);
-          v += Math.max(0, (payload.history[B][a][kind] || 0) - (payload.history[A][a][kind] || 0)) / gap;
+          v += Math.max(0, (payload.history[B][a][kind] || 0) - (payload.history[A][a][kind] || 0)) / gap * w(a);
         });
         return { d, v: Math.round(v), note: maxGap > 1 ? 'avg over ' + maxGap + '-day gap' : '' };
       });
@@ -735,7 +896,7 @@
     $('tUploads').textContent = fmt(uSeries[13].v);
     $('tFollowers').textContent = fmt(followers);
     $('allVideos').textContent = fmt(vids.length);
-    $('avgViews').textContent = vids.length ? fmt(Math.round(totalViews / vids.length)) : '0';
+    $('avgViews').textContent = wVideos ? fmt(Math.round(totalViews / wVideos)) : '0';
 
     // Views by creator: one row per person, unclaimed accounts each get their own row.
     if (STATIC) {
@@ -752,14 +913,18 @@
       else entries.push({ name: n, handles: hs });
     });
     entries.forEach(e => {
+      // Each person only gets their share of an account they split with someone.
+      const w = e.name ? (h => shareIn(h, e.name)) : (() => 1);
       const live = e.handles.filter(h => payload.data.accounts[h]);
       const as = live.map(h => payload.data.accounts[h]);
       const vs = as.flatMap(a => (a.videos || []).map(v => ({ ...v, acct: a.handle })));
-      e.views = as.reduce((s, a) => s + (a.totalViews || 0), 0);
-      e.likes = as.reduce((s, a) => s + (a.likesFromVideos || a.totalLikes || 0), 0);
-      e.followers = as.reduce((s, a) => s + (a.followers || 0), 0);
+      e.w = w;
+      e.views = Math.round(as.reduce((s, a) => s + (a.totalViews || 0) * w(a.handle), 0));
+      e.likes = Math.round(as.reduce((s, a) => s + (a.likesFromVideos || a.totalLikes || 0) * w(a.handle), 0));
+      e.followers = Math.round(as.reduce((s, a) => s + (a.followers || 0) * w(a.handle), 0));
       e.videos = vs.length;
-      e.today = live.length ? deltaSeries('views', live, vs)[13].v : 0;
+      e.wVideos = vs.reduce((s, v) => s + w(v.acct), 0);
+      e.today = live.length ? deltaSeries('views', live, vs, null, w)[13].v : 0;
     });
     entries.sort((a, b) => b.views - a.views);
     const maxV = Math.max(1, ...entries.map(e => e.views));
@@ -775,17 +940,23 @@
       nm.textContent = e.name || 'Unassigned'; tdN.appendChild(nm);
       const ed = document.createElement('button'); ed.className = 'edit';
       ed.textContent = e.name ? 'rename' : '+ name';
-      ed.onclick = ev => { ev.stopPropagation(); e.name ? renameOwner(e.name) : assignOwner(e.handles[0]); };
+      ed.onclick = ev => { ev.stopPropagation(); e.name ? openManage(null, e.name) : openManage(e.handles[0]); };
       tdN.appendChild(ed);
       tr.appendChild(tdN);
 
       const tdA = document.createElement('td');
       e.handles.forEach(h => {
         const pl = document.createElement('span'); pl.className = 'pill' + (payload.data.accounts[h] ? '' : ' pending');
-        pl.textContent = '@' + h; pl.title = 'Set who runs @' + h;
-        pl.onclick = ev => { ev.stopPropagation(); assignOwner(h); };
-        const x = document.createElement('span'); x.className = 'x'; x.textContent = '×';
-        x.title = (STATIC ? 'Hide' : 'Remove') + ' @' + h; x.setAttribute('role', 'button');
+        pl.textContent = '@' + h; pl.title = 'Edit who runs @' + h;
+        const pct = e.name ? Math.round(shareIn(h, e.name) * 100) : 100;
+        if (pct < 100) { const b = document.createElement('b'); b.className = 'share num'; b.textContent = pct + '%'; pl.appendChild(b); }
+        pl.onclick = ev => { ev.stopPropagation(); openManage(h); };
+        const x = document.createElement('span'); x.className = 'x';
+        x.textContent = pendingRm === h ? '×?' : '×';
+        x.title = pendingRm === h ? 'Click again to ' + (STATIC ? 'hide' : 'remove') + ' @' + h
+                                  : (STATIC ? 'Hide' : 'Remove') + ' @' + h;
+        if (pendingRm === h) x.style.cssText = 'color:#fff;background:var(--views);width:auto;padding:0 5px';
+        x.setAttribute('role', 'button');
         x.onclick = ev => { ev.stopPropagation(); removeAccount(h); };
         pl.appendChild(x);
         tdA.appendChild(pl);
@@ -798,7 +969,7 @@
         '<td class="r num">' + fmt(e.likes) + '</td>' +
         '<td class="r num">' + fmt(e.followers) + '</td>' +
         '<td class="r num">' + fmt(e.videos) + '</td>' +
-        '<td class="r num">' + (e.videos ? fmt(Math.round(e.views / e.videos)) : '-') + '</td>');
+        '<td class="r num">' + (e.wVideos ? fmt(Math.round(e.views / e.wVideos)) : '-') + '</td>');
       whoRows.appendChild(tr);
     });
 
@@ -816,7 +987,7 @@
       a.textContent = v.desc || '(no caption)';
       t.appendChild(a);
       const sub = document.createElement('div'); sub.className = 'a';
-      sub.textContent = (ownerOf(v.acct) ? ownerOf(v.acct) + ' · ' : '') + '@' + v.acct;
+      sub.textContent = (ownerLabel(v.acct) ? ownerLabel(v.acct) + ' · ' : '') + '@' + v.acct;
       td.appendChild(t); td.appendChild(sub);
       tr.appendChild(td);
       tr.insertAdjacentHTML('beforeend',
@@ -839,6 +1010,7 @@
     $('refreshBtn').disabled = payload.refreshing;
     $('refreshBtn').textContent = payload.refreshing ? 'Refreshing…' : 'Refresh & publish';
     $('errBox').textContent = payload.lastError ? 'Last refresh error: ' + payload.lastError : '';
+    renderManage();
   }
 
   function renderRace(g, deltaSeries) {
@@ -847,17 +1019,21 @@
     // Fixed slots: first 8 entities keep their own hue; the rest fold into "Other".
     let ents = all.slice(0, SERIES.length).map((e, i) => ({ ...e, c: SERIES[i] }));
     const rest = all.slice(SERIES.length);
-    if (rest.length) ents.push({ key: 'other', label: 'Other (' + rest.length + ')', handles: rest.flatMap(e => e.handles), c: OTHER_C });
+    if (rest.length) ents.push({
+      key: 'other', label: 'Other (' + rest.length + ')', c: OTHER_C,
+      handles: [...new Set(rest.flatMap(e => e.handles))],
+      w: h => Math.min(1, rest.reduce((s, e) => s + (e.handles.includes(h) ? e.w(h) : 0), 0)),
+    });
     ents.forEach(e => {
       const live = e.handles.filter(h => payload.data.accounts[h]);
       const vs = live.flatMap(h => (payload.data.accounts[h].videos || []).map(v => ({ ...v, acct: h })));
-      const daily = live.length ? deltaSeries('views', live, vs, ds).map(s => s.v) : ds.map(() => 0);
+      const daily = live.length ? deltaSeries('views', live, vs, ds, e.w).map(s => s.v) : ds.map(() => 0);
       let run = 0;
       e.daily = daily;
       e.cum = daily.map(v => (run += v));
       e.total = run;
       e.series = raceMode === 'cum' ? e.cum : daily;
-      e.allTime = live.reduce((s, h) => s + (payload.data.accounts[h].totalViews || 0), 0);
+      e.allTime = Math.round(live.reduce((s, h) => s + (payload.data.accounts[h].totalViews || 0) * e.w(h), 0));
     });
     const shown = ents.filter(e => !raceHidden.has(e.key));
 
@@ -971,29 +1147,37 @@
     }
   }
 
+  const cleanHandle = v => (v || '').trim().replace(/^https?:\/\/(www\.)?tiktok\.com\//i, '')
+    .replace(/^@/, '').split(/[/?#]/)[0].trim();
+  // Adds the account and pulls just that handle: no publish, no deploy, since
+  // refreshing the live site is a deliberate button press now.
+  async function addAccount(handle, name, btn) {
+    const h = cleanHandle(handle);
+    if (!h) return false;
+    if (STATIC) {
+      const pend = pendingAccts(); pend[h] = name || '';
+      localStorage.setItem(PENDING_KEY, JSON.stringify(pend));
+      localStorage.setItem(HIDDEN_KEY, JSON.stringify(hiddenAccts().filter(x => x !== h)));
+      applyHidden(); render(); renderManage();
+      return true;
+    }
+    if (btn) btn.disabled = true;
+    try {
+      const j = await (await fetch('/api/accounts', { method: 'POST', body: JSON.stringify({ handle: h, name: name || '' }) })).json();
+      if (j.error) { alert(j.error); return false; }
+      payload.accounts = j.accounts; payload.owners = j.owners || payload.owners;
+      render(); renderManage();
+      await fetch('/api/refresh', { method: 'POST', body: JSON.stringify({ publish: false, handle: h }) });
+      poll();
+      return true;
+    } finally { if (btn) btn.disabled = false; }
+  }
   $('addRow').addEventListener('submit', async ev => {
     ev.preventDefault();
-    const h = $('addHandle').value.trim().replace(/^@/, '').replace(/^https?:\/\/(www\.)?tiktok\.com\/@?/i, '').split(/[/?#]/)[0];
-    if (!h) return;
-    const name = $('addName').value.trim();
-    if (STATIC) {
-      const pend = pendingAccts(); pend[h] = name; localStorage.setItem(PENDING_KEY, JSON.stringify(pend));
-      const hid = hiddenAccts().filter(x => x !== h); localStorage.setItem(HIDDEN_KEY, JSON.stringify(hid));
-      $('addHandle').value = ''; $('addName').value = ''; addOpen = false;
-      applyHidden(); render();
-      return;
-    }
-    $('addBtn').disabled = true;
-    try {
-      const j = await (await fetch('/api/accounts', { method: 'POST', body: JSON.stringify({ handle: h, name }) })).json();
-      if (j.error) { alert(j.error); return; }
-      payload.accounts = j.accounts; payload.owners = j.owners || payload.owners;
+    if (await addAccount($('addHandle').value, $('addName').value.trim(), $('addBtn'))) {
       $('addHandle').value = ''; $('addName').value = '';
-      addOpen = false;
-      render();
-      await fetch('/api/refresh', { method: 'POST' });
-      poll();
-    } finally { $('addBtn').disabled = false; }
+      addOpen = false; render();
+    }
   });
   // On the published snapshot (STATIC) the button is hidden. Refreshing is
   // manual and happens here on the tracker Mac: this runs refresh.sh, which
@@ -1013,6 +1197,230 @@
     }, 3000);
     loadData();
   }
+
+  // ---- Accounts & owners sheet ---------------------------------------------
+  // Edits are staged per account so a half-typed split never hits the server;
+  // Save writes {name: weight} and the server scales the weights to 100%.
+  const mgEdit = {};
+  let mgQuery = '', mgRenaming = null;
+
+  const knownHandles = () => [...new Set([...Object.keys(payload.data.accounts), ...payload.accounts])];
+  function mgRowsFor(h) {
+    if (mgEdit[h]) return mgEdit[h];
+    const rows = Object.entries(sharesOf(h)).map(([name, pct]) => ({ name, pct: Math.round(pct) }));
+    return rows.length ? rows : [{ name: '', pct: 100 }];
+  }
+  function mgStage(h) {
+    if (!mgEdit[h]) mgEdit[h] = mgRowsFor(h).map(r => ({ ...r }));
+    return mgEdit[h];
+  }
+  function openManage(handle, focusPerson) {
+    mgRenaming = focusPerson || null;
+    if (handle) mgStage(handle);
+    $('manage').hidden = false;
+    document.body.style.overflow = 'hidden';
+    renderManage();
+    if (handle) {
+      const row = $('mgList').querySelector('[data-h="' + (window.CSS && CSS.escape ? CSS.escape(handle) : handle) + '"]');
+      if (row) {
+        row.scrollIntoView({ block: 'center' });
+        const inp = row.querySelector('.nm');
+        if (inp) { inp.focus(); inp.select(); }
+      }
+    } else if (!focusPerson) {
+      $('mgHandle').focus();
+    }
+  }
+  function closeManage() {
+    $('manage').hidden = true;
+    document.body.style.overflow = '';
+    Object.keys(mgEdit).forEach(k => delete mgEdit[k]);
+    mgRenaming = null;
+    $('mgAddHint').textContent = '';
+  }
+  function mgTotals(el, h) {
+    const rows = mgRowsFor(h);
+    const named = rows.filter(r => (r.name || '').trim() && +r.pct > 0);
+    const sum = named.reduce((s, r) => s + (+r.pct || 0), 0);
+    el._tot.textContent = !named.length ? 'unassigned'
+      : named.length === 1 ? '100%'
+      : named.map(r => Math.round((+r.pct || 0) / sum * 100) + '%').join(' / ');
+    const off = named.length > 1 && Math.abs(sum - 100) > 0.5;
+    el._tot.classList.toggle('bad', off);
+    el._tot.title = off ? 'Your numbers add up to ' + Math.round(sum) + '%, so they are scaled to the split shown.' : '';
+  }
+  function mgDirty(el, h) { el._save.hidden = false; el._undo.hidden = false; mgTotals(el, h); }
+  async function mgSave(h) {
+    const shares = {};
+    (mgEdit[h] || mgRowsFor(h)).forEach(r => {
+      const n = (r.name || '').trim(), w = +r.pct || 0;
+      if (n && w > 0) shares[n] = (shares[n] || 0) + w;
+    });
+    await saveShares(h, shares);
+    delete mgEdit[h];
+    if (filter.startsWith('name:') && !groups().has(filter.slice(5))) filter = 'ALL';
+    render(); renderManage();
+  }
+
+  function renderManage() {
+    if ($('manage').hidden) return;
+    // Never rebuild while a field is being typed into: it would drop focus.
+    const ae = document.activeElement;
+    if (ae && ae.tagName === 'INPUT' && $('mgList').contains(ae)) return;
+    const g = groups();
+    const people = splitPeople();
+    $('mgPeople').innerHTML = people.map(n => '<option value="' + escapeHtml(n) + '">').join('');
+
+    const pr = $('mgPeopleRow'); pr.innerHTML = '';
+    if (people.length) {
+      const lbl = document.createElement('span'); lbl.className = 'lbl'; lbl.textContent = 'People';
+      pr.appendChild(lbl);
+    }
+    people.forEach(n => {
+      if (mgRenaming === n) {
+        const inp = document.createElement('input');
+        inp.className = 'mg-search'; inp.value = n; inp.style.minWidth = '170px';
+        inp.onkeydown = async ev => {
+          if (ev.key === 'Enter') { ev.preventDefault(); const v = inp.value; mgRenaming = null; await renamePerson(n, v); render(); renderManage(); }
+          if (ev.key === 'Escape') { mgRenaming = null; renderManage(); }
+        };
+        inp.onblur = () => { if (mgRenaming === n) { mgRenaming = null; renderManage(); } };
+        pr.appendChild(inp);
+        setTimeout(() => { inp.focus(); inp.select(); }, 0);
+        return;
+      }
+      const c = document.createElement('span'); c.className = 'chip'; c.textContent = n;
+      const cnt = document.createElement('span'); cnt.className = 'n num';
+      cnt.textContent = (g.get(n) || []).length; c.appendChild(cnt);
+      const ed = document.createElement('button'); ed.className = 'edit'; ed.textContent = 'rename';
+      ed.onclick = ev => { ev.stopPropagation(); mgRenaming = n; renderManage(); };
+      c.appendChild(ed);
+      c.onclick = () => { mgQuery = n; $('mgSearch').value = n; renderManage(); };
+      pr.appendChild(c);
+    });
+
+    const all = knownHandles();
+    const q = mgQuery.toLowerCase();
+    const list = all
+      .filter(h => !q || h.toLowerCase().includes(q) || ownersOf(h).some(n => n.toLowerCase().includes(q)))
+      .sort((a, b) => (ownersOf(a).length ? 1 : 0) - (ownersOf(b).length ? 1 : 0)
+        || ((payload.data.accounts[b] || {}).totalViews || 0) - ((payload.data.accounts[a] || {}).totalViews || 0));
+    const un = all.filter(h => !ownersOf(h).length).length;
+    $('mgCount').textContent = (q ? list.length + ' of ' + all.length : all.length + ' accounts')
+      + (un ? ' · ' + un + ' unassigned' : ' · all assigned');
+
+    const wrap = $('mgList'); wrap.innerHTML = '';
+    if (!list.length) { wrap.innerHTML = '<div class="mg-empty">Nothing matches that.</div>'; return; }
+    list.forEach(h => {
+      const rows = mgRowsFor(h);
+      const el = document.createElement('div');
+      el.className = 'mg-row' + (ownersOf(h).length ? '' : ' unassigned');
+      el.dataset.h = h;
+
+      const live = payload.data.accounts[h];
+      const c1 = document.createElement('div');
+      c1.innerHTML = '<div class="mg-h"><a href="https://www.tiktok.com/@' + encodeURIComponent(h)
+        + '" target="_blank" rel="noopener">@' + escapeHtml(h) + '</a></div><div class="mg-meta">'
+        + (live ? fmt(live.totalViews || 0) + ' views · ' + fmt((live.videos || []).length) + ' videos'
+                : 'not pulled yet') + '</div>';
+      el.appendChild(c1);
+
+      const c2 = document.createElement('div');
+      rows.forEach((r, i) => {
+        const own = document.createElement('span'); own.className = 'mg-own';
+        const nm = document.createElement('input');
+        nm.className = 'nm'; nm.value = r.name; nm.placeholder = 'unassigned';
+        nm.setAttribute('list', 'mgPeople'); nm.spellcheck = false;
+        nm.oninput = () => { mgStage(h)[i].name = nm.value; mgDirty(el, h); };
+        const pc = document.createElement('input');
+        pc.className = 'pc num'; pc.type = 'number'; pc.min = '0'; pc.max = '100'; pc.value = r.pct;
+        pc.oninput = () => { mgStage(h)[i].pct = pc.value === '' ? 0 : +pc.value; mgDirty(el, h); };
+        const sg = document.createElement('span'); sg.className = 'sign'; sg.textContent = '%';
+        own.appendChild(nm); own.appendChild(pc); own.appendChild(sg);
+        if (rows.length > 1) {
+          const dp = document.createElement('span'); dp.className = 'drop'; dp.textContent = '×';
+          dp.title = 'Drop ' + (r.name || 'this person') + ' from @' + h;
+          dp.onclick = () => {
+            const st = mgStage(h); st.splice(i, 1);
+            if (!st.length) st.push({ name: '', pct: 100 });
+            if (st.length === 1) st[0].pct = 100;
+            document.activeElement && document.activeElement.blur();
+            renderManage();
+          };
+          own.appendChild(dp);
+        }
+        [nm, pc].forEach(inp => {
+          inp.onkeydown = ev => {
+            if (ev.key === 'Enter') { ev.preventDefault(); inp.blur(); mgSave(h); }
+            if (ev.key === 'Escape') { delete mgEdit[h]; inp.blur(); renderManage(); }
+          };
+        });
+        c2.appendChild(own);
+      });
+      const add = document.createElement('button');
+      add.className = 'btn-sm'; add.textContent = '+ person';
+      add.title = 'Split @' + h + ' with someone else';
+      add.onclick = () => {
+        const st = mgStage(h);
+        const left = 100 - st.reduce((s, r) => s + (+r.pct || 0), 0);
+        st.push({ name: '', pct: left > 0 ? left : 50 });
+        document.activeElement && document.activeElement.blur();
+        renderManage();
+        const row = $('mgList').querySelector('[data-h="' + (window.CSS && CSS.escape ? CSS.escape(h) : h) + '"]');
+        const last = row && row.querySelectorAll('.nm');
+        if (last && last.length) last[last.length - 1].focus();
+      };
+      c2.appendChild(add);
+      if (rows.length > 1) {
+        const evn = document.createElement('button');
+        evn.className = 'btn-sm'; evn.textContent = 'Even'; evn.title = 'Split evenly';
+        evn.onclick = () => {
+          const st = mgStage(h);
+          st.forEach(r => { r.pct = Math.round(100 / st.length); });
+          document.activeElement && document.activeElement.blur();
+          renderManage();
+        };
+        c2.appendChild(evn);
+      }
+      el.appendChild(c2);
+
+      const c3 = document.createElement('div'); c3.className = 'mg-actions';
+      const tot = document.createElement('span'); tot.className = 'mg-total'; c3.appendChild(tot);
+      const save = document.createElement('button'); save.className = 'btn-sm go'; save.textContent = 'Save';
+      save.onclick = () => mgSave(h);
+      const undo = document.createElement('button'); undo.className = 'btn-sm'; undo.textContent = 'Undo';
+      undo.onclick = () => { delete mgEdit[h]; document.activeElement && document.activeElement.blur(); renderManage(); };
+      save.hidden = undo.hidden = !mgEdit[h];
+      const rm = document.createElement('button');
+      rm.className = 'btn-sm' + (pendingRm === h ? ' danger armed' : '');
+      rm.textContent = pendingRm === h ? 'Sure? Click again' : (STATIC ? 'Hide' : 'Remove');
+      rm.title = 'Drop @' + h + (STATIC ? ' from this browser' : ' and its cached data; you can add it back any time');
+      rm.onclick = () => removeAccount(h);
+      c3.appendChild(save); c3.appendChild(undo); c3.appendChild(rm);
+      el.appendChild(c3);
+
+      el._tot = tot; el._save = save; el._undo = undo;
+      mgTotals(el, h);
+      wrap.appendChild(el);
+    });
+  }
+
+  $('manageBtn').onclick = () => openManage();
+  $('mgClose').onclick = closeManage;
+  $('manage').addEventListener('mousedown', ev => { if (ev.target === $('manage')) closeManage(); });
+  addEventListener('keydown', ev => { if (ev.key === 'Escape' && !$('manage').hidden) closeManage(); });
+  $('mgSearch').addEventListener('input', () => { mgQuery = $('mgSearch').value.trim(); renderManage(); });
+  $('mgAddRow').addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const h = cleanHandle($('mgHandle').value);
+    if (!h) return;
+    $('mgAddHint').textContent = 'Adding @' + h + '…';
+    const ok = await addAccount(h, $('mgOwner').value.trim(), $('mgAddBtn'));
+    $('mgHandle').value = ''; $('mgOwner').value = '';
+    $('mgAddHint').textContent = !ok ? ''
+      : STATIC ? 'Saved in this browser as pending.'
+      : 'Added @' + h + '. Pulling its videos now.';
+  });
 
   loadData();
 </script>

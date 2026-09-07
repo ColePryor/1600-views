@@ -17,7 +17,7 @@ SITE.mkdir(exist_ok=True)
 
 snapshot = {
     "accounts": server.load_json(server.DATA / "accounts.json", []),
-    "owners": server.load_json(server.DATA / "owners.json", {}),
+    "owners": server.load_owners(),
     "data": server.load_json(server.DATA / "data.json", {"accounts": {}}),
     "history": server.load_json(server.DATA / "history.json", {}),
     "users": server.site_users(),
