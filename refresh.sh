@@ -1,12 +1,12 @@
 #!/bin/zsh
-# Scheduled refresh: scrape TikTok, rebuild the static site, deploy to Vercel.
-# Run 4x/day by launchd (com.colepryor.1600-views-refresh) at 11:30, 15:30,
-# 19:30, 23:30, each just before a views_texter send; logs to refresh.log.
+# Manual refresh: scrape TikTok, rebuild the static site, deploy to Vercel.
+# Nothing schedules this. Run it from the local dashboard's Refresh button
+# (http://localhost:1616) or by hand: ./refresh.sh. Logs to refresh.log.
 set -e
 export PATH="/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin"
 cd /Users/colepryor/1600-views
 
-echo "=== $(date '+%Y-%m-%d %H:%M:%S') refresh start"
+echo "=== $(date '+%Y-%m-%d %H:%M:%S') refresh start (manual)"
 ./venv/bin/python fetch.py
 ./venv/bin/python publish.py
 (cd site && npx vercel --prod --yes)

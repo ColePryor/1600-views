@@ -10,7 +10,8 @@ Endpoints:
   POST /api/accounts {"handle": "...", "name": "..."}   add a TikTok account (name optional)
   POST /api/owner    {"handle": "...", "name": "..."}   name the person who runs an account ("" clears)
   POST /api/accounts/remove {"handle": "..."}   drop an account (list, cached data, owner; history kept)
-  POST /api/refresh  re-scrape all accounts (runs fetch.py, ~10-60s/account)
+  POST /api/refresh  re-scrape all accounts, rebuild site/, deploy to Vercel
+                     (runs refresh.sh, ~10-60s/account plus the deploy)
 """
 import json
 import ssl
@@ -110,11 +111,16 @@ def set_owner(handle, name):
 
 
 def run_fetch():
+    """Manual refresh: scrape TikTok, rebuild site/, deploy to Vercel, push.
+
+    Nothing runs on a schedule any more (the launchd job is disabled), so this
+    button is the only thing that updates the public page.
+    """
     refresh_state["running"] = True
     refresh_state["lastError"] = ""
     try:
-        r = subprocess.run([str(PY), str(ROOT / "fetch.py")], capture_output=True,
-                           text=True, timeout=1800)
+        r = subprocess.run(["/bin/zsh", str(ROOT / "refresh.sh")], capture_output=True,
+                           text=True, timeout=3600)
         if r.returncode != 0:
             refresh_state["lastError"] = (r.stderr or r.stdout)[-400:]
     except Exception as e:

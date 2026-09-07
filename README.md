@@ -7,7 +7,7 @@ Tracks per-video views and likes across the 1600.tech creator accounts and rende
 - `fetch.py`: opens each handle in `data/accounts.json` in a real Chrome window (Playwright, persistent profile in `data/chrome-profile/`, gitignored) and intercepts TikTok's `item_list` responses, so counts are exact with no login. Writes `data/data.json` and appends daily totals to `data/history.json`.
 - `server.py`: local dashboard server for `index.html`.
 - `publish.py`: copies a snapshot into `site/` for the public Vercel deploy (`npx vercel` from `site/`).
-- `refresh.sh`: fetch -> publish -> `vercel --prod` -> git push. launchd runs it hourly at :30 (`~/Library/LaunchAgents/com.colepryor.1600-views-refresh.plist`, logs in `refresh.log`), so the live site updates itself; there is no Refresh button on the public page and no always-on worker. Note: `fetch.py` opens a visible Chrome window each run.
+- `refresh.sh`: fetch -> publish -> `vercel --prod` -> git push. Nothing runs it on a schedule (the launchd job is disabled, plist parked at `com.colepryor.1600-views-refresh.plist.disabled`). Refreshing is manual: start `server.py`, open http://localhost:1616 and click "Refresh & publish", or run `./refresh.sh` in a terminal. Logs go to `refresh.log`. The public page has no Refresh button, so it only changes when you run this. Note: `fetch.py` opens a visible Chrome window each run.
 
 ## Setup
 

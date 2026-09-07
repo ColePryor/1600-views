@@ -264,7 +264,7 @@
       <button class="ghost" type="submit" id="addBtn">+ Add account</button>
       <span class="hint" id="addHint"></span>
     </form>
-    <button class="refresh" id="refreshBtn">Refresh</button>
+    <button class="refresh" id="refreshBtn">Refresh &amp; publish</button>
   </div>
   <div class="subchips" id="subChips" style="display:none"></div>
 
@@ -387,7 +387,7 @@
       </table>
     </div>
     <div class="empty" id="emptyMsg" style="display:none">
-      No data yet.<br>Add a TikTok account (top right), then hit Refresh: it pulls every video's views and likes automatically.
+      No data yet.<br>Add a TikTok account (top right), then hit Refresh &amp; publish: it pulls every video's views and likes automatically.
     </div>
     <div class="err" id="errBox"></div>
   </div>
@@ -834,10 +834,10 @@
     const ts = payload.data.fetchedAt;
     $('stamp').textContent = payload.refreshing
       ? 'refreshing from TikTok…'
-      : ts ? 'updated ' + new Date(ts * 1000).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + (STATIC ? ' · auto-updates hourly' : '') : '';
+      : ts ? 'updated ' + new Date(ts * 1000).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + '' : '';
     $('refreshBtn').style.display = STATIC ? 'none' : '';
     $('refreshBtn').disabled = payload.refreshing;
-    $('refreshBtn').textContent = payload.refreshing ? 'Refreshing…' : 'Refresh';
+    $('refreshBtn').textContent = payload.refreshing ? 'Refreshing…' : 'Refresh & publish';
     $('errBox').textContent = payload.lastError ? 'Last refresh error: ' + payload.lastError : '';
   }
 
@@ -995,8 +995,9 @@
       poll();
     } finally { $('addBtn').disabled = false; }
   });
-  // On the published snapshot (STATIC) the button is hidden: the tracker Mac
-  // refreshes and redeploys on a schedule (refresh.sh via launchd).
+  // On the published snapshot (STATIC) the button is hidden. Refreshing is
+  // manual and happens here on the tracker Mac: this runs refresh.sh, which
+  // scrapes TikTok, rebuilds site/ and deploys it to Vercel.
   $('refreshBtn').addEventListener('click', async () => {
     if (STATIC) return;
     await fetch('/api/refresh', { method: 'POST' });
