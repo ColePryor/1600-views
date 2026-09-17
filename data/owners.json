@@ -4,7 +4,10 @@
  "anastasiyap1219": "Billy Zheng",
  "ivyleaguesattutor": "Billy Zheng",
  "harvardsattutor": "Billy Zheng",
- "satclarity0": "Billy Zheng",
+ "satclarity0": {
+  "Billy Zheng": 35,
+  "Bhavesh Senthilkumar": 65
+ },
  "yalesattutor": "Billy Zheng",
  "calebstudies67": "Samarth Jain",
  "jacksaccount137": "Cole Pryor",
